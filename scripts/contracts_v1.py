@@ -375,7 +375,7 @@ def export_public_bundle(bundle, taxonomy, *, enable_official=False):
     answer_rows = []
     classification_rows = []
     explanation_rows = []
-    for qid in selected:
+    for qid in [q["id"] for q in question_rows]:
         answer_rows.append(_latest([x for x in bundle["answers"] if x["questionId"] == qid]))
         classification_rows.extend(x for x in bundle["classifications"] if x["questionId"] == qid and x["reviewStatus"] == "reviewed")
         explanation_rows.extend(x for x in bundle["explanations"] if x["questionId"] == qid and x["reviewStatus"] == "reviewed")
