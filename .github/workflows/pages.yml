@@ -23,6 +23,14 @@ jobs:
       - run: npm run validate
       - run: npm test
       - run: npm run build
+      - run: npm run test:browser
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: screenshots-v0
+          path: tests/.screenshots/
+          if-no-files-found: ignore
+          include-hidden-files: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
