@@ -133,6 +133,9 @@ def validate_bundle(bundle, taxonomy):
             prev = _needed(docs, doc["supersedes"], doc["id"])
             if prev["examId"] != doc["examId"] or prev["type"] != doc["type"] or prev["revision"] >= doc["revision"]:
                 _fail(f"{doc['id']}: substituição de documento inconsistente")
+    # Verifique a prova da questão antes de testar os grupos compartilhados.
+    for q in questions.values():
+        _needed(exams, q["examId"], q["id"])
     for group in groups.values():
         _needed(exams, group["examId"], group["id"])
         if len(group["questionIds"]) != len(set(group["questionIds"])):
@@ -233,6 +236,10 @@ def validate_bundle(bundle, taxonomy):
                 _fail(f"{event['id']}: cadeia de hashes interrompida")
             previous = event["toState"]
             prev_hash = event["newHash"]
+    for q in questions.values():
+        history = grouped_events.get(("questions", q["id"]), [])
+        if history and q["pipelineState"] != history[-1]["toState"]:
+            _fail(f"{q['id']}: estado não corresponde ao último evento editorial")
     for appearance in appearances.values():
         _needed(questions, appearance["questionId"], appearance["id"])
         _needed(exams, appearance["examId"], appearance["id"])

@@ -33,6 +33,7 @@ class ContractTests(unittest.TestCase):
         q.update(originalNumber=None, sourceLocations=[], rightsStatus="unknown",
                  rightsEvidence=None, reviewStatus="draft", pipelineState="needs_review")
         data["documents"][0].update(sourceUrl=None, sha256=None, accessStatus="unverified")
+        data["review_events"] = []  # trabalho em staging antes do histórico publicado
         self.assertEqual(len(validate_bundle(data, TAX)["questions"]), 1)
         self.assertTrue(publishability(data, TAX)["synthetic-question"])
 
@@ -85,6 +86,7 @@ class ContractTests(unittest.TestCase):
         self.assertEqual(export_public_bundle(data, TAX, enable_official=True)["questions"], [])
         data = sample()
         data["questions"][0]["pipelineState"] = "blocked"
+        data["review_events"] = []  # nenhum estado publicado herdado como válido
         self.assertEqual(export_public_bundle(data, TAX, enable_official=True)["questions"], [])
 
     def test_public_export_opt_in_and_no_editorial_or_user_data(self):
@@ -130,6 +132,11 @@ class ContractTests(unittest.TestCase):
         data["review_events"][1]["toState"] = "published"
         self.fails(data, "transição")
         
+    def test_state_must_match_last_editorial_event(self):
+        data = sample()
+        data["questions"][0]["pipelineState"] = "blocked"
+        self.fails(data, "último evento editorial")
+
     def test_cancelled_exam_cannot_be_published(self):
         data = sample()
         data["exams"][0]["applicationStatus"] = "cancelled"
