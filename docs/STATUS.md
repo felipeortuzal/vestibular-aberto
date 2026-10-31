@@ -1,48 +1,49 @@
 # Estado do projeto — 31/10/2026
 
-## Etapa 01 — auditoria da V0 concluída
+## Etapa 02 — contrato V1 concluído na branch de trabalho
 
-A V0.1 continua em HTML/CSS/JS puro, sem alteração de arquitetura nem de dados oficiais. Corrigida a perda de foco do teclado após paginação, remoção de favorita em Favoritas e registro que elimina a questão pelo filtro ativo. O título de resultados pode receber foco programático. Contraste de pequenos textos/badges foi reforçado e quebras responsivas receberam proteção contra overflow. O contador da home agora diz "4 diretórios oficiais", sem confundi-los com provas importadas. Os arquivos de JS/CSS receberam atualização de cache no HTML.
+Criados contratos JSON Schema Draft 2020-12 versionados para staging e taxonomia, com validação Python de integridade e seleção conservadora para futura publicação. São 12 coleções V1: institutions, processes, exams, documents, question_groups, questions, answers, explanations, classifications, review_events, question_appearances e user_attempts. Os registros possuem schemaVersion=1, versões/revisões, IDs estáveis, referências a cadernos e modelos, contexto compartilhado, subitens, numeração original textual, blocos de texto/matemática/imagem/tabela e origem/página/hash. Campos desconhecidos aceitam null em staging, mas impedem publicação quando essenciais.
 
-A interface mantém filtros por instituição → matéria → assunto → subassunto, busca sem acentos, paginação, feedback, tentativas repetidas, favoritas, histórico local e exportação/importação. A estatística conta **questões distintas pela última tentativa**; tentativas totais permanecem um indicador separado. O teste de uma questão respondida duas vezes confirma **1 respondida, 2 tentativas** e 100% de acerto pela última resposta, sem apagar o erro anterior.
+A conferência distingue edição de ingresso e data de aplicação, semestre/aplicação Insper, escola/curso/campus FGV, Fuvest/USP sem duplicação, status preliminar/final/retificado/anulado/ausente de gabarito, dificuldade editorial versus empírica e tags interdisciplinares. Transições editoriais e histórico de correção não podem ser reescritos silenciosamente. A revisão da IA permanece rascunho; somente eventos e atores humanos identificados satisfazem revisão humana.
+
+O export V1 está desligado por padrão e não integra o site público. Mesmo com opt-in isolado para testes, a seleção exige questões objetivas completas, origem, gabarito final do caderno, direitos documentados e revisão humana. O build V0 agora copia somente lista explícita de arquivos e rejeita questões oficiais e provas individualizadas. Nenhuma fixture de staging entra em dist/.
 
 ## Contagens verificadas
 
-- **12 questões autorais** de demonstração, sem instituição, edição ou número oficial inventado.
-- **4 diretórios oficiais** (Fuvest/USP, Unicamp/Comvest, Insper e FGV), que são links de consulta, não provas importadas.
-- **0 questões oficiais**, **0 provas individualizadas** em `data/exams.json`.
-- Taxonomia proposta: **12 matérias, 45 assuntos, 122 subassuntos**.
-- **9 testes unitários** passando; um roteiro adicional de smoke test no navegador real.
+- 12 questões autorais V0; 4 diretórios oficiais; 0 questões oficiais; 0 provas individualizadas.
+- Taxonomia: 12 matérias, 45 assuntos, 122 subassuntos; IDs preservados, sem migração.
+- 2 schemas versionados; 12 coleções modeladas; 1 lote sintético exclusivo de testes.
+- Histórico local do navegador V0 intacto, sem troca de IDs, formato ou versão.
 
-## Verificação reproduzível
+## Testes reais — CI do PR #2
 
-Na CI do GitHub Actions, sobre o repositório verdadeiro (sem instalar dependências npm), passaram:
-- `npm run validate`: 12 questões autorais, 122 subassuntos, 4 diretórios; bloqueio de conteúdo oficial preservado.
-- `npm test`: **9 aprovados, 0 reprovados**; estados vazios, filtros, última tentativa, favoritas e importação inválida.
-- `npm run build`: pasta `dist/` gerada.
-- `npm run test:browser`: Chrome headless via protocolo DevTools; busca, filtro oficial vazio, matéria sem exemplo, paginação, navegação por Tab, foco após ações, resposta errada/correta, repetir, favorita, desempenho, persistência após recarregar, importação inválida e armazenamento bloqueado com posterior recuperação.
+https://github.com/felipeortuzal/vestibular-aberto/actions/runs/41254005150
 
-Layout testado em **360, 768 e 1440 px** por navegador real, sem overflow horizontal. Foram geradas capturas reais das três larguras, anexadas como artefato `screenshots-v0` da CI; as capturas também foram inspecionadas visualmente, sem cortes ou sobreposições evidentes. Não houve teste em dispositivos físicos, nem auditoria completa com leitor de tela.
+- python -m pip install -r requirements-dev.txt: OK.
+- npm run validate: OK, seed autoral e contratos de staging.
+- npm test: 9 aprovados, zero falhas.
+- npm run test:contract: 25 aprovados, zero falhas. Testados IDs duplicados, taxonomia inválida, prova/documento ausente, caderno errado, alternativa inexistente, fluxo de revisão, origem/direitos insuficientes, IA rotulada como humana, questões anuladas e retificações, export bloqueado e export positivo exclusivamente sintético.
+- npm run build: OK, V0 estática e whitelist sem staging.
+- npm run test:browser: OK em 360, 768 e 1440 px, sem overflow; filtros, correção, favoritas e persistência preservados.
 
-CI de auditoria aprovada: https://github.com/felipeortuzal/vestibular-aberto/actions/runs/41252903781 .
-Capturas: https://github.com/felipeortuzal/vestibular-aberto/actions/runs/41252903781#artifacts .
+A fixture usa nomes synthetic-*, URLs example.test, hashes e pessoas fictícias: **não comprova nenhuma licença, PDF ou revisão humana real**. Testes positivos verificam apenas a lógica.
 
 ## GitHub e publicação
 
-Repositório existente reutilizado: https://github.com/felipeortuzal/vestibular-aberto .
-PR de auditoria integrado à `main`: https://github.com/felipeortuzal/vestibular-aberto/pull/1 .
-Commit de integração funcional: `e126522748438b863ae1bd166327d22790810ae7`.
-CI com **deploy do GitHub Pages concluído com sucesso** após o merge: https://github.com/felipeortuzal/vestibular-aberto/actions/runs/41253057882 .
-URL pública existente: https://felipeortuzal.github.io/vestibular-aberto/ .
+Repositório existente: https://github.com/felipeortuzal/vestibular-aberto
+PR #2: https://github.com/felipeortuzal/vestibular-aberto/pull/2
+Site público V0: https://felipeortuzal.github.io/vestibular-aberto/
 
-O clone local via `git` não foi possível porque o ambiente de execução não resolvia `github.com` (DNS). As mudanças foram realizadas com acesso autenticado ao repositório e os quatro comandos acima executados **na CI**. GitHub Pages continua exclusivamente estático; não existe backend. O primeiro deploy de criação, preservado como histórico, foi o run https://github.com/felipeortuzal/vestibular-aberto/actions/runs/41251875933 (commit `94560b4`).
+O deploy de qualquer nova mudança só está confirmado depois de integração à main e GitHub Actions com deploy success. Testes de PR não comprovam publicação.
 
-## Limitações e pendências
+## Limitações
 
-Não há contas, banco remoto, OCR, ingestão oficial, sincronização, painel editorial, simulados ou cobrança. Não houve importação de PDF nem mudança nos direitos de uso; consulte `docs/FONTES.md`. O validador continua rejeitando questões oficiais fora do contrato/revisão das etapas posteriores. Não testar ou presumir que qualquer diretório equivale à autorização de republicação.
+Sem PDFs ou questões oficiais, licenças reais, verificação de gabarito oficial, revisão humana real de questões, painel editorial, OCR, backend, autenticação, cobrança ou renderização de questões V1. Sem dispositivo físico ou auditoria completa de leitor de tela. Dependência Python de desenvolvimento: jsonschema==4.26.0. Não houve necessidade de migrar dados ou progresso; as 12 demonstrações permanecem como antes.
 
-Os GitHub Actions ainda podem emitir avisos de transição do runtime Node 20 e da imagem de runner; são avisos não bloqueantes nas execuções acima. Teste de acessibilidade com leitor de tela e teste em dispositivo físico permanecem como verificação manual futura.
+## Próximo passo — etapa 03
 
-## Próximo passo — etapa 02
+Executar somente prompts/03-inventario-oficial.md: catalogar edições e documentos verificáveis 2024–2026, processo/aplicação e caderno correto, fonte oficial, revisões de gabarito e situação de direitos. Não importar enunciados nem inferir dados ausentes.
 
-Executar `prompts/02-contrato-e-taxonomia.md`: contratos e esquemas versionados, estados de revisão, integridade referencial e validação de dados oficiais em staging, **sem desativar o bloqueio de publicação e sem importar conteúdo real antes da revisão de origem e direitos**. Não iniciar a etapa 03 nesta execução.
+## Histórico — etapa 01
+
+PR #1 https://github.com/felipeortuzal/vestibular-aberto/pull/1 ; deploy V0 de referência https://github.com/felipeortuzal/vestibular-aberto/actions/runs/41253171901 .

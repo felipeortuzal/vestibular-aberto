@@ -29,6 +29,10 @@ Escolher uma instituição oficial retorna um estado vazio honesto, pois as 12 q
 | data/taxonomy.json | 12 matérias, 45 assuntos, 122 subassuntos; proposta inicial |
 | data/sources.json | Fontes oficiais e limites da verificação |
 | data/exams.json | Reservado para provas individualizadas; vazio na V0 |
+| schemas/v1/ | Contrato JSON Schema 2020-12, incluindo taxonomia |
+| scripts/contracts_v1.py | Integridade, transições editoriais e seleção conservadora de publicação |
+| tests/fixtures/v1/ | Dados FICTÍCIOS usados só em testes; nunca vão ao site |
+| requirements-dev.txt | Dependência Python do validador V1 |
 | data/catalog.js | Adaptador gerado para abrir sem servidor |
 | scripts/ | Validação e preparação da publicação |
 | tests/ | Testes de comportamento, sem dependências externas |
@@ -42,13 +46,15 @@ Escolher uma instituição oficial retorna um estado vazio honesto, pois as 12 q
 Com Python 3 e Node.js instalados:
 
 ```bash
+python3 -m pip install -r requirements-dev.txt
 npm run validate
 npm test
+npm run test:contract
 npm run build
 npm run test:browser  # requer Chrome ou Chromium local
 ```
 
-Não é necessário `npm install`. `npm test` roda os testes unitários; `npm run test:browser` verifica a interface em 360, 768 e 1440 px e os fluxos principais por navegador real (Chrome ou Chromium instalado). O build atualiza `data/catalog.js` e cria `dist/`. Após mudar qualquer JSON, execute o build. `dist/` e `.openai/` são locais e ignorados pelo Git. Não há API, banco remoto, autenticação, OCR ou pipeline de importação implementado nesta versão.
+Não é necessário `npm install`; a V0 roda no navegador sem dependências JavaScript. A validação V1 requer apenas `jsonschema` em Python, com versão fixada em `requirements-dev.txt`. `npm run test:contract` roda as verificações de integridade e de bloqueio usando exclusivamente fixtures sintéticas fora de `dist/`. `npm test` roda os testes unitários; `npm run test:browser` verifica a interface em 360, 768 e 1440 px e os fluxos principais por navegador real (Chrome ou Chromium instalado). O build atualiza `data/catalog.js` e cria `dist/`. Após mudar qualquer JSON, execute o build. `dist/` e `.openai/` são locais e ignorados pelo Git. Não há API, banco remoto, autenticação, OCR ou pipeline de importação implementado nesta versão.
 
 ## GitHub e site público
 
@@ -72,6 +78,12 @@ Antes de executar, confira se esse nome ainda está livre. Não execute novament
 
 ## Como trabalhar com Astra + Sol
 
-Leia `docs/ROTEIRO.md`. No início da sessão de implementação, cole `prompts/00-contexto-mestre.md`; depois, use apenas o prompt da etapa atual. O primeiro é `01-auditoria-v0.md`, pois a interface básica já existe. Traga o resultado, diff, testes e pendências para a revisão antes de avançar. Essa divisão organiza o trabalho; não pressupõe que um modelo sempre será superior ao outro.
+Leia `docs/ROTEIRO.md`. No início da sessão de implementação, cole `prompts/00-contexto-mestre.md`; depois, use apenas o prompt da etapa atual. As etapas 00 e 01 já foram concluídas; o próximo prompt é o 03 (inventário oficial). Traga o resultado, diff, testes e pendências para a revisão antes de avançar. Essa divisão organiza o trabalho; não pressupõe que um modelo sempre será superior ao outro.
 
 O próximo objetivo útil é uma pequena seleção de questões reais completamente rastreáveis, e não uma promessa de ter todos os vestibulares. A expansão deve preservar o padrão de qualidade.
+
+## Contrato editorial V1 (etapa 02)
+
+A V0 continua exibindo exclusivamente 12 questões autorais. A camada V1 de **staging** usa `schemaVersion: 1` no lote e nas entidades de provas, processos, documentos, grupos, questões, respostas, explicações, classificação, revisões, aparições e tentativas. Campos desconhecidos são `null`, não suposições; validação de JSON Schema e checagens entre entidades são independentes da interface.
+
+O módulo `scripts/contracts_v1.py` inclui `export_public_bundle(bundle, taxonomy, enable_official=False)`: o padrão **não exporta conteúdo oficial**, e o build V0 bloqueia qualquer dado que não seja demonstração e só copia arquivos expressamente permitidos. A opção de teste `enable_official=True` valida critérios mais estritos para o futuro, sem integração com o site. Os exemplos em `tests/fixtures/v1/` usam identidades e URLs reservadas fictícias, não constituem licença, documento ou revisão real. Veja `docs/DADOS.md` e `docs/TAXONOMIA.md`.
