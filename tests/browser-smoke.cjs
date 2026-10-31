@@ -8,7 +8,7 @@ const os=require('node:os');
 const http=require('node:http');
 const dist=path.resolve(__dirname,'../dist');
 const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
-const chrome=['chromium','chromium-browser','google-chrome','google-chrome-stable'].find(name=>spawnSync('which',[name]).status===0);
+const chrome=['google-chrome','google-chrome-stable','chromium','chromium-browser'].find(name=>spawnSync('which',[name]).status===0);
 async function main(){
   if(!chrome)throw new Error('Chrome ou Chromium não encontrado: teste visual obrigatório na CI.');
   assert.ok(fs.existsSync(path.join(dist,'index.html')),'Execute npm run build antes de test:browser.');
@@ -24,14 +24,15 @@ async function main(){
     }catch{res.writeHead(404).end('Não encontrado');}
   });
   const profile=fs.mkdtempSync(path.join(os.tmpdir(),'vestibular-v0-'));
-  let processChrome,ws;
+  let processChrome,ws,chromeErrors='';
   try{
     await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
     const url='http://127.0.0.1:'+server.address().port+'/';
-    processChrome=spawn(chrome,['--headless=new','--no-sandbox','--disable-dev-shm-usage','--disable-gpu','--remote-allow-origins=*','--remote-debugging-port=0','--user-data-dir='+profile,'about:blank'],{stdio:'ignore'});
+    processChrome=spawn(chrome,['--headless=new','--no-sandbox','--disable-dev-shm-usage','--disable-gpu','--remote-allow-origins=*','--remote-debugging-port=0','--user-data-dir='+profile,'about:blank'],{stdio:['ignore','ignore','pipe']});
+    processChrome.stderr.on('data',chunk=>{chromeErrors+=chunk.toString();});
     const portFile=path.join(profile,'DevToolsActivePort');
     for(let n=0;n<120&&!fs.existsSync(portFile);n++)await sleep(100);
-    assert.ok(fs.existsSync(portFile),'O Chrome não iniciou o protocolo de depuração.');
+    assert.ok(fs.existsSync(portFile),'O Chrome ('+chrome+') não iniciou o protocolo de depuração: '+chromeErrors.slice(-2500)+'; exit='+processChrome.exitCode);
     const port=fs.readFileSync(portFile,'utf8').trim().split(/\s+/)[0];
     const tabs=await(await fetch('http://127.0.0.1:'+port+'/json')).json();
     const tab=tabs.find(t=>t.type==='page');
