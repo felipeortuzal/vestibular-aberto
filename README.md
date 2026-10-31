@@ -2,7 +2,7 @@
 
 Primeira base de uma plataforma de questões de vestibulares brasileiros. Nome provisório, ainda sem validação de marca/domínio. Preparada em 31/10/2026 para Felipe.
 
-**Situação real:** protótipo funcional em HTML/CSS/JavaScript, 12 questões autorais de demonstração e links para 4 diretórios oficiais. Não é ainda um banco de provas oficiais. Repositório: https://github.com/felipeortuzal/vestibular-aberto. A configuração inicial do GitHub Pages está em andamento; consulte docs/STATUS.md.
+**Situação real:** protótipo funcional em HTML/CSS/JavaScript, 12 questões autorais de demonstração e links para 4 diretórios oficiais. Não é ainda um banco de provas oficiais. Repositório: https://github.com/felipeortuzal/vestibular-aberto. Site publicado: https://felipeortuzal.github.io/vestibular-aberto/ . Consulte docs/STATUS.md para o registro de verificação.
 
 ## Abrir agora
 

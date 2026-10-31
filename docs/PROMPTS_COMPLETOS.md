@@ -4,7 +4,7 @@ Preparado em 31/10/2026. Nome provisório. Este pacote acompanha um protótipo f
 
 ## O que já está pronto
 
-HTML/CSS/JavaScript com 12 questões autorais de demonstração, filtros por matéria/assunto/subassunto, correção, favoritas, histórico local e diretórios de Fuvest, Unicamp, Insper e FGV. Taxonomia inicial: 12 matérias, 45 assuntos e 122 subassuntos. Ainda não há questões oficiais importadas, provas individualizadas, contas ou backend. Repositório criado: https://github.com/felipeortuzal/vestibular-aberto. Consulte docs/STATUS.md para o resultado final da publicação.
+HTML/CSS/JavaScript com 12 questões autorais de demonstração, filtros por matéria/assunto/subassunto, correção, favoritas, histórico local e diretórios de Fuvest, Unicamp, Insper e FGV. Taxonomia inicial: 12 matérias, 45 assuntos e 122 subassuntos. Ainda não há questões oficiais importadas, provas individualizadas, contas ou backend. Repositório criado: https://github.com/felipeortuzal/vestibular-aberto. Site publicado: https://felipeortuzal.github.io/vestibular-aberto/
 
 ## Como usar
 
@@ -31,7 +31,7 @@ Referências de experiência: [Estuda.com](https://estuda.com/banco-de-questoes/
 
 ## Publicação
 
-Repositório público: https://github.com/felipeortuzal/vestibular-aberto. O pacote contém README, AGENTS.md e workflow GitHub Actions. Após enviar os arquivos, selecione GitHub Actions em Settings → Pages e confira a execução. A URL confirmada do site será registrada em docs/STATUS.md. [Documentação GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
+Repositório público: https://github.com/felipeortuzal/vestibular-aberto. O pacote contém README, AGENTS.md e workflow GitHub Actions. Após enviar os arquivos, selecione GitHub Actions em Settings → Pages e confira a execução. Site confirmado: https://felipeortuzal.github.io/vestibular-aberto/ [Documentação GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
 
 
 ## Prompt 00 contexto-mestre
