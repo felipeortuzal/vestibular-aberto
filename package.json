@@ -5,6 +5,7 @@
   "description": "Protótipo estático de banco de questões e acervo de vestibulares",
   "scripts": {
     "test": "node --test tests/core.test.cjs",
+    "test:browser": "node tests/browser-smoke.cjs",
     "validate": "python3 scripts/validate.py",
     "build": "python3 scripts/build.py"
   }

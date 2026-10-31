@@ -31,3 +31,26 @@ test('estado vazio não inventa taxa de acerto; favoritas respeitam filtros',()=
   assert.equal(C.filterQuestions(questions,{...base,favoritesOnly:true},{...empty,favorites:['demo-002']})[0].id,'demo-002');
   assert.equal(C.filterQuestions(questions,{...base,favoritesOnly:true,subject:'fisica'},{...empty,favorites:['demo-002']}).length,0);
 });
+
+test('estados vazios: matéria sem exemplo, termo inexistente e progresso novo',()=>{
+  const used=new Set(questions.map(q=>q.classification.subjectId));
+  const taxonomy=require('../data/taxonomy.json');
+  const noExample=taxonomy.subjects.find(s=>!used.has(s.id));
+  assert.ok(noExample, 'A V0 deve documentar ao menos uma matéria ainda sem exemplos.');
+  assert.equal(C.filterQuestions(questions,{...base,subject:noExample.id},empty).length,0);
+  assert.equal(C.filterQuestions(questions,{...base,search:'naoexiste123456'},empty).length,0);
+  assert.deepEqual(C.summary(questions,empty),{answered:0,correct:0,accuracy:null,attempts:0});
+});
+test('último acerto define desempenho sem descartar histórico de erros',()=>{
+  const wrong={questionId:'demo-001',choiceId:'A',correct:false,at:'2026-10-31T12:00:00Z'};
+  const right={questionId:'demo-001',choiceId:'B',correct:true,at:'2026-10-31T12:01:00Z'};
+  const p=C.cleanProgress({version:1,favorites:[],attempts:[wrong,right]},questions);
+  assert.deepEqual(C.summary(questions,p),{answered:1,correct:1,accuracy:100,attempts:2});
+  assert.equal(C.filterQuestions(questions,{...base,status:'incorrect'},p).length,0);
+  assert.equal(C.filterQuestions(questions,{...base,status:'correct'},p).length,1);
+});
+test('importação rejeitada não altera dados anteriores',()=>{
+  const old=C.cleanProgress({version:1,favorites:['demo-001'],attempts:[]},questions);
+  assert.throws(()=>C.cleanProgress({version:999,favorites:[],attempts:[]},questions));
+  assert.deepEqual(old,{version:1,favorites:['demo-001'],attempts:[]});
+});

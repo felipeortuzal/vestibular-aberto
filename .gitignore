@@ -8,3 +8,5 @@ node_modules/
 staging/
 raw/
 *.log
+
+tests/.screenshots/

@@ -45,9 +45,10 @@ Com Python 3 e Node.js instalados:
 npm run validate
 npm test
 npm run build
+npm run test:browser  # requer Chrome ou Chromium local
 ```
 
-Não é necessário `npm install`. O build atualiza `data/catalog.js` e cria `dist/`. Após mudar qualquer JSON, execute o build. `dist/` e `.openai/` são locais e ignorados pelo Git. Não há API, banco remoto, autenticação, OCR ou pipeline de importação implementado nesta versão.
+Não é necessário `npm install`. `npm test` roda os testes unitários; `npm run test:browser` verifica a interface em 360, 768 e 1440 px e os fluxos principais por navegador real (Chrome ou Chromium instalado). O build atualiza `data/catalog.js` e cria `dist/`. Após mudar qualquer JSON, execute o build. `dist/` e `.openai/` são locais e ignorados pelo Git. Não há API, banco remoto, autenticação, OCR ou pipeline de importação implementado nesta versão.
 
 ## GitHub e site público
 
