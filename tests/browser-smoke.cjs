@@ -79,6 +79,30 @@ async function main(){
       fs.writeFileSync(path.join(__dirname,'.screenshots','v0-'+width+'.png'),Buffer.from(png.data,'base64'));
       console.log('OK layout '+width+' px, largura '+measure.document+' px');
     }
+    await evaluate("location.hash='#provas'");
+    await until(()=>evaluate("document.querySelectorAll('#inventory-list .inventory-row').length===29"),'inventário na biblioteca');
+    assert.equal(await evaluate("document.querySelectorAll('#exam-list .exam-card').length"),4,'quatro diretórios oficiais');
+    assert.equal(await evaluate("document.getElementById('catalog-total').textContent"),'29');
+    await set('inventory-institution','unicamp');
+    assert.equal(await evaluate("document.querySelectorAll('#inventory-list .inventory-row').length"),6);
+    await set('inventory-year','2025');
+    assert.equal(await evaluate("document.querySelectorAll('#inventory-list .inventory-row').length"),2);
+    await set('inventory-institution','insper');
+    assert.equal(await evaluate("document.querySelectorAll('#inventory-list .inventory-row').length"),0);
+    await set('inventory-year','2026');
+    assert.equal(await evaluate("document.querySelectorAll('#inventory-list .inventory-row').length"),2);
+    assert.equal(await evaluate("[...document.querySelectorAll('#inventory-list .inventory-link')].every(x=>x.href.startsWith('https://www.vunesp.com.br/'))"),true);
+    await set('inventory-institution','');
+    await set('inventory-year','');
+    for(const width of [360,768,1440]){
+      await send('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:false});
+      await sleep(140);
+      const w=await evaluate("document.documentElement.scrollWidth");
+      assert.ok(w<=width+1,'Overflow da biblioteca em '+width+': '+w);
+      console.log('OK biblioteca '+width+' px, largura '+w+' px');
+    }
+    await evaluate("location.hash='#questoes'");
+    await until(()=>evaluate("document.querySelectorAll('.question-card').length===4"),'retorno aos exercícios');
     await evaluate("document.getElementById('search').focus()");
     await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Tab',code:'Tab',windowsVirtualKeyCode:9});
     await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Tab',code:'Tab',windowsVirtualKeyCode:9});
