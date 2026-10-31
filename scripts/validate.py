@@ -1,5 +1,7 @@
-"""Validação do seed demonstrativo V0.1; somente biblioteca padrão."""
+"""Valida o seed demonstrativo e os JSON Schemas V1 para staging editorial."""
 import json
+from jsonschema import Draft202012Validator, FormatChecker
+from contracts_v1 import validate_bundle, empty_bundle
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 load = lambda p: json.loads((ROOT / p).read_text())
@@ -28,3 +30,16 @@ assert load('data/exams.json') == [], 'Na V0 existem diretórios, não provas im
 for path in ['index.html', 'assets/styles.css', 'assets/core.js', 'assets/app.js']:
     assert (ROOT / path).is_file(), f'Arquivo ausente: {path}'
 print(f'OK: {len(questions)} questões autorais, {len(paths)} subassuntos, {len(sources)} diretórios. Nenhuma questão oficial publicada.')
+
+
+# O seed permanece exclusivo da V0; o contrato de staging é validado em separado.
+for schema_path in ("schemas/v1/bundle.schema.json", "schemas/v1/taxonomy.schema.json"):
+    Draft202012Validator.check_schema(load(schema_path))
+taxonomy_errors = list(Draft202012Validator(
+    load("schemas/v1/taxonomy.schema.json"), format_checker=FormatChecker()
+).iter_errors(taxonomy))
+assert not taxonomy_errors, f"Taxonomia fora do esquema V1: {taxonomy_errors[0].message if taxonomy_errors else ''}"
+validate_bundle(empty_bundle(), taxonomy)
+synthetic = load("tests/fixtures/v1/synthetic_bundle.json")
+validate_bundle(synthetic, taxonomy)
+print("OK: JSON Schemas V1, integridade do staging sintético e taxonomia versionada.")
