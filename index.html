@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Vestibular Aberto: protótipo de um banco de questões e acervo de provas para estudar com direção.">
+  <meta name="theme-color" content="#183e35"><title>Vestibular Aberto — Estude com direção</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/styles.css">
+  <script defer src="data/catalog.js"></script><script defer src="assets/core.js"></script><script defer src="assets/app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Pular para o conteúdo</a>
+  <aside class="sidebar">
+    <a class="brand" href="#questoes" aria-label="Vestibular Aberto, início"><span class="brand-mark">va<span>↗</span></span><span>vestibular<br><strong>aberto.</strong></span></a>
+    <p class="nav-label">SEU ESPAÇO DE ESTUDO</p>
+    <nav aria-label="Navegação principal">
+      <a href="#questoes" data-view="questoes"><span aria-hidden="true">▤</span> Banco de questões</a>
+      <a href="#provas" data-view="provas"><span aria-hidden="true">▱</span> Provas completas</a>
+      <a href="#favoritas" data-view="favoritas"><span aria-hidden="true">☆</span> Favoritas <span id="fav-count" class="nav-count">0</span></a>
+      <a href="#desempenho" data-view="desempenho"><span aria-hidden="true">▥</span> Meu desempenho</a>
+    </nav>
+    <div class="sidebar-note"><span class="eyebrow">UM PASSO DE CADA VEZ</span><h2>Constância faz<br>a diferença.</h2><p>Escolha um assunto.<br>Entenda cada resposta.<br>Volte amanhã.</p><div class="line-art" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
+    <div class="local-profile"><span class="avatar">VA</span><span><strong>Seu estudo, no seu ritmo</strong><small>Progresso salvo neste navegador</small></span></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><span>Aprender é construir possibilidades.</span><span class="version">PRIMEIRA VERSÃO <b>V0.1</b></span></header>
+    <main id="main" tabindex="-1">
+      <div class="page-heading"><div><p class="eyebrow">MENOS DISPERSÃO. MAIS DIREÇÃO.</p><h1 id="page-title">Seu próximo acerto começa aqui.</h1><p id="page-description">Encontre o assunto que você quer dominar e pratique no seu ritmo.</p></div><a class="button outline" href="#provas">Explorar provas <span aria-hidden="true">↗</span></a></div>
+      <section class="stats" aria-label="Resumo do acervo"><div><span class="stat-icon">▤</span><p><strong id="question-total">0</strong><span>questões de demonstração</span></p></div><div><span class="stat-icon">↗</span><p><strong>4</strong><span>instituições no catálogo</span></p></div><div><span class="stat-icon">◎</span><p><strong id="answered-total">0</strong><span>questões respondidas</span></p></div></section>
+      <div class="notice"><span class="notice-dot" aria-hidden="true"></span><p><strong>Estamos construindo o acervo.</strong> As questões desta versão são autorais, para experimentar a plataforma. Em Provas completas, acesse os acervos oficiais. Nenhuma questão oficial foi importada ainda.</p></div>
+      <div id="storage-warning" class="notice" hidden>Seu navegador não permitiu salvar o progresso. Você pode continuar estudando, mas os dados serão perdidos ao fechar esta página.</div>
+      <section id="questions-view">
+        <div class="study-layout">
+          <form id="filters" class="filter-panel">
+            <div class="panel-title"><h2>Encontre sua questão</h2><button type="reset" class="text-button">Limpar</button></div>
+            <label for="search">Buscar no enunciado</label><input id="search" type="search" placeholder="Ex.: triângulo, função…" autocomplete="off">
+            <label for="institution">Vestibular</label><select id="institution"><option value="">Todos</option><option value="fuvest">Fuvest / USP</option><option value="unicamp">Unicamp</option><option value="insper">Insper</option><option value="fgv">FGV</option><option value="autoral">Autorais — demonstração</option></select>
+            <label for="subject">Matéria</label><select id="subject"><option value="">Todas as matérias</option></select>
+            <label for="topic">Assunto</label><select id="topic" disabled><option value="">Escolha uma matéria</option></select>
+            <label for="subtopic">Subassunto</label><select id="subtopic" disabled><option value="">Escolha um assunto</option></select>
+            <label for="status">Minha situação</label><select id="status"><option value="">Todas</option><option value="new">Não respondidas</option><option value="incorrect">Errei na última tentativa</option><option value="correct">Acertei na última tentativa</option></select>
+            <label class="check-label"><input id="include-demo" type="checkbox" checked> Incluir questões de demonstração</label>
+            <p class="filter-note">Os filtros se combinam. Trocar a matéria limpa o assunto e o subassunto.</p>
+          </form>
+          <div class="question-column"><div class="results-bar"><div><h2 id="results-title">Questões para praticar</h2><span id="result-count" role="status" aria-live="polite"></span></div><label class="sort-label">Ordenar<select id="sort"><option value="default">Ordem do catálogo</option><option value="subject">Matéria</option></select></label></div><div id="question-list"></div><div id="pagination" class="pagination"></div></div>
+        </div>
+      </section>
+      <section id="exams-view" hidden><div class="section-intro"><h2>O ponto de partida é a fonte.</h2><p>Consulte cadernos, gabaritos e materiais no site de cada instituição. Estes são diretórios oficiais, não um acervo já importado.</p></div><div id="exam-list" class="exam-grid"></div><div class="coverage-note"><strong>Primeiro recorte planejado</strong><p>Fuvest, Unicamp, Insper e FGV, começando por edições de 2024 a 2026 que tenham caderno e gabarito verificáveis. FGV será organizada por escola, curso e edição; Insper, também por semestre. Anos e fases serão filtros do banco quando houver questões oficiais cadastradas.</p></div></section>
+      <section id="progress-view" hidden><div id="progress-content"></div><div class="data-tools"><button id="export-progress" class="button outline">Exportar meu progresso</button><button id="import-trigger" class="button outline">Importar progresso</button><input id="import-progress" type="file" accept="application/json,.json" aria-label="Arquivo de progresso" hidden><button id="reset-progress" class="text-button danger">Apagar progresso deste navegador</button></div><p class="small muted">Exportação e importação incluem respostas e favoritas. A versão atual não possui conta nem sincronização entre dispositivos.</p></section>
+      <footer>vestibular aberto. <span>Protótipo independente · Sem vínculo com as instituições citadas.</span></footer>
+    </main>
+  </div><div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <noscript><p class="notice">Ative o JavaScript para usar filtros e responder questões. Os diretórios oficiais estão em docs/FONTES.md.</p></noscript>
+</body>
+</html>

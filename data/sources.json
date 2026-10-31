@@ -1,0 +1,38 @@
+[
+  {
+    "id": "fuvest",
+    "name": "Fuvest / USP",
+    "url": "https://www.fuvest.br/acervo-vestibular/",
+    "description": "Acervo do vestibular da USP organizado por edição. Conferir fase, modelo do caderno e eventuais retificações de gabarito.",
+    "checkedAt": "2026-10-31",
+    "verification": "Diretório localizado em busca oficial; abertura automatizada retornou 403. PDFs não foram conferidos.",
+    "rightsStatus": "not-assessed"
+  },
+  {
+    "id": "unicamp",
+    "name": "Unicamp / Comvest",
+    "url": "https://www2.comvest.unicamp.br/vestibulares-anteriores/",
+    "description": "Diretório de vestibulares anteriores. A instituição também oferece simulados com questões de provas passadas.",
+    "checkedAt": "2026-10-31",
+    "verification": "Endereço de referência localizado; abertura automatizada indisponível. Oferta de simulados confirmada em notícia oficial da Unicamp. PDFs não foram conferidos.",
+    "rightsStatus": "not-assessed"
+  },
+  {
+    "id": "insper",
+    "name": "Insper",
+    "url": "https://www.insper.edu.br/pt/cursos/vestibular/provas-e-gabaritos",
+    "description": "Provas e gabaritos das seleções do Insper. Preservar semestre, curso, modalidade e distinção entre prova e simulado.",
+    "checkedAt": "2026-10-31",
+    "verification": "Link seguido a partir da página oficial do vestibular e redirecionamento confirmado. Catálogo depende de JavaScript; PDFs não foram conferidos.",
+    "rightsStatus": "not-assessed"
+  },
+  {
+    "id": "fgv",
+    "name": "Fundação Getulio Vargas",
+    "url": "https://vestibular.fgv.br/provas-gabaritos",
+    "description": "Diretório que permite selecionar o curso. Organizar por escola, campus, curso e edição, incluindo provas compartilhadas quando aplicável.",
+    "checkedAt": "2026-10-31",
+    "verification": "Página oficial lida; exibe seletor de curso. Arquivos individuais não foram conferidos.",
+    "rightsStatus": "not-assessed"
+  }
+]

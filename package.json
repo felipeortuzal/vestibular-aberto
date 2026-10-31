@@ -1,0 +1,11 @@
+{
+  "name": "vestibular-aberto",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Protótipo estático de banco de questões e acervo de vestibulares",
+  "scripts": {
+    "test": "node --test tests/core.test.cjs",
+    "validate": "python3 scripts/validate.py",
+    "build": "python3 scripts/build.py"
+  }
+}

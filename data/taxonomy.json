@@ -1,0 +1,836 @@
+{
+  "version": 1,
+  "status": "proposta-editorial",
+  "subjects": [
+    {
+      "id": "matematica",
+      "label": "Matemática",
+      "topics": [
+        {
+          "id": "matematica.aritmetica-e-proporcionalidade",
+          "label": "Aritmética e proporcionalidade",
+          "subtopics": [
+            {
+              "id": "matematica.aritmetica-e-proporcionalidade.razoes-e-proporcoes",
+              "label": "Razões e proporções"
+            },
+            {
+              "id": "matematica.aritmetica-e-proporcionalidade.porcentagem",
+              "label": "Porcentagem"
+            },
+            {
+              "id": "matematica.aritmetica-e-proporcionalidade.regra-de-tres",
+              "label": "Regra de três"
+            },
+            {
+              "id": "matematica.aritmetica-e-proporcionalidade.unidades-de-medida",
+              "label": "Unidades de medida"
+            }
+          ]
+        },
+        {
+          "id": "matematica.algebra",
+          "label": "Álgebra",
+          "subtopics": [
+            {
+              "id": "matematica.algebra.equacoes-e-inequacoes",
+              "label": "Equações e inequações"
+            },
+            {
+              "id": "matematica.algebra.sistemas-lineares",
+              "label": "Sistemas lineares"
+            },
+            {
+              "id": "matematica.algebra.polinomios",
+              "label": "Polinômios"
+            },
+            {
+              "id": "matematica.algebra.numeros-complexos",
+              "label": "Números complexos"
+            }
+          ]
+        },
+        {
+          "id": "matematica.funcoes",
+          "label": "Funções",
+          "subtopics": [
+            {
+              "id": "matematica.funcoes.funcao-afim",
+              "label": "Função afim"
+            },
+            {
+              "id": "matematica.funcoes.funcao-quadratica",
+              "label": "Função quadrática"
+            },
+            {
+              "id": "matematica.funcoes.funcao-exponencial",
+              "label": "Função exponencial"
+            },
+            {
+              "id": "matematica.funcoes.funcao-logaritmica",
+              "label": "Função logarítmica"
+            },
+            {
+              "id": "matematica.funcoes.composicao-e-inversa",
+              "label": "Composição e inversa"
+            }
+          ]
+        },
+        {
+          "id": "matematica.sequencias",
+          "label": "Sequências",
+          "subtopics": [
+            {
+              "id": "matematica.sequencias.progressao-aritmetica",
+              "label": "Progressão aritmética"
+            },
+            {
+              "id": "matematica.sequencias.progressao-geometrica",
+              "label": "Progressão geométrica"
+            }
+          ]
+        },
+        {
+          "id": "matematica.geometria-plana",
+          "label": "Geometria plana",
+          "subtopics": [
+            {
+              "id": "matematica.geometria-plana.triangulos-e-semelhanca",
+              "label": "Triângulos e semelhança"
+            },
+            {
+              "id": "matematica.geometria-plana.areas-de-figuras-planas",
+              "label": "Áreas de figuras planas"
+            },
+            {
+              "id": "matematica.geometria-plana.circunferencia-e-circulo",
+              "label": "Circunferência e círculo"
+            },
+            {
+              "id": "matematica.geometria-plana.poligonos",
+              "label": "Polígonos"
+            }
+          ]
+        },
+        {
+          "id": "matematica.geometria-espacial",
+          "label": "Geometria espacial",
+          "subtopics": [
+            {
+              "id": "matematica.geometria-espacial.prismas-e-piramides",
+              "label": "Prismas e pirâmides"
+            },
+            {
+              "id": "matematica.geometria-espacial.cilindros-e-cones",
+              "label": "Cilindros e cones"
+            },
+            {
+              "id": "matematica.geometria-espacial.esferas",
+              "label": "Esferas"
+            }
+          ]
+        },
+        {
+          "id": "matematica.geometria-analitica",
+          "label": "Geometria analítica",
+          "subtopics": [
+            {
+              "id": "matematica.geometria-analitica.ponto-e-reta",
+              "label": "Ponto e reta"
+            },
+            {
+              "id": "matematica.geometria-analitica.circunferencia-no-plano",
+              "label": "Circunferência no plano"
+            },
+            {
+              "id": "matematica.geometria-analitica.conicas",
+              "label": "Cônicas"
+            }
+          ]
+        },
+        {
+          "id": "matematica.trigonometria",
+          "label": "Trigonometria",
+          "subtopics": [
+            {
+              "id": "matematica.trigonometria.triangulo-retangulo",
+              "label": "Triângulo retângulo"
+            },
+            {
+              "id": "matematica.trigonometria.ciclo-trigonometrico",
+              "label": "Ciclo trigonométrico"
+            },
+            {
+              "id": "matematica.trigonometria.identidades-e-equacoes",
+              "label": "Identidades e equações"
+            }
+          ]
+        },
+        {
+          "id": "matematica.analise-combinatoria",
+          "label": "Análise combinatória",
+          "subtopics": [
+            {
+              "id": "matematica.analise-combinatoria.principio-fundamental-da-contagem",
+              "label": "Princípio fundamental da contagem"
+            },
+            {
+              "id": "matematica.analise-combinatoria.permutacoes-e-arranjos",
+              "label": "Permutações e arranjos"
+            },
+            {
+              "id": "matematica.analise-combinatoria.combinacoes",
+              "label": "Combinações"
+            }
+          ]
+        },
+        {
+          "id": "matematica.probabilidade",
+          "label": "Probabilidade",
+          "subtopics": [
+            {
+              "id": "matematica.probabilidade.eventos-simples",
+              "label": "Eventos simples"
+            },
+            {
+              "id": "matematica.probabilidade.probabilidade-condicional",
+              "label": "Probabilidade condicional"
+            },
+            {
+              "id": "matematica.probabilidade.independencia",
+              "label": "Independência"
+            }
+          ]
+        },
+        {
+          "id": "matematica.estatistica",
+          "label": "Estatística",
+          "subtopics": [
+            {
+              "id": "matematica.estatistica.media-mediana-e-moda",
+              "label": "Média, mediana e moda"
+            },
+            {
+              "id": "matematica.estatistica.dispersao",
+              "label": "Dispersão"
+            },
+            {
+              "id": "matematica.estatistica.graficos-e-tabelas",
+              "label": "Gráficos e tabelas"
+            }
+          ]
+        },
+        {
+          "id": "matematica.matematica-financeira",
+          "label": "Matemática financeira",
+          "subtopics": [
+            {
+              "id": "matematica.matematica-financeira.juros-simples",
+              "label": "Juros simples"
+            },
+            {
+              "id": "matematica.matematica-financeira.juros-compostos",
+              "label": "Juros compostos"
+            }
+          ]
+        },
+        {
+          "id": "matematica.matrizes-e-determinantes",
+          "label": "Matrizes e determinantes",
+          "subtopics": [
+            {
+              "id": "matematica.matrizes-e-determinantes.operacoes-com-matrizes",
+              "label": "Operações com matrizes"
+            },
+            {
+              "id": "matematica.matrizes-e-determinantes.determinantes",
+              "label": "Determinantes"
+            }
+          ]
+        },
+        {
+          "id": "matematica.conjuntos-e-logica",
+          "label": "Conjuntos e lógica",
+          "subtopics": [
+            {
+              "id": "matematica.conjuntos-e-logica.operacoes-com-conjuntos",
+              "label": "Operações com conjuntos"
+            },
+            {
+              "id": "matematica.conjuntos-e-logica.proposicoes-e-argumentos",
+              "label": "Proposições e argumentos"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fisica",
+      "label": "Física",
+      "topics": [
+        {
+          "id": "fisica.mecanica",
+          "label": "Mecânica",
+          "subtopics": [
+            {
+              "id": "fisica.mecanica.cinematica",
+              "label": "Cinemática"
+            },
+            {
+              "id": "fisica.mecanica.dinamica",
+              "label": "Dinâmica"
+            },
+            {
+              "id": "fisica.mecanica.trabalho-e-energia",
+              "label": "Trabalho e energia"
+            },
+            {
+              "id": "fisica.mecanica.hidrostatica",
+              "label": "Hidrostática"
+            }
+          ]
+        },
+        {
+          "id": "fisica.termologia",
+          "label": "Termologia",
+          "subtopics": [
+            {
+              "id": "fisica.termologia.calorimetria",
+              "label": "Calorimetria"
+            },
+            {
+              "id": "fisica.termologia.termodinamica",
+              "label": "Termodinâmica"
+            }
+          ]
+        },
+        {
+          "id": "fisica.ondas-e-optica",
+          "label": "Ondas e óptica",
+          "subtopics": [
+            {
+              "id": "fisica.ondas-e-optica.ondulatoria",
+              "label": "Ondulatória"
+            },
+            {
+              "id": "fisica.ondas-e-optica.optica-geometrica",
+              "label": "Óptica geométrica"
+            }
+          ]
+        },
+        {
+          "id": "fisica.eletricidade",
+          "label": "Eletricidade",
+          "subtopics": [
+            {
+              "id": "fisica.eletricidade.circuitos-eletricos",
+              "label": "Circuitos elétricos"
+            },
+            {
+              "id": "fisica.eletricidade.eletrostatica",
+              "label": "Eletrostática"
+            },
+            {
+              "id": "fisica.eletricidade.magnetismo",
+              "label": "Magnetismo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quimica",
+      "label": "Química",
+      "topics": [
+        {
+          "id": "quimica.quimica-geral",
+          "label": "Química geral",
+          "subtopics": [
+            {
+              "id": "quimica.quimica-geral.estrutura-atomica",
+              "label": "Estrutura atômica"
+            },
+            {
+              "id": "quimica.quimica-geral.ligacoes-quimicas",
+              "label": "Ligações químicas"
+            },
+            {
+              "id": "quimica.quimica-geral.estequiometria",
+              "label": "Estequiometria"
+            }
+          ]
+        },
+        {
+          "id": "quimica.fisico-quimica",
+          "label": "Físico-química",
+          "subtopics": [
+            {
+              "id": "quimica.fisico-quimica.solucoes",
+              "label": "Soluções"
+            },
+            {
+              "id": "quimica.fisico-quimica.equilibrio-quimico",
+              "label": "Equilíbrio químico"
+            },
+            {
+              "id": "quimica.fisico-quimica.termoquimica",
+              "label": "Termoquímica"
+            },
+            {
+              "id": "quimica.fisico-quimica.eletroquimica",
+              "label": "Eletroquímica"
+            }
+          ]
+        },
+        {
+          "id": "quimica.quimica-organica",
+          "label": "Química orgânica",
+          "subtopics": [
+            {
+              "id": "quimica.quimica-organica.funcoes-organicas",
+              "label": "Funções orgânicas"
+            },
+            {
+              "id": "quimica.quimica-organica.isomeria",
+              "label": "Isomeria"
+            },
+            {
+              "id": "quimica.quimica-organica.reacoes-organicas",
+              "label": "Reações orgânicas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "biologia",
+      "label": "Biologia",
+      "topics": [
+        {
+          "id": "biologia.citologia",
+          "label": "Citologia",
+          "subtopics": [
+            {
+              "id": "biologia.citologia.organelas",
+              "label": "Organelas"
+            },
+            {
+              "id": "biologia.citologia.metabolismo-celular",
+              "label": "Metabolismo celular"
+            }
+          ]
+        },
+        {
+          "id": "biologia.genetica",
+          "label": "Genética",
+          "subtopics": [
+            {
+              "id": "biologia.genetica.leis-de-mendel",
+              "label": "Leis de Mendel"
+            },
+            {
+              "id": "biologia.genetica.biotecnologia",
+              "label": "Biotecnologia"
+            }
+          ]
+        },
+        {
+          "id": "biologia.ecologia",
+          "label": "Ecologia",
+          "subtopics": [
+            {
+              "id": "biologia.ecologia.cadeias-alimentares",
+              "label": "Cadeias alimentares"
+            },
+            {
+              "id": "biologia.ecologia.ciclos-biogeoquimicos",
+              "label": "Ciclos biogeoquímicos"
+            },
+            {
+              "id": "biologia.ecologia.impactos-ambientais",
+              "label": "Impactos ambientais"
+            }
+          ]
+        },
+        {
+          "id": "biologia.evolucao",
+          "label": "Evolução",
+          "subtopics": [
+            {
+              "id": "biologia.evolucao.selecao-natural",
+              "label": "Seleção natural"
+            },
+            {
+              "id": "biologia.evolucao.especiacao",
+              "label": "Especiação"
+            }
+          ]
+        },
+        {
+          "id": "biologia.fisiologia",
+          "label": "Fisiologia",
+          "subtopics": [
+            {
+              "id": "biologia.fisiologia.fisiologia-humana",
+              "label": "Fisiologia humana"
+            },
+            {
+              "id": "biologia.fisiologia.botanica",
+              "label": "Botânica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portugues",
+      "label": "Português",
+      "topics": [
+        {
+          "id": "portugues.interpretacao-de-texto",
+          "label": "Interpretação de texto",
+          "subtopics": [
+            {
+              "id": "portugues.interpretacao-de-texto.inferencia",
+              "label": "Inferência"
+            },
+            {
+              "id": "portugues.interpretacao-de-texto.argumentacao",
+              "label": "Argumentação"
+            },
+            {
+              "id": "portugues.interpretacao-de-texto.generos-textuais",
+              "label": "Gêneros textuais"
+            }
+          ]
+        },
+        {
+          "id": "portugues.gramatica",
+          "label": "Gramática",
+          "subtopics": [
+            {
+              "id": "portugues.gramatica.sintaxe",
+              "label": "Sintaxe"
+            },
+            {
+              "id": "portugues.gramatica.morfologia",
+              "label": "Morfologia"
+            },
+            {
+              "id": "portugues.gramatica.pontuacao",
+              "label": "Pontuação"
+            }
+          ]
+        },
+        {
+          "id": "portugues.semantica",
+          "label": "Semântica",
+          "subtopics": [
+            {
+              "id": "portugues.semantica.relacoes-de-sentido",
+              "label": "Relações de sentido"
+            },
+            {
+              "id": "portugues.semantica.figuras-de-linguagem",
+              "label": "Figuras de linguagem"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "literatura",
+      "label": "Literatura",
+      "topics": [
+        {
+          "id": "literatura.leitura-literaria",
+          "label": "Leitura literária",
+          "subtopics": [
+            {
+              "id": "literatura.leitura-literaria.narrativa",
+              "label": "Narrativa"
+            },
+            {
+              "id": "literatura.leitura-literaria.poesia",
+              "label": "Poesia"
+            },
+            {
+              "id": "literatura.leitura-literaria.intertextualidade",
+              "label": "Intertextualidade"
+            }
+          ]
+        },
+        {
+          "id": "literatura.historia-literaria",
+          "label": "História literária",
+          "subtopics": [
+            {
+              "id": "literatura.historia-literaria.literatura-brasileira",
+              "label": "Literatura brasileira"
+            },
+            {
+              "id": "literatura.historia-literaria.literatura-portuguesa",
+              "label": "Literatura portuguesa"
+            }
+          ]
+        },
+        {
+          "id": "literatura.obras-obrigatorias",
+          "label": "Obras obrigatórias",
+          "subtopics": [
+            {
+              "id": "literatura.obras-obrigatorias.analise-de-obras",
+              "label": "Análise de obras"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "historia",
+      "label": "História",
+      "topics": [
+        {
+          "id": "historia.historia-do-brasil",
+          "label": "História do Brasil",
+          "subtopics": [
+            {
+              "id": "historia.historia-do-brasil.colonia",
+              "label": "Colônia"
+            },
+            {
+              "id": "historia.historia-do-brasil.imperio",
+              "label": "Império"
+            },
+            {
+              "id": "historia.historia-do-brasil.republica",
+              "label": "República"
+            }
+          ]
+        },
+        {
+          "id": "historia.historia-geral",
+          "label": "História geral",
+          "subtopics": [
+            {
+              "id": "historia.historia-geral.antiguidade",
+              "label": "Antiguidade"
+            },
+            {
+              "id": "historia.historia-geral.idade-media",
+              "label": "Idade Média"
+            },
+            {
+              "id": "historia.historia-geral.idade-moderna",
+              "label": "Idade Moderna"
+            },
+            {
+              "id": "historia.historia-geral.idade-contemporanea",
+              "label": "Idade Contemporânea"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "geografia",
+      "label": "Geografia",
+      "topics": [
+        {
+          "id": "geografia.cartografia",
+          "label": "Cartografia",
+          "subtopics": [
+            {
+              "id": "geografia.cartografia.escalas",
+              "label": "Escalas"
+            },
+            {
+              "id": "geografia.cartografia.coordenadas",
+              "label": "Coordenadas"
+            }
+          ]
+        },
+        {
+          "id": "geografia.geografia-fisica",
+          "label": "Geografia física",
+          "subtopics": [
+            {
+              "id": "geografia.geografia-fisica.clima",
+              "label": "Clima"
+            },
+            {
+              "id": "geografia.geografia-fisica.relevo",
+              "label": "Relevo"
+            },
+            {
+              "id": "geografia.geografia-fisica.biomas",
+              "label": "Biomas"
+            }
+          ]
+        },
+        {
+          "id": "geografia.geografia-humana",
+          "label": "Geografia humana",
+          "subtopics": [
+            {
+              "id": "geografia.geografia-humana.urbanizacao",
+              "label": "Urbanização"
+            },
+            {
+              "id": "geografia.geografia-humana.populacao",
+              "label": "População"
+            },
+            {
+              "id": "geografia.geografia-humana.geopolitica",
+              "label": "Geopolítica"
+            },
+            {
+              "id": "geografia.geografia-humana.economia-e-espaco",
+              "label": "Economia e espaço"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ingles",
+      "label": "Inglês",
+      "topics": [
+        {
+          "id": "ingles.leitura",
+          "label": "Leitura",
+          "subtopics": [
+            {
+              "id": "ingles.leitura.compreensao-textual",
+              "label": "Compreensão textual"
+            },
+            {
+              "id": "ingles.leitura.inferencia",
+              "label": "Inferência"
+            },
+            {
+              "id": "ingles.leitura.vocabulario-em-contexto",
+              "label": "Vocabulário em contexto"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "filosofia",
+      "label": "Filosofia",
+      "topics": [
+        {
+          "id": "filosofia.filosofia-politica",
+          "label": "Filosofia política",
+          "subtopics": [
+            {
+              "id": "filosofia.filosofia-politica.estado-e-poder",
+              "label": "Estado e poder"
+            },
+            {
+              "id": "filosofia.filosofia-politica.justica",
+              "label": "Justiça"
+            }
+          ]
+        },
+        {
+          "id": "filosofia.etica",
+          "label": "Ética",
+          "subtopics": [
+            {
+              "id": "filosofia.etica.teorias-eticas",
+              "label": "Teorias éticas"
+            }
+          ]
+        },
+        {
+          "id": "filosofia.teoria-do-conhecimento",
+          "label": "Teoria do conhecimento",
+          "subtopics": [
+            {
+              "id": "filosofia.teoria-do-conhecimento.conhecimento-e-ciencia",
+              "label": "Conhecimento e ciência"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sociologia",
+      "label": "Sociologia",
+      "topics": [
+        {
+          "id": "sociologia.sociedade-e-cultura",
+          "label": "Sociedade e cultura",
+          "subtopics": [
+            {
+              "id": "sociologia.sociedade-e-cultura.socializacao",
+              "label": "Socialização"
+            },
+            {
+              "id": "sociologia.sociedade-e-cultura.cultura",
+              "label": "Cultura"
+            }
+          ]
+        },
+        {
+          "id": "sociologia.trabalho-e-desigualdade",
+          "label": "Trabalho e desigualdade",
+          "subtopics": [
+            {
+              "id": "sociologia.trabalho-e-desigualdade.trabalho",
+              "label": "Trabalho"
+            },
+            {
+              "id": "sociologia.trabalho-e-desigualdade.estratificacao-social",
+              "label": "Estratificação social"
+            }
+          ]
+        },
+        {
+          "id": "sociologia.politica",
+          "label": "Política",
+          "subtopics": [
+            {
+              "id": "sociologia.politica.cidadania",
+              "label": "Cidadania"
+            },
+            {
+              "id": "sociologia.politica.movimentos-sociais",
+              "label": "Movimentos sociais"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "redacao",
+      "label": "Redação",
+      "topics": [
+        {
+          "id": "redacao.producao-textual",
+          "label": "Produção textual",
+          "subtopics": [
+            {
+              "id": "redacao.producao-textual.argumentacao",
+              "label": "Argumentação"
+            },
+            {
+              "id": "redacao.producao-textual.projeto-de-texto",
+              "label": "Projeto de texto"
+            },
+            {
+              "id": "redacao.producao-textual.coesao",
+              "label": "Coesão"
+            },
+            {
+              "id": "redacao.producao-textual.generos-solicitados",
+              "label": "Gêneros solicitados"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
