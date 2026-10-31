@@ -37,6 +37,55 @@ class ContractTests(unittest.TestCase):
         self.assertEqual(len(validate_bundle(data, TAX)["questions"]), 1)
         self.assertTrue(publishability(data, TAX)["synthetic-question"])
 
+    def test_cross_discipline_secondary_path_is_allowed(self):
+        data = sample()
+        data["classifications"][0]["secondaryTags"].append(
+            {"subjectId": "geografia", "topicId": "geografia.cartografia",
+             "subtopicId": "geografia.cartografia.escalas"})
+        validate_bundle(data, TAX)
+
+    def test_discursive_and_subitems_are_valid_staging_not_public(self):
+        data = sample()
+        q = data["questions"][0]
+        q["format"] = "discursive"
+        q["subitems"].append({"id":"synthetic-subitem","label":"a","order":1,
+                              "format":"numeric","contentBlocks":[{"type":"text","text":"Item fictício"}]})
+        validate_bundle(data, TAX)
+        self.assertEqual(export_public_bundle(data, TAX, enable_official=True)["questions"], [])
+
+    def test_corrected_answer_keeps_old_revision_and_forces_regrade(self):
+        data = sample()
+        newer = copy.deepcopy(data["answers"][0])
+        newer.update(id="synthetic-answer-r2", status="corrected", value="a",
+                     revision=2, supersedes="synthetic-answer")
+        data["answers"].append(newer)
+        self.fails(data, "reavaliação")
+        data["user_attempts"][0]["result"] = "pending"
+        validate_bundle(data, TAX)
+        self.assertEqual(export_public_bundle(data, TAX, enable_official=True)["answers"][0]["revision"],2)
+
+    def test_ai_cannot_verify_answer_as_human(self):
+        data = sample()
+        data["answers"][0]["verifiedBy"]={"type":"ai","id":"synthetic-ai"}
+        self.fails(data, "conferência humana")
+
+    def test_restricted_key_document_blocks_public_export(self):
+        data = sample()
+        data["documents"][1]["rightsStatus"]="unknown"
+        data["documents"][1]["rightsEvidence"]=None
+        self.assertEqual(export_public_bundle(data, TAX, enable_official=True)["questions"], [])
+
+    def test_public_group_does_not_leak_unpublished_question_id(self):
+        data = sample()
+        other = copy.deepcopy(data["questions"][0])
+        other.update(id="synthetic-unpublished",reviewStatus="draft",
+                     pipelineState="blocked",rightsStatus="unknown",rightsEvidence=None)
+        data["questions"].append(other)
+        data["question_groups"][0]["questionIds"].append("synthetic-unpublished")
+        public=export_public_bundle(data, TAX, enable_official=True)
+        self.assertEqual(public["question_groups"][0]["questionIds"],["synthetic-question"])
+        self.assertNotIn("synthetic-unpublished",str(public))
+
     def test_wrong_choice_is_rejected(self):
         data = sample()
         data["answers"][0]["value"] = "c"

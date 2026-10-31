@@ -173,6 +173,10 @@ def validate_bundle(bundle, taxonomy):
     for answer in answers.values():
         q = _needed(questions, answer["questionId"], answer["id"])
         answers_by_question[q["id"]].append(answer)
+        if answer["reviewStatus"] == "reviewed" and (
+            not answer["verifiedBy"] or answer["verifiedBy"]["type"] != "human" or not answer["verifiedAt"]
+        ):
+            _fail(f"{answer['id']}: gabarito declarado revisado sem conferência humana")
         if answer["status"] in ("missing", "annulled") and answer["value"] is not None:
             _fail(f"{answer['id']}: gabarito ausente/anulado não possui resposta válida")
         if q["format"] == "multiple_choice" and answer["value"] is not None:
@@ -331,20 +335,26 @@ def publishability(bundle, taxonomy):
             if not group["contentBlocks"]:
                 problem.append("contexto compartilhado ausente")
         answer = _latest(answers[q["id"]])
-        if not answer or answer["status"] not in SCORED_STATUSES or answer["reviewStatus"] != "reviewed" or not answer["verifiedAt"] or not answer["value"] or not answer["sourceDocumentId"]:
+        if not answer or answer["status"] not in SCORED_STATUSES or answer["reviewStatus"] != "reviewed" or not answer["verifiedAt"] or not answer["value"] or not answer["sourceDocumentId"] or not answer["sourcePage"] or not answer["verifiedBy"] or answer["verifiedBy"]["type"] != "human":
             problem.append("gabarito final/retificado não conferido")
         elif answer["value"] not in {c["id"] for c in q["choices"]}:
             problem.append("alternativa final não existe")
         else:
             d = idx["documents"][answer["sourceDocumentId"]]
-            if d["type"] != "answer_key" or d["accessStatus"] != "accessible" or not d["sha256"] or not d["sourceUrl"]:
-                problem.append("documento de gabarito não verificável")
+            if d["type"] != "answer_key" or d["accessStatus"] != "accessible" or not d["sha256"] or not d["sourceUrl"] or not _rights_ok(d):
+                problem.append("documento de gabarito não verificável ou com direitos pendentes")
+            if answer["status"] == "corrected" and not answer["supersedes"]:
+                problem.append("retificação sem vínculo à versão anterior")
         approved_class = [c for c in classifications[q["id"]] if c["reviewStatus"] == "reviewed" and c["reviewedBy"] and c["reviewedBy"]["type"] == "human"]
         if len(approved_class) != 1:
             problem.append("classificação humana única não confirmada")
         approved_exp = [e for e in exps[q["id"]] if e["reviewStatus"] == "reviewed" and e["authorType"] != "ai_draft" and _rights_ok(e)]
         if len(approved_exp) != 1:
             problem.append("explicação revisada e publicável ausente")
+        elif approved_exp[0]["sourceDocumentId"]:
+            d = idx["documents"][approved_exp[0]["sourceDocumentId"]]
+            if d["accessStatus"] != "accessible" or not d["sha256"] or not _rights_ok(d):
+                problem.append("resolução original com documento ou direitos pendentes")
         reasons[q["id"]] = problem
     return reasons
 
@@ -369,23 +379,52 @@ def export_public_bundle(bundle, taxonomy, *, enable_official=False):
         answer_rows.append(_latest([x for x in bundle["answers"] if x["questionId"] == qid]))
         classification_rows.extend(x for x in bundle["classifications"] if x["questionId"] == qid and x["reviewStatus"] == "reviewed")
         explanation_rows.extend(x for x in bundle["explanations"] if x["questionId"] == qid and x["reviewStatus"] == "reviewed")
+    # Aparições em outros cadernos só entram quando o respectivo PDF foi verificado.
+    idx = validate_bundle(bundle, taxonomy)
+    appearance_rows = [
+        a for a in bundle["question_appearances"]
+        if a["questionId"] in selected
+        and (d := idx["documents"][a["documentId"]])["accessStatus"] == "accessible"
+        and _rights_ok(d) and d["sha256"] and d["sourceUrl"]
+    ]
     used_exam = {q["examId"] for q in question_rows}
+    used_exam.update(a["examId"] for a in appearance_rows)
     used_groups = {q["groupId"] for q in question_rows if q["groupId"]}
     used_docs = {loc["documentId"] for q in question_rows for loc in q["sourceLocations"]}
     used_docs.update(a["sourceDocumentId"] for a in answer_rows if a["sourceDocumentId"])
     used_docs.update(e["sourceDocumentId"] for e in explanation_rows if e["sourceDocumentId"])
+    used_docs.update(a["documentId"] for a in appearance_rows)
     used_process = {e["processId"] for e in bundle["exams"] if e["id"] in used_exam}
     used_inst = {p["institutionId"] for p in bundle["processes"] if p["id"] in used_process}
+    # A visão pública é uma projeção. Histórico completo permanece em staging.
+    public_groups = [
+        {**group, "questionIds": [qid for qid in group["questionIds"] if qid in selected]}
+        for group in selected_where("question_groups", lambda x: x["id"] in used_groups)
+    ]
+    public_answers = [
+        {**answer, "supersedes": None, "verifiedBy": {"type": "human", "id": "editorial"}}
+        for answer in answer_rows
+    ]
+    public_classifications = [
+        {**c, "proposedBy": {"type": c["proposedBy"]["type"], "id": "editorial"},
+         "reviewedBy": {"type": "human", "id": "editorial"}}
+        for c in classification_rows
+    ]
+    public_explanations = [
+        {**e, "proposedBy": {"type": e["proposedBy"]["type"], "id": "editorial"},
+         "reviewedBy": {"type": "human", "id": "editorial"}}
+        for e in explanation_rows
+    ]
     return {
         "schemaVersion": 1,
         "institutions": selected_where("institutions", lambda x: x["id"] in used_inst),
         "processes": selected_where("processes", lambda x: x["id"] in used_process),
         "exams": selected_where("exams", lambda x: x["id"] in used_exam),
         "documents": selected_where("documents", lambda x: x["id"] in used_docs),
-        "question_groups": selected_where("question_groups", lambda x: x["id"] in used_groups),
+        "question_groups": public_groups,
         "questions": question_rows,
-        "answers": answer_rows,
-        "explanations": explanation_rows,
-        "classifications": classification_rows,
-        "question_appearances": selected_where("question_appearances", lambda x: x["questionId"] in selected),
+        "answers": public_answers,
+        "explanations": public_explanations,
+        "classifications": public_classifications,
+        "question_appearances": appearance_rows,
     }

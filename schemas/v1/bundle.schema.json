@@ -1246,7 +1246,8 @@
         "supersedes",
         "verifiedAt",
         "reviewStatus",
-        "conflictNote"
+        "conflictNote",
+        "verifiedBy"
       ],
       "properties": {
         "schemaVersion": {
@@ -1344,6 +1345,16 @@
           "type": [
             "string",
             "null"
+          ]
+        },
+        "verifiedBy": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/actor"
+            },
+            {
+              "type": "null"
+            }
           ]
         }
       }
