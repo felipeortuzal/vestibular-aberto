@@ -6,7 +6,7 @@
 
 O progresso local usa versão 1, array de favoritas e array de tentativas com questionId, choiceId, correct e at. A importação recalcula correct, descarta IDs não presentes e informa substituição. A métrica de acerto usa a última tentativa por questão. Evoluções devem preservar IDs e migrar versões.
 
-## Modelo a implementar no prompt 02
+## Modelo V1 implementado na etapa 02 (somente staging)
 
 | Entidade | Campos e decisões |
 |---|---|
@@ -40,14 +40,26 @@ O progresso local usa versão 1, array de favoritas e array de tentativas com qu
 
 `rightsStatus`: `unknown`, `link_only`, `authorized`, `licensed`, `original`. A evidência deve ser verificável; a própria IA não concede autorização.
 
-Um item só entra no JSON público se tiver conteúdo e gabarito compatíveis com o formato, fonte/página, revisão editorial e fundamento registrado para a republicação. Se os direitos não estiverem resolvidos, publicar apenas metadados e o link autorizado à fonte, sem embutir enunciado/imagens. Não incluir arquivos de staging no artefato de hospedagem.
+Um item só pode vir a entrar no JSON público se tiver conteúdo e gabarito compatíveis com o formato, fonte/página, revisão editorial e fundamento registrado para a republicação. Se os direitos não estiverem resolvidos, publicar apenas metadados e o link autorizado à fonte, sem embutir enunciado/imagens. Não incluir arquivos de staging no artefato de hospedagem.
 
-## Validação executável futura
+## Validação executável — entregue na etapa 02
 
-Criar JSON Schemas versionados para as entidades acima e validá-los na CI. Testar integridade referencial, taxonomia, duplicatas, alternativa correta, documento correspondente ao modelo de prova, origem de resolução, transições e publicação. O esquema deve aceitar null para desconhecidos e bloquear publicação sem os campos obrigatórios, sem impedir o cadastro de pendências.
+O contrato de trabalho está em `schemas/v1/bundle.schema.json` (JSON Schema Draft 2020-12) e `schemas/v1/taxonomy.schema.json`. Os campos obrigatórios podem conter `null` quando desconhecidos; isso é válido para **staging**, não torna o item publicável. Cada entidade e o lote têm `schemaVersion: 1`, além de `version` ou `revision` quando aplicável. As 12 coleções V1 são: `institutions`, `processes`, `exams`, `documents`, `question_groups`, `questions`, `answers`, `explanations`, `classifications`, `review_events`, `question_appearances`, `user_attempts`.
+
+O validador `scripts/contracts_v1.py` complementa o esquema com referências entre entidades, esquema e hierarquia de taxonomia, unicidade de IDs, número/ordem de alternativas e subitens, modelo de caderno e gabarito, revisão com histórico, origem/página/hash do documento, conflitos e tentativas não pontuáveis. Um gabarito retificado não destrói o anterior: usa `revision` e `supersedes`; tentativas antigas pontuadas exigem reavaliação. Questão anulada, sem gabarito final, em conflito ou com versão superada não pode entrar como acerto/erro.
+
+**O contrato de staging e os critérios de export são diferentes.** `publishability(bundle, taxonomy)` devolve motivos de bloqueio. Para conteúdo oficial objetivo, a seleção futura exige, no mínimo, enunciado e alternativas completos, origem documental e página, hashes, documento e gabarito verificáveis do mesmo caderno, edição e data, direitos adequados com evidência humana verificável, classificação e explicação revisadas por humano real e sequência editorial concluída em `published`. Status `link_only` ou `unknown` não permitem reprodução integral. A função `export_public_bundle(..., enable_official=False)` **retorna seleção vazia por padrão**, e `scripts/build.py` continua recusando qualquer questão não autoral e qualquer prova individualizada até uma etapa posterior. Exportar conteúdo V1 para o site requer integração e checagens adicionais na etapa 06; alterar só o parâmetro do teste **não habilita** publicação.
+
+Os exemplos `tests/fixtures/v1/synthetic_bundle.json` usam IDs `synthetic-*`, URLs `example.test`, hashes e atestados **fabricados exclusivamente para teste** — não são documentos, licenças nem revisão realmente realizada. `npm run test:contract` valida casos positivos/negativos com `jsonschema==4.26.0` instalado por `requirements-dev.txt`. A CI também roda `npm run validate`, `npm test`, `npm run build` e `npm run test:browser`, sem publicar fixtures ou staging.
 
 ## Arquitetura de crescimento
 
 V0: JSON + adaptador JS + localStorage. V1: dados particionados por instituição/edição e índice leve; nenhum download de todo o acervo ao abrir a home. Um catálogo de 100 mil itens não deve virar um único script carregado pelo cliente.
 
 Quando houver contas: banco relacional e armazenamento de arquivos, API paginada, índices de filtros, autenticação, backup e papéis editoriais. GitHub Pages serve apenas o cliente estático; não hospeda um backend persistente. O provedor será escolhido quando a necessidade estiver validada, com custo e limites documentados.
+
+## Compatibilidade e migração
+
+Não há migração de dados na etapa 02. `data/questions.json`, `data/exams.json`, `data/taxonomy.json`, IDs `demo-001`–`demo-012` e o formato `vestibular-aberto.progress.v1` do navegador foram preservados. O esquema V1 aplica-se **a novos lotes editoriais**, não diretamente ao JSON legado da V0. Um adaptador de renderização e migração versionada só será necessário quando houver conteúdo oficial elegível; não alterar silenciosamente favoritos nem tentativas.
+
+Para FGV, registrar `schools[]`, `campuses[]` e `courses[]` **no processo e na prova aplicável**, sem clonar um PDF compartilhado. Para Insper, `admissionSemester` e `applicationId` distinguem processo e aplicação; nunca inferir esses campos do nome de um arquivo. Para Fuvest/USP a identidade institucional é única com banca Fuvest, não dois acervos duplicados. Edição de ingresso e data de aplicação são campos independentes.
