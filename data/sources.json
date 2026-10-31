@@ -5,17 +5,17 @@
     "url": "https://www.fuvest.br/acervo-vestibular/",
     "description": "Acervo do vestibular da USP organizado por edição. Conferir fase, modelo do caderno e eventuais retificações de gabarito.",
     "checkedAt": "2026-10-31",
-    "verification": "Diretório localizado em busca oficial; abertura automatizada retornou 403. PDFs não foram conferidos.",
+    "verification": "Acervos 2024–2026 localizados em resultados de busca oficiais; abertura direta retornou 403 nesta sessão. PDFs não conferidos.",
     "rightsStatus": "not-assessed"
   },
   {
     "id": "unicamp",
     "name": "Unicamp / Comvest",
-    "url": "https://www2.comvest.unicamp.br/vestibulares-anteriores/",
-    "description": "Diretório de vestibulares anteriores. A instituição também oferece simulados com questões de provas passadas.",
+    "url": "https://www.comvest.unicamp.br/vestibulares-anteriores/",
+    "description": "Portal oficial por edição. Reprodução parcial de questões anteriores autorizada com atribuição e sem exclusividade; reprodução integral não autorizada.",
     "checkedAt": "2026-10-31",
-    "verification": "Endereço de referência localizado; abertura automatizada indisponível. Oferta de simulados confirmada em notícia oficial da Unicamp. PDFs não foram conferidos.",
-    "rightsStatus": "not-assessed"
+    "verification": "Diretório e provas comentadas 2024–2026 abertos na Comvest atual. Ver docs/INVENTARIO.md para URLs e limites por documento.",
+    "rightsStatus": "partial-conditional"
   },
   {
     "id": "insper",
@@ -23,7 +23,7 @@
     "url": "https://www.insper.edu.br/pt/cursos/vestibular/provas-e-gabaritos",
     "description": "Provas e gabaritos das seleções do Insper. Preservar semestre, curso, modalidade e distinção entre prova e simulado.",
     "checkedAt": "2026-10-31",
-    "verification": "Link seguido a partir da página oficial do vestibular e redirecionamento confirmado. Catálogo depende de JavaScript; PDFs não foram conferidos.",
+    "verification": "Página institucional depende de JavaScript; processos 2026.1 e 2026.2 localizados em páginas públicas da Vunesp. PDFs individuais pendentes.",
     "rightsStatus": "not-assessed"
   },
   {
@@ -32,7 +32,7 @@
     "url": "https://vestibular.fgv.br/provas-gabaritos",
     "description": "Diretório que permite selecionar o curso. Organizar por escola, campus, curso e edição, incluindo provas compartilhadas quando aplicável.",
     "checkedAt": "2026-10-31",
-    "verification": "Página oficial lida; exibe seletor de curso. Arquivos individuais não foram conferidos.",
+    "verification": "Filtro por curso no site oficial; coleções unificadas 2024.1, 2025.1 e 2026.1 identificadas em índice, sem PDFs individualizados.",
     "rightsStatus": "not-assessed"
   }
 ]

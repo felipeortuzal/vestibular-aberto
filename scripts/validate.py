@@ -2,6 +2,7 @@
 import json
 from jsonschema import Draft202012Validator, FormatChecker
 from contracts_v1 import validate_bundle, empty_bundle
+from validate_inventory import validate_inventory
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 load = lambda p: json.loads((ROOT / p).read_text())
@@ -43,3 +44,6 @@ validate_bundle(empty_bundle(), taxonomy)
 synthetic = load("tests/fixtures/v1/synthetic_bundle.json")
 validate_bundle(synthetic, taxonomy)
 print("OK: JSON Schemas V1, integridade do staging sintético e taxonomia versionada.")
+
+summary_inventory = validate_inventory(load("data/inventory.json"))
+print(f"OK: Inventário 2024–2026: {summary_inventory['entries']} registros, {summary_inventory['directUrls']} URLs de arquivo, {summary_inventory['coverage']} recortes de cobertura; sem provas importadas.")
