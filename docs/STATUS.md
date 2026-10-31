@@ -19,3 +19,5 @@ Validador de dados e seis testes de comportamento passaram. Build estático conc
 Executar o prompt 01 sobre a base já publicada. Depois, prompt 02 antes de qualquer ingestão de conteúdo oficial. A taxonomia detalhada em Matemática já está disponível para refinamento editorial.
 
 A primeira CI apresentou avisos de transição de runtime das Actions e de imagem ubuntu-latest, sem falha de testes/build/deploy. A atualização das versões das Actions pode ser feita na auditoria 01. Exportação/importação tem validação unitária; o diálogo nativo de arquivo não foi testado ponta a ponta nesta sessão.
+
+A segunda execução de testes/build/deploy também passou: https://github.com/felipeortuzal/vestibular-aberto/actions/runs/41252015707 . O CSS recebeu versão na URL para atualizar a navegação móvel em navegadores que abriram a implantação inicial.
