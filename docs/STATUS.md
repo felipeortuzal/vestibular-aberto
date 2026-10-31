@@ -1,6 +1,6 @@
 # Estado do projeto — 31/10/2026
 
-## Etapa 02 — contrato V1 concluído na branch de trabalho
+## Etapa 02 — contrato V1 integrado à main e publicado
 
 Criados contratos JSON Schema Draft 2020-12 versionados para staging e taxonomia, com validação Python de integridade e seleção conservadora para futura publicação. São 12 coleções V1: institutions, processes, exams, documents, question_groups, questions, answers, explanations, classifications, review_events, question_appearances e user_attempts. Os registros possuem schemaVersion=1, versões/revisões, IDs estáveis, referências a cadernos e modelos, contexto compartilhado, subitens, numeração original textual, blocos de texto/matemática/imagem/tabela e origem/página/hash. Campos desconhecidos aceitam null em staging, mas impedem publicação quando essenciais.
 
@@ -34,7 +34,7 @@ Repositório existente: https://github.com/felipeortuzal/vestibular-aberto
 PR #2: https://github.com/felipeortuzal/vestibular-aberto/pull/2
 Site público V0: https://felipeortuzal.github.io/vestibular-aberto/
 
-O deploy de qualquer nova mudança só está confirmado depois de integração à main e GitHub Actions com deploy success. Testes de PR não comprovam publicação.
+Etapa 02 integrada na main pelo PR #2: commit 5d589cff3d2a4dcab88cf89d707b18bbe794c4b5. Build e deploy GitHub Pages concluídos com sucesso no run https://github.com/felipeortuzal/vestibular-aberto/actions/runs/41254196804 . O site continua exclusivamente com a V0 demonstrativa; a camada V1 está no repositório e não é exibida como conteúdo oficial. A presente atualização de STATUS constitui commit documental posterior.
 
 ## Limitações
 
