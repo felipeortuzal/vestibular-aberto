@@ -26,10 +26,10 @@ jobs:
       - run: npm run test:contract
       - run: npm run test:inventory
       - run: npm run test:pilot
-      - name: Conferir PDF oficial sem publicar seus bytes (PR etapa 04)
+      - name: Captura e extração efêmera de PDF oficial (PR etapa 04)
         if: github.event_name == 'pull_request' && github.head_ref == 'feature/etapa04-piloto-unicamp2026'
         continue-on-error: true
-        run: python3 scripts/ingest_pilot.py --mode probe
+        run: python3 scripts/ingest_pilot.py --mode extract
       - run: npm run build
       - run: npm run test:browser
       - uses: actions/upload-artifact@v4
