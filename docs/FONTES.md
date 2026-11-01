@@ -31,3 +31,19 @@ Não se acessaram áreas privadas, soluções pagas ou APIs internas. Não usar 
 - GitHub Pages — criação de site: https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site
 
 Repositório criado: https://github.com/felipeortuzal/vestibular-aberto. A situação de publicação e a URL confirmada ficam em STATUS.md.
+
+## Atualização da etapa 03 — 31/10/2026
+
+- **Comvest:** o diretório atual que foi efetivamente aberto é https://www.comvest.unicamp.br/vestibulares-anteriores/ (o endereço antigo `www2` não abriu). O acervo de provas comentadas é https://www.comvest.unicamp.br/vestibulares-anteriores/1a-fase-2a-fase-comentadas/ . A página traz autorização expressa para reprodução **parcial** de questões anteriores, desde que a fonte seja atribuída e não haja exclusividade; expressamente **não permite reproduzir a prova inteira**. Manter apenas metadados e links até revisão de cada item e dos materiais de terceiros.
+- **Fuvest:** os índices específicos 2024, 2025 e 2026 foram encontrados em resultados oficiais; abertura direta resultou em HTTP 403. 2024 menciona gabarito retificado em 24/11/2023; 2026 menciona retificação em 26/11/2025. Não equiparar evidência de busca com PDF analisado.
+- **Insper:** páginas da Vunesp verificadas para processos 2026.1 (https://www.vunesp.com.br/INSP2502) e 2026.2 (https://www.vunesp.com.br/INSP2504), ambas com seção de provas e gabaritos. Arquivos por aplicação e semestres de 2024/2025 permanecem pendentes.
+- **FGV:** títulos de coleções unificadas 2024.1, 2025.1 e 2026.1 localizados no filtro oficial: https://vestibular.fgv.br/provas-gabaritos?field_formas_ingresso_target_id=1152&nid=469 . A aplicação por EAESP/EESP e campus não foi verificada: evitar associação automática.
+
+A planilha de referência e a classificação de cada acesso, uso e lacuna estão em `docs/INVENTARIO.md` e `data/inventory.json`. Acesso público não implica permissão geral de redistribuição.
+
+## Referências de experiência para a reforma visual (sem copiar)
+
+- Universo Narrado: https://universonarrado.com.br/ — clareza editorial, aprofundamento de assunto e continuidade de estudo.
+- Estratégia Vestibulares: https://vestibulares.estrategia.com/curso/ — clareza operacional dos filtros, listas e prática por instituição.
+
+A identidade, marca, textos e ilustrações do Vestibular Aberto foram criados para este projeto; não foram incorporados códigos, logos nem bancos privados de terceiros.
