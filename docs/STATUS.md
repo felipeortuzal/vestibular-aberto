@@ -64,9 +64,9 @@ Site público de referência: https://felipeortuzal.github.io/vestibular-aberto/
 
 Não existe importador de questões, prova completa espelhada, revisão humana de conteúdo oficial, verificação integral de todos os PDFs, autorização geral de republicação, sincronização entre navegadores, backend, contas, OCR ou cobrança. Inventário **não é prova importada**; nomes genéricos e coleções FGV/Insper não foram individualizados. Não houve acesso a áreas restritas ou APIs privadas.
 
-## Próximo passo — Etapa 04
+## Encaminhamento histórico da etapa 03
 
-Executar `prompts/04-extracao-piloto.md` em staging para até 5–10 questões objetivas de Matemática da Unicamp 2026, conferindo fonte, modelo, página, figura, gabarito, contexto compartilhado e termos de reprodução, com rastreabilidade e revisão explícita. Não liberar publicação antes das etapas 05–06.
+A etapa 04 foi realizada posteriormente; consulte o registro no início deste arquivo. O próximo passo vigente é a etapa 05.
 
 ## Histórico
 
