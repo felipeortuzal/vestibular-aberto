@@ -64,14 +64,14 @@ def section(text,number):
     return part[:stop.start()].strip() if stop else None
 
 def alternatives(fragment):
-    marks=list(re.finditer(r"(?m)^\s*([a-dA-D])\)\s*([^\n]*)",fragment))
+    marks=list(re.finditer(r"(?<![A-Za-z0-9])([a-dA-D])\)\s*",fragment))
     if len(marks)!=4:return None
     result={}
     for i,m in enumerate(marks):
         key=m.group(1).lower()
         if key in result:return None
         end=marks[i+1].start() if i<3 else len(fragment)
-        result[key]=(m.group(2)+"\n"+fragment[m.end():end]).strip()
+        result[key]=fragment[m.end():end].strip()
     if set(result)!=set("abcd") or not all(result.values()):return None
     head=fragment[:marks[0].start()].strip()
     return {"stem":head,"choices":result} if head else None
