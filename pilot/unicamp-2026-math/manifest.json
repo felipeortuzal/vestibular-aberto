@@ -16,14 +16,14 @@
   "inventoryId": "inv-unicamp-2026-01",
   "expectedPageCount": 71,
   "mimeType": "application/pdf",
-  "sha256": null,
-  "byteLength": null,
+  "sha256": "2d1d0d375fb8ee7ea84ebb11350ca30851a5c928db80ed6e2479aeeb1ba23284",
+  "byteLength": 7882756,
   "retrievedAt": null,
   "rightsStatus": "link_only",
   "rightsEvidenceUrl": "https://www.comvest.unicamp.br/vestibulares-anteriores/1a-fase-2a-fase-comentadas/",
   "rightsNote": "A Comvest autoriza reprodução PARCIAL de questões de provas anteriores, não exclusiva e com atribuição. Sem autorização para prova inteira; verificar recursos de terceiros. Nenhum conteúdo integral é commitado.",
-  "extractionStatus": "not_run_on_persistent_source",
-  "runtimeLimitation": "Ambiente local sem resolução DNS para www.comvest.unicamp.br; PDF lido e páginas conferidas por visualização web, mas os bytes não ficaram disponíveis para checksum local.",
+  "extractionStatus": "ci_downloaded_extracted_partial",
+  "runtimeLimitation": "Download local indisponível (DNS). A CI de 01/11/2026 obteve o PDF, conferiu o hash e extraiu 4 de 5 candidatos. Uma questão permanece bloqueada.",
   "sourceAnomaly": "Introdução na página física 2 se refere ao vestibular 2025, embora capa e miolo indiquem Unicamp 2026; registrar para revisão do documento.",
   "selectedQuestions": [
     {
@@ -131,5 +131,6 @@
     "type": "ai",
     "id": "assistant-visual-inspection"
   },
-  "notes": "Metadados e letras vistas nas páginas da prova COMENTADA. A alternativa indicada pela Comvest é candidato de conciliação, não substitui gabarito oficial do caderno nem revisão humana."
+  "notes": "Metadados e letras vistas nas páginas da prova COMENTADA. A alternativa indicada pela Comvest é candidato de conciliação, não substitui gabarito oficial do caderno nem revisão humana.",
+  "downloadEvidence": "https://github.com/felipeortuzal/vestibular-aberto/actions/runs/41361621514"
 }
