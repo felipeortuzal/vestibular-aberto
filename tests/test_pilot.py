@@ -61,6 +61,13 @@ class PilotTests(unittest.TestCase):
         self.assertEqual(list(choices["choices"].keys()),list("abcd"))
         self.assertNotIn("Objetivo",choices["stem"])
 
+    def test_alternativas_em_duas_colunas_sao_apenas_candidatas(self):
+        fragment="Polinomios de grau abstrato.\na) 5.   c) 3.\nb) 4.   d) 2."
+        parsed=alternatives(fragment)
+        self.assertIsNotNone(parsed)
+        self.assertEqual(set(parsed["choices"]),set("abcd"))
+        # Layout lado a lado exige comparação visual: parser não atribui revisão humana.
+
     def test_pdf_magic_page_count_and_hash(self):
         with tempfile.TemporaryDirectory() as d:
             pdf=fitz.open();pdf.new_page()
