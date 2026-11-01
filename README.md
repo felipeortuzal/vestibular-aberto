@@ -82,7 +82,7 @@ Antes de executar, confira se esse nome ainda está livre. Não execute novament
 
 ## Como trabalhar com Astra + Sol
 
-Leia `docs/ROTEIRO.md`. No início da sessão de implementação, cole `prompts/00-contexto-mestre.md`; depois, use apenas o prompt da etapa atual. As etapas 00 e 01 já foram concluídas; o próximo prompt é o 03 (inventário oficial). Traga o resultado, diff, testes e pendências para a revisão antes de avançar. Essa divisão organiza o trabalho; não pressupõe que um modelo sempre será superior ao outro.
+Leia `docs/ROTEIRO.md`. No início de uma sessão de implementação, leia `AGENTS.md` e `docs/STATUS.md` e use o prompt da etapa vigente. As etapas 01 a 04 foram executadas; o próximo prompt é o 05 (classificação e revisão). Traga o resultado, diff, testes e pendências para a revisão antes de avançar. Essa divisão organiza o trabalho; não pressupõe que um modelo sempre será superior ao outro.
 
 O próximo objetivo útil é uma pequena seleção de questões reais completamente rastreáveis, e não uma promessa de ter todos os vestibulares. A expansão deve preservar o padrão de qualidade.
 
