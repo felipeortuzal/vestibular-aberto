@@ -78,9 +78,13 @@ def alternatives(fragment):
 
 def run(mode="probe",pdf_path=None):
     m=load(PILOT/"manifest.json")
+    from validate_pilot import validate_pilot
+    validate_pilot(m,load(PILOT/"staging-metadata-v1.json"))
     target=Path(pdf_path) if pdf_path else ROOT/"raw/unicamp-2026-f1-q.pdf"
     if pdf_path is None:get_pdf(m["sourceUrl"],target)
     proof=inspect_pdf(target,m["expectedPageCount"])
+    if m["sha256"] and proof["sha256"]!=m["sha256"]:
+        raise ValueError("SHA-256 diferente do documento oficial auditado: origem revisada ou substituída")
     result={"mode":mode,**proof,"itemsSelected":len(m["selectedQuestions"]),"itemsPublished":0}
     if mode=="extract":
         from contracts_v1 import validate_bundle
