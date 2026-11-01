@@ -1,0 +1,137 @@
+{
+  "manifestVersion": 1,
+  "lotId": "pilot-unicamp-2026-f1-math-01",
+  "createdAt": "2026-11-01",
+  "institutionId": "unicamp",
+  "editionYear": 2026,
+  "appliedAt": "2025-10-26",
+  "phase": "1",
+  "day": 1,
+  "examId": "unicamp-2026-f1-q",
+  "documentId": "unicamp-2026-f1-commented",
+  "bookletCode": "Q",
+  "bookletEvidence": "Nome do PDF e rodapé indicam 'Q' para a prova comentada; o código de aplicação precisa ser confirmado no caderno original de prova.",
+  "sourceUrl": "https://www.comvest.unicamp.br/wp-content/uploads/2026/06/F1_2026_Prova-Q.pdf",
+  "landingPageUrl": "https://www.comvest.unicamp.br/vestibulares-anteriores/1a-fase-2a-fase-comentadas/",
+  "inventoryId": "inv-unicamp-2026-01",
+  "expectedPageCount": 71,
+  "mimeType": "application/pdf",
+  "sha256": "2d1d0d375fb8ee7ea84ebb11350ca30851a5c928db80ed6e2479aeeb1ba23284",
+  "byteLength": 7882756,
+  "retrievedAt": null,
+  "rightsStatus": "link_only",
+  "rightsEvidenceUrl": "https://www.comvest.unicamp.br/vestibulares-anteriores/1a-fase-2a-fase-comentadas/",
+  "rightsNote": "A Comvest autoriza reprodução PARCIAL de questões de provas anteriores, não exclusiva e com atribuição. Sem autorização para prova inteira; verificar recursos de terceiros. Nenhum conteúdo integral é commitado.",
+  "extractionStatus": "ci_extracted_candidates_5_of_5",
+  "runtimeLimitation": "Download local indisponível (DNS). A CI de 01/11/2026 obteve o PDF, conferiu o hash e extraiu 4 de 5 candidatos. Uma questão permanece bloqueada.",
+  "sourceAnomaly": "Introdução na página física 2 se refere ao vestibular 2025, embora capa e miolo indiquem Unicamp 2026; registrar para revisão do documento.",
+  "selectedQuestions": [
+    {
+      "number": "43",
+      "physicalPages": [
+        47
+      ],
+      "printedPages": [
+        "46"
+      ],
+      "column": "left",
+      "commentaryAnswerCandidate": "a",
+      "mathTopic": "percentuais / composição de reajustes",
+      "figureExpected": false,
+      "id": "unicamp-2026-f1-q043",
+      "textVerification": "web_pdf_screenshot_review_ai_only",
+      "finalKeyStatus": "not_cross_checked",
+      "humanReviewed": false,
+      "publishable": false
+    },
+    {
+      "number": "45",
+      "physicalPages": [
+        48
+      ],
+      "printedPages": [
+        "47"
+      ],
+      "column": "left",
+      "commentaryAnswerCandidate": "b",
+      "mathTopic": "polinômios",
+      "figureExpected": false,
+      "id": "unicamp-2026-f1-q045",
+      "textVerification": "web_pdf_screenshot_review_ai_only",
+      "finalKeyStatus": "not_cross_checked",
+      "humanReviewed": false,
+      "publishable": false
+    },
+    {
+      "number": "49",
+      "physicalPages": [
+        50
+      ],
+      "printedPages": [
+        "49"
+      ],
+      "column": "left-to-right",
+      "commentaryAnswerCandidate": "b",
+      "mathTopic": "probabilidade / contagem",
+      "figureExpected": false,
+      "id": "unicamp-2026-f1-q049",
+      "textVerification": "web_pdf_screenshot_review_ai_only",
+      "finalKeyStatus": "not_cross_checked",
+      "humanReviewed": false,
+      "publishable": false
+    },
+    {
+      "number": "51",
+      "physicalPages": [
+        51
+      ],
+      "printedPages": [
+        "50"
+      ],
+      "column": "right",
+      "commentaryAnswerCandidate": "c",
+      "mathTopic": "inequações modulares / primos",
+      "figureExpected": false,
+      "id": "unicamp-2026-f1-q051",
+      "textVerification": "web_pdf_screenshot_review_ai_only",
+      "finalKeyStatus": "not_cross_checked",
+      "humanReviewed": false,
+      "publishable": false
+    },
+    {
+      "number": "52",
+      "physicalPages": [
+        51,
+        52
+      ],
+      "printedPages": [
+        "50",
+        "51"
+      ],
+      "column": "right-then-left",
+      "commentaryAnswerCandidate": "b",
+      "mathTopic": "sistemas lineares",
+      "figureExpected": false,
+      "id": "unicamp-2026-f1-q052",
+      "textVerification": "web_pdf_screenshot_review_ai_only",
+      "finalKeyStatus": "not_cross_checked",
+      "humanReviewed": false,
+      "publishable": false
+    }
+  ],
+  "overall": {
+    "questionsSelected": 5,
+    "fullTranscriptionsCommitted": 0,
+    "answerKeysVerified": 0,
+    "humanReviewed": 0,
+    "published": 0,
+    "openIssues": 5,
+    "extractedCandidates": 5
+  },
+  "actor": {
+    "type": "ai",
+    "id": "assistant-visual-inspection"
+  },
+  "notes": "Metadados e letras vistas nas páginas da prova COMENTADA. A alternativa indicada pela Comvest é candidato de conciliação, não substitui gabarito oficial do caderno nem revisão humana.",
+  "downloadEvidence": "https://github.com/felipeortuzal/vestibular-aberto/actions/runs/41361621514"
+}
