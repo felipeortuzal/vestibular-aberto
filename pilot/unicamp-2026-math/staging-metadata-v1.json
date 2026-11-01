@@ -57,13 +57,13 @@
       "bookletCode": "Q",
       "sourceUrl": "https://www.comvest.unicamp.br/wp-content/uploads/2026/06/F1_2026_Prova-Q.pdf",
       "landingPageUrl": "https://www.comvest.unicamp.br/vestibulares-anteriores/1a-fase-2a-fase-comentadas/",
-      "sha256": null,
+      "sha256": "2d1d0d375fb8ee7ea84ebb11350ca30851a5c928db80ed6e2479aeeb1ba23284",
       "pageCount": 71,
       "retrievedAt": null,
       "mimeType": "application/pdf",
       "revision": 1,
       "supersedes": null,
-      "accessStatus": "unverified",
+      "accessStatus": "accessible",
       "rightsStatus": "link_only",
       "rightsEvidence": null,
       "version": 1
@@ -89,7 +89,7 @@
           "physicalPage": 47,
           "printedPage": "46",
           "region": null,
-          "sourceSha256": null
+          "sourceSha256": "2d1d0d375fb8ee7ea84ebb11350ca30851a5c928db80ed6e2479aeeb1ba23284"
         }
       ],
       "rightsStatus": "link_only",
@@ -120,7 +120,7 @@
           "physicalPage": 48,
           "printedPage": "47",
           "region": null,
-          "sourceSha256": null
+          "sourceSha256": "2d1d0d375fb8ee7ea84ebb11350ca30851a5c928db80ed6e2479aeeb1ba23284"
         }
       ],
       "rightsStatus": "link_only",
@@ -151,7 +151,7 @@
           "physicalPage": 50,
           "printedPage": "49",
           "region": null,
-          "sourceSha256": null
+          "sourceSha256": "2d1d0d375fb8ee7ea84ebb11350ca30851a5c928db80ed6e2479aeeb1ba23284"
         }
       ],
       "rightsStatus": "link_only",
@@ -182,7 +182,7 @@
           "physicalPage": 51,
           "printedPage": "50",
           "region": null,
-          "sourceSha256": null
+          "sourceSha256": "2d1d0d375fb8ee7ea84ebb11350ca30851a5c928db80ed6e2479aeeb1ba23284"
         }
       ],
       "rightsStatus": "link_only",
@@ -213,14 +213,14 @@
           "physicalPage": 51,
           "printedPage": "50",
           "region": null,
-          "sourceSha256": null
+          "sourceSha256": "2d1d0d375fb8ee7ea84ebb11350ca30851a5c928db80ed6e2479aeeb1ba23284"
         },
         {
           "documentId": "unicamp-2026-f1-commented",
           "physicalPage": 52,
           "printedPage": "51",
           "region": null,
-          "sourceSha256": null
+          "sourceSha256": "2d1d0d375fb8ee7ea84ebb11350ca30851a5c928db80ed6e2479aeeb1ba23284"
         }
       ],
       "rightsStatus": "link_only",
