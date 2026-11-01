@@ -1,6 +1,6 @@
 # Etapa 04 — lote piloto Unicamp 2026, 1ª fase
 
-**Estado:** piloto preparado em staging de metadados, com leitura visual da prova comentada oficial; **nenhuma questão oficial publicada**. Data da revisão desta etapa: 01/11/2026.
+**Estado:** PDF obtido e processado no GitHub Actions; 5/5 questões têm extrações candidatas em staging temporário. Revisão humana: 0/5; questões publicadas: 0. Data da revisão desta etapa: 01/11/2026.
 
 ## Fonte e método
 
@@ -8,7 +8,7 @@ Documento da Comvest: [1ª fase comentada, caderno com marcação Q](https://www
 
 O documento intitula-se “Vestibular Unicamp 2026”, primeira fase; a introdução na página física 2 menciona “vestibular 2025”, discrepância editorial a verificar. A edição 2026 é distinta da data de aplicação (26/10/2025). O nome do PDF e o rodapé indicam “Q”; o vínculo com o **caderno originalmente aplicado** e eventual variante precisa de conferência independente.
 
-O arquivo `pilot/unicamp-2026-math/manifest.json` lista os cinco itens e respectivas páginas. O `staging-metadata-v1.json` adere ao contrato editorial V1, mas **não contém enunciados nem alternativas**, pois a captura de bytes no ambiente de trabalho local falhou devido a DNS. O `sha256` do manifesto é nulo até que o PDF seja obtido de fato; nunca substituir esse campo por hash estimado.
+O arquivo `pilot/unicamp-2026-math/manifest.json` lista os cinco itens, páginas e **SHA-256 verificado**: `2d1d0d375fb8ee7ea84ebb11350ca30851a5c928db80ed6e2479aeeb1ba23284` (7.882.756 bytes, 71 páginas). O `staging-metadata-v1.json` adere ao contrato editorial V1 e guarda apenas metadados, hash e páginas — sem enunciados ou alternativas. O ambiente local falhou por DNS, mas a CI conseguiu o download e processou os cinco candidatos. Evidência: https://github.com/felipeortuzal/vestibular-aberto/actions/runs/41362067765 . A CI é efêmera; para continuar a revisão em outro computador, execute novamente o pipeline localmente.
 
 ## Cinco questões selecionadas
 
@@ -37,7 +37,7 @@ python3 scripts/ingest_pilot.py --mode extract --pdf "/caminho/prova-oficial.pdf
 npm run test:pilot
 ```
 
-O modo `probe` informa apenas tamanho, páginas e hash. O modo `extract` produz **localmente** `staging/unicamp-2026-math/bundle-v1.json` e `candidates.json` (com texto integral candidato), além de imagens de comparação da página. O algoritmo rejeita segmentos com menos de quatro alternativas ou sem limites claros; não cria textos, respostas ou diagramas ausentes. A classificação fica para a etapa 05. Se houver fórmula ou símbolo incompleto, a questão permanece bloqueada.
+O modo `probe` informa apenas tamanho, páginas e hash. O modo `extract` produz **localmente** `staging/unicamp-2026-math/bundle-v1.json` e `candidates.json` (com texto integral candidato), além de imagens de comparação da página e `page-report.json` com método de extração por página e indicação de inspeção pendente. O algoritmo rejeita segmentos com menos de quatro alternativas ou sem limites claros; não cria textos, respostas ou diagramas ausentes. A classificação fica para a etapa 05. Se houver fórmula ou símbolo incompleto, a questão permanece bloqueada.
 
 O build de produção **não** executa extração nem inclui `pilot/`, `raw/` ou `staging/`. Apenas os metadados sem enunciado são versionados em `pilot/`. Reproduzir a prova inteira em GitHub Pages é proibido nesta etapa.
 
@@ -47,7 +47,8 @@ O build de produção **não** executa extração nem inclui `pilot/`, `raw/` ou
 - [x] Cinco números, páginas e letras do comentário comparados **visualmente por IA** com as páginas do PDF.
 - [x] Contrato V1 para cinco itens com origem e páginas explícitas, sem alegar revisão humana.
 - [x] Autorização de uso delimitada à reprodução parcial; nenhum PDF republicado.
-- [ ] Hash SHA-256 e tamanho obtidos de bytes realmente capturados e anotados no manifesto.
+- [x] Hash SHA-256 e tamanho obtidos dos bytes capturados na CI, conferidos em duas execuções.
+- [x] Extração nativa automatizada de candidatos para as 5 questões na CI; textos e capturas mantidos fora do repositório.
 - [ ] Comparação **integral** do texto extraído com cada página — fórmulas, expoentes, quebras de coluna, unidades, alternativas e contexto.
 - [ ] Documento independente de **gabarito final** do mesmo caderno/modelo confrontado; anulações e retificações verificadas.
 - [ ] Identificação de créditos e permissão de eventuais figuras/textos de terceiros.
