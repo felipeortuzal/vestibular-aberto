@@ -96,6 +96,7 @@ def run(mode="probe",pdf_path=None):
         output=ROOT/"staging/unicamp-2026-math"
         output.mkdir(parents=True,exist_ok=True)
         candidates=[]
+        page_report=[]
         with fitz.open(target) as pdf:
             for metadata,q in zip(m["selectedQuestions"],data["questions"]):
                 pages=metadata["physicalPages"]
@@ -118,10 +119,13 @@ def run(mode="probe",pdf_path=None):
                    "alternativesDetected":len(parsed["choices"]) if parsed else 0,
                    "humanReview":False,"publishable":False})
             for p in sorted({p for q in m["selectedQuestions"] for p in q["physicalPages"]}):
+                left,right=split_columns(pdf[p-1])
+                page_report.append({"physicalPage":p,"method":"PyMuPDF native text / 2 columns","ocrUsed":False,"leftCharacters":len(left),"rightCharacters":len(right),"requiresVisualReview":True})
                 pdf[p-1].get_pixmap(matrix=fitz.Matrix(1,1)).save(output/("page-"+str(p)+".png"))
         validate_bundle(data,load(ROOT/"data/taxonomy.json"))
         (output/"bundle-v1.json").write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding="utf-8")
         (output/"candidates.json").write_text(json.dumps(candidates,ensure_ascii=False,indent=2),encoding="utf-8")
+        (output/"page-report.json").write_text(json.dumps(page_report,ensure_ascii=False,indent=2),encoding="utf-8")
         result["perQuestion"]=[{"number":x["questionId"].split("q")[-1],"parsed":x["alternativesDetected"]==4} for x in candidates]
         result["parsedCandidates"]=sum(bool(x["alternativesDetected"]) for x in candidates)
         result["remainingHumanReview"]=len(candidates)
