@@ -41,7 +41,7 @@ def get_pdf(url,destination):
         temp.unlink(missing_ok=True)
 
 def inspect_pdf(path,expected_pages):
-    if path.stat().st_size>MAX_SIZE or path.open("rb").read(5)!=b"%PDF-":
+    if path.stat().st_size>MAX_SIZE or path.read_bytes()[:5]!=b"%PDF-":
         raise ValueError("Arquivo não é PDF permitido")
     with fitz.open(path) as pdf:
         if pdf.needs_pass:raise ValueError("PDF protegido")
@@ -118,6 +118,7 @@ def run(mode="probe",pdf_path=None):
         validate_bundle(data,load(ROOT/"data/taxonomy.json"))
         (output/"bundle-v1.json").write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding="utf-8")
         (output/"candidates.json").write_text(json.dumps(candidates,ensure_ascii=False,indent=2),encoding="utf-8")
+        result["perQuestion"]=[{"number":x["questionId"].split("q")[-1],"parsed":x["alternativesDetected"]==4} for x in candidates]
         result["parsedCandidates"]=sum(bool(x["alternativesDetected"]) for x in candidates)
         result["remainingHumanReview"]=len(candidates)
     print(json.dumps(result,ensure_ascii=False,indent=2))
