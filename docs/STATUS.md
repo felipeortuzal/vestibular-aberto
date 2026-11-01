@@ -1,4 +1,21 @@
-# Estado do projeto — 31/10/2026
+# Estado do projeto — 01/11/2026
+
+## Etapa 04 — extração piloto Unicamp 2026
+
+Foram selecionadas cinco questões de Matemática da primeira fase comentada da Unicamp 2026: **43, 45, 49, 51 e 52**. A prova oficial possui 71 páginas, 7.882.756 bytes e SHA-256 **2d1d0d375fb8ee7ea84ebb11350ca30851a5c928db80ed6e2479aeeb1ba23284**, obtidos no GitHub Actions.
+
+O pipeline Python/PyMuPDF baixou o arquivo com limite de 25 MiB e timeout, extraiu texto nativo respeitando colunas, identificou **cinco de cinco transcrições candidatas**, gerou prévias do PDF e relatório por página. A questão 45 exigiu ajuste do reconhecimento de alternativas em duas colunas. PDF, transcrições e imagens ficam apenas em `raw/` e `staging/`, fora do Git e do build. A CI usou armazenamento efêmero; o editor pode reproduzir o estágio localmente.
+
+**Estado real:** cinco itens identificados, cinco candidatos extraídos, zero revisões humanas, zero gabaritos finais independentemente conciliados e **zero questões oficiais publicadas**. As alternativas lidas nos comentários Comvest não se transformaram em gabarito final verificado. Direitos conservados em `link_only`; a autorização da Comvest restringe-se à reprodução parcial com atribuição e não exclusiva.
+
+**Testes aprovados na CI do PR #4:** validação de dados, 9 testes V0, 25 testes de contrato, 15 testes de inventário, 9 testes de piloto, build e navegador em 360/768/1440 px. Evidência da extração real: https://github.com/felipeortuzal/vestibular-aberto/actions/runs/41362067765 . Ver `docs/ETAPA04_PILOTO.md` para páginas, riscos, método e comandos.
+
+**Limitações:** comparação textual/fórmulas por humano, crédito de figuras, caderno original, gabarito final e retificações precisam de conferência. Nenhuma questão oficial nem PDF está na interface. A V0 preserva 12 exercícios autorais, 29 referências do inventário e progresso local sem migração.
+
+**Próximo passo:** etapa 05 — classificação e revisão humana do lote. Publicação das questões só deve ser considerada na etapa 06, se passar pelos critérios de conteúdo, procedência e direitos.
+
+## Histórico — etapa 03 e redesign
+
 
 ## Etapa 03 + reformulação visual — concluídas na branch de implementação
 
