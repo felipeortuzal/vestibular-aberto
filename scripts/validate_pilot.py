@@ -44,8 +44,8 @@ def validate_pilot(m,bundle):
     check(len(bundle.get("documents",[]))==1,"Não inventar outro documento oficial")
     doc=bundle["documents"][0]
     check(doc["sourceUrl"]==SOURCE and doc["rightsStatus"]=="link_only"
-          and doc["sha256"] is None and doc["accessStatus"]=="unverified",
-          "Documento não foi obtido por este ambiente; hash não pode ser inventado")
+          and doc["sha256"]==m["sha256"] and doc["accessStatus"]=="accessible",
+          "Documento/hash deve corresponder ao obtido pela CI")
     for s,q,a in zip(specs,bundle["questions"],bundle["answers"]):
         check(q["id"]==s["id"] and q["originalNumber"]==s["number"],
               "Questão incompatível com manifesto")
