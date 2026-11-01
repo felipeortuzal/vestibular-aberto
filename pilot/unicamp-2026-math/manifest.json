@@ -22,7 +22,7 @@
   "rightsStatus": "link_only",
   "rightsEvidenceUrl": "https://www.comvest.unicamp.br/vestibulares-anteriores/1a-fase-2a-fase-comentadas/",
   "rightsNote": "A Comvest autoriza reprodução PARCIAL de questões de provas anteriores, não exclusiva e com atribuição. Sem autorização para prova inteira; verificar recursos de terceiros. Nenhum conteúdo integral é commitado.",
-  "extractionStatus": "ci_downloaded_extracted_partial",
+  "extractionStatus": "ci_extracted_candidates_5_of_5",
   "runtimeLimitation": "Download local indisponível (DNS). A CI de 01/11/2026 obteve o PDF, conferiu o hash e extraiu 4 de 5 candidatos. Uma questão permanece bloqueada.",
   "sourceAnomaly": "Introdução na página física 2 se refere ao vestibular 2025, embora capa e miolo indiquem Unicamp 2026; registrar para revisão do documento.",
   "selectedQuestions": [
@@ -125,7 +125,8 @@
     "answerKeysVerified": 0,
     "humanReviewed": 0,
     "published": 0,
-    "openIssues": 5
+    "openIssues": 5,
+    "extractedCandidates": 5
   },
   "actor": {
     "type": "ai",
