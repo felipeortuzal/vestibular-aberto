@@ -41,7 +41,7 @@ Run aprovado após inventário e documentação: https://github.com/felipeortuza
 Repositório reutilizado: https://github.com/felipeortuzal/vestibular-aberto
 Site público de referência: https://felipeortuzal.github.io/vestibular-aberto/
 
-**Publicação da reformulação só é confirmada após PR #3 integrado na main e job GitHub Pages `deploy` com sucesso.** CI do PR e build não bastam. Nenhuma mudança foi feita em outros repositórios.
+**Reformulação publicada:** PR #3 integrado na `main` no commit `f23acb41d10b287afbb033668c065f27f29843c5`. O job `build` e o job `deploy` do GitHub Pages terminaram com `conclusion=success` na execução https://github.com/felipeortuzal/vestibular-aberto/actions/runs/41255086160 . URL pública: https://felipeortuzal.github.io/vestibular-aberto/ . A versão nova apresenta 12 demonstrações e 29 registros de metadados, sem conteúdo oficial republicado. Esta atualização documental gera commit próprio posterior ao deploy e não altera a interface. Nenhuma mudança foi feita em outros repositórios.
 
 ### Limitações
 
