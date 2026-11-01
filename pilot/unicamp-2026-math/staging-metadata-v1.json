@@ -1,0 +1,329 @@
+{
+  "schemaVersion": 1,
+  "institutions": [
+    {
+      "schemaVersion": 1,
+      "id": "unicamp",
+      "officialName": "Universidade Estadual de Campinas",
+      "region": "Campinas, SP",
+      "aliases": [
+        "Unicamp"
+      ],
+      "organizer": "Comvest",
+      "version": 1
+    }
+  ],
+  "processes": [
+    {
+      "schemaVersion": 1,
+      "id": "unicamp-process-2026",
+      "institutionId": "unicamp",
+      "editionYear": 2026,
+      "admissionSemester": null,
+      "selectionType": "vestibular",
+      "organizer": "Comvest",
+      "schools": [],
+      "campuses": [],
+      "courses": [],
+      "version": 1
+    }
+  ],
+  "exams": [
+    {
+      "schemaVersion": 1,
+      "id": "unicamp-2026-f1-q",
+      "processId": "unicamp-process-2026",
+      "editionYear": 2026,
+      "appliedAt": "2025-10-26",
+      "admissionSemester": null,
+      "phase": "1",
+      "day": 1,
+      "bookletCode": "Q",
+      "applicationId": null,
+      "applicationStatus": "applied",
+      "language": "pt-BR",
+      "schools": [],
+      "campuses": [],
+      "courses": [],
+      "version": 1
+    }
+  ],
+  "documents": [
+    {
+      "schemaVersion": 1,
+      "id": "unicamp-2026-f1-commented",
+      "examId": "unicamp-2026-f1-q",
+      "type": "booklet",
+      "bookletCode": "Q",
+      "sourceUrl": "https://www.comvest.unicamp.br/wp-content/uploads/2026/06/F1_2026_Prova-Q.pdf",
+      "landingPageUrl": "https://www.comvest.unicamp.br/vestibulares-anteriores/1a-fase-2a-fase-comentadas/",
+      "sha256": null,
+      "pageCount": 71,
+      "retrievedAt": null,
+      "mimeType": "application/pdf",
+      "revision": 1,
+      "supersedes": null,
+      "accessStatus": "unverified",
+      "rightsStatus": "link_only",
+      "rightsEvidence": null,
+      "version": 1
+    }
+  ],
+  "question_groups": [],
+  "questions": [
+    {
+      "schemaVersion": 1,
+      "id": "unicamp-2026-f1-q043",
+      "canonicalId": null,
+      "examId": "unicamp-2026-f1-q",
+      "groupId": null,
+      "originalNumber": "43",
+      "itemLabel": null,
+      "format": "multiple_choice",
+      "contentBlocks": [],
+      "choices": [],
+      "subitems": [],
+      "sourceLocations": [
+        {
+          "documentId": "unicamp-2026-f1-commented",
+          "physicalPage": 47,
+          "printedPage": "46",
+          "region": null,
+          "sourceSha256": null
+        }
+      ],
+      "rightsStatus": "link_only",
+      "rightsEvidence": null,
+      "reviewStatus": "needs_review",
+      "pipelineState": "discovered",
+      "difficulty": {
+        "editorial": null,
+        "empirical": null
+      },
+      "version": 1
+    },
+    {
+      "schemaVersion": 1,
+      "id": "unicamp-2026-f1-q045",
+      "canonicalId": null,
+      "examId": "unicamp-2026-f1-q",
+      "groupId": null,
+      "originalNumber": "45",
+      "itemLabel": null,
+      "format": "multiple_choice",
+      "contentBlocks": [],
+      "choices": [],
+      "subitems": [],
+      "sourceLocations": [
+        {
+          "documentId": "unicamp-2026-f1-commented",
+          "physicalPage": 48,
+          "printedPage": "47",
+          "region": null,
+          "sourceSha256": null
+        }
+      ],
+      "rightsStatus": "link_only",
+      "rightsEvidence": null,
+      "reviewStatus": "needs_review",
+      "pipelineState": "discovered",
+      "difficulty": {
+        "editorial": null,
+        "empirical": null
+      },
+      "version": 1
+    },
+    {
+      "schemaVersion": 1,
+      "id": "unicamp-2026-f1-q049",
+      "canonicalId": null,
+      "examId": "unicamp-2026-f1-q",
+      "groupId": null,
+      "originalNumber": "49",
+      "itemLabel": null,
+      "format": "multiple_choice",
+      "contentBlocks": [],
+      "choices": [],
+      "subitems": [],
+      "sourceLocations": [
+        {
+          "documentId": "unicamp-2026-f1-commented",
+          "physicalPage": 50,
+          "printedPage": "49",
+          "region": null,
+          "sourceSha256": null
+        }
+      ],
+      "rightsStatus": "link_only",
+      "rightsEvidence": null,
+      "reviewStatus": "needs_review",
+      "pipelineState": "discovered",
+      "difficulty": {
+        "editorial": null,
+        "empirical": null
+      },
+      "version": 1
+    },
+    {
+      "schemaVersion": 1,
+      "id": "unicamp-2026-f1-q051",
+      "canonicalId": null,
+      "examId": "unicamp-2026-f1-q",
+      "groupId": null,
+      "originalNumber": "51",
+      "itemLabel": null,
+      "format": "multiple_choice",
+      "contentBlocks": [],
+      "choices": [],
+      "subitems": [],
+      "sourceLocations": [
+        {
+          "documentId": "unicamp-2026-f1-commented",
+          "physicalPage": 51,
+          "printedPage": "50",
+          "region": null,
+          "sourceSha256": null
+        }
+      ],
+      "rightsStatus": "link_only",
+      "rightsEvidence": null,
+      "reviewStatus": "needs_review",
+      "pipelineState": "discovered",
+      "difficulty": {
+        "editorial": null,
+        "empirical": null
+      },
+      "version": 1
+    },
+    {
+      "schemaVersion": 1,
+      "id": "unicamp-2026-f1-q052",
+      "canonicalId": null,
+      "examId": "unicamp-2026-f1-q",
+      "groupId": null,
+      "originalNumber": "52",
+      "itemLabel": null,
+      "format": "multiple_choice",
+      "contentBlocks": [],
+      "choices": [],
+      "subitems": [],
+      "sourceLocations": [
+        {
+          "documentId": "unicamp-2026-f1-commented",
+          "physicalPage": 51,
+          "printedPage": "50",
+          "region": null,
+          "sourceSha256": null
+        },
+        {
+          "documentId": "unicamp-2026-f1-commented",
+          "physicalPage": 52,
+          "printedPage": "51",
+          "region": null,
+          "sourceSha256": null
+        }
+      ],
+      "rightsStatus": "link_only",
+      "rightsEvidence": null,
+      "reviewStatus": "needs_review",
+      "pipelineState": "discovered",
+      "difficulty": {
+        "editorial": null,
+        "empirical": null
+      },
+      "version": 1
+    }
+  ],
+  "answers": [
+    {
+      "schemaVersion": 1,
+      "id": "unicamp-2026-f1-q043-answer",
+      "questionId": "unicamp-2026-f1-q043",
+      "status": "missing",
+      "value": null,
+      "rubric": [],
+      "sourceDocumentId": null,
+      "sourcePage": null,
+      "bookletCode": "Q",
+      "revision": 1,
+      "supersedes": null,
+      "verifiedAt": null,
+      "reviewStatus": "needs_review",
+      "conflictNote": "Letras do comentário Comvest disponíveis no manifesto apenas como candidatas; gabarito final do caderno Q não foi confrontado.",
+      "verifiedBy": null
+    },
+    {
+      "schemaVersion": 1,
+      "id": "unicamp-2026-f1-q045-answer",
+      "questionId": "unicamp-2026-f1-q045",
+      "status": "missing",
+      "value": null,
+      "rubric": [],
+      "sourceDocumentId": null,
+      "sourcePage": null,
+      "bookletCode": "Q",
+      "revision": 1,
+      "supersedes": null,
+      "verifiedAt": null,
+      "reviewStatus": "needs_review",
+      "conflictNote": "Letras do comentário Comvest disponíveis no manifesto apenas como candidatas; gabarito final do caderno Q não foi confrontado.",
+      "verifiedBy": null
+    },
+    {
+      "schemaVersion": 1,
+      "id": "unicamp-2026-f1-q049-answer",
+      "questionId": "unicamp-2026-f1-q049",
+      "status": "missing",
+      "value": null,
+      "rubric": [],
+      "sourceDocumentId": null,
+      "sourcePage": null,
+      "bookletCode": "Q",
+      "revision": 1,
+      "supersedes": null,
+      "verifiedAt": null,
+      "reviewStatus": "needs_review",
+      "conflictNote": "Letras do comentário Comvest disponíveis no manifesto apenas como candidatas; gabarito final do caderno Q não foi confrontado.",
+      "verifiedBy": null
+    },
+    {
+      "schemaVersion": 1,
+      "id": "unicamp-2026-f1-q051-answer",
+      "questionId": "unicamp-2026-f1-q051",
+      "status": "missing",
+      "value": null,
+      "rubric": [],
+      "sourceDocumentId": null,
+      "sourcePage": null,
+      "bookletCode": "Q",
+      "revision": 1,
+      "supersedes": null,
+      "verifiedAt": null,
+      "reviewStatus": "needs_review",
+      "conflictNote": "Letras do comentário Comvest disponíveis no manifesto apenas como candidatas; gabarito final do caderno Q não foi confrontado.",
+      "verifiedBy": null
+    },
+    {
+      "schemaVersion": 1,
+      "id": "unicamp-2026-f1-q052-answer",
+      "questionId": "unicamp-2026-f1-q052",
+      "status": "missing",
+      "value": null,
+      "rubric": [],
+      "sourceDocumentId": null,
+      "sourcePage": null,
+      "bookletCode": "Q",
+      "revision": 1,
+      "supersedes": null,
+      "verifiedAt": null,
+      "reviewStatus": "needs_review",
+      "conflictNote": "Letras do comentário Comvest disponíveis no manifesto apenas como candidatas; gabarito final do caderno Q não foi confrontado.",
+      "verifiedBy": null
+    }
+  ],
+  "explanations": [],
+  "classifications": [],
+  "review_events": [],
+  "question_appearances": [],
+  "user_attempts": []
+}
