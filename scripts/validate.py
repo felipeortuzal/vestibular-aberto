@@ -47,3 +47,11 @@ print("OK: JSON Schemas V1, integridade do staging sintético e taxonomia versio
 
 summary_inventory = validate_inventory(load("data/inventory.json"))
 print(f"OK: Inventário 2024–2026: {summary_inventory['entries']} registros, {summary_inventory['directUrls']} URLs de arquivo, {summary_inventory['coverage']} recortes de cobertura; sem provas importadas.")
+
+# O lote oficial piloto só contém metadados. Não adicioná-lo ao catálogo publicado.
+from validate_pilot import validate_pilot
+pilot_manifest=load("pilot/unicamp-2026-math/manifest.json")
+pilot_seed=load("pilot/unicamp-2026-math/staging-metadata-v1.json")
+pilot_validation=validate_pilot(pilot_manifest,pilot_seed)
+validate_bundle(pilot_seed,taxonomy)
+print(f"OK: piloto {pilot_validation['selected']} registros em staging de metadados; zero gabaritos finais verificados e zero publicados.")

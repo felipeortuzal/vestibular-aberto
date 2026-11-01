@@ -9,6 +9,7 @@
     "validate": "python3 scripts/validate.py",
     "build": "python3 scripts/build.py",
     "test:contract": "python3 -m unittest discover -s tests -p 'test_contract.py' -v",
-    "test:inventory": "python3 -m unittest discover -s tests -p 'test_inventory.py' -v"
+    "test:inventory": "python3 -m unittest discover -s tests -p 'test_inventory.py' -v",
+    "test:pilot": "python3 -m unittest discover -s tests -p 'test_pilot.py' -v"
   }
 }
