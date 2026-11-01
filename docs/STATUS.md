@@ -2,6 +2,10 @@
 
 ## Etapa 04 — extração piloto Unicamp 2026
 
+**Publicação da etapa 04 no repositório:** PR #4 integrado à `main` no commit `1e6e7350fd38e0321af8b50ebe5ba5b68a3c3be0`. Workflow de build e deploy de GitHub Pages com `conclusion=success`: https://github.com/felipeortuzal/vestibular-aberto/actions/runs/41362389873 . URL estática: https://felipeortuzal.github.io/vestibular-aberto/ . O deploy atualiza código e documentação; **não publica enunciados oficiais**.
+
+
+
 Foram selecionadas cinco questões de Matemática da primeira fase comentada da Unicamp 2026: **43, 45, 49, 51 e 52**. A prova oficial possui 71 páginas, 7.882.756 bytes e SHA-256 **2d1d0d375fb8ee7ea84ebb11350ca30851a5c928db80ed6e2479aeeb1ba23284**, obtidos no GitHub Actions.
 
 O pipeline Python/PyMuPDF baixou o arquivo com limite de 25 MiB e timeout, extraiu texto nativo respeitando colunas, identificou **cinco de cinco transcrições candidatas**, gerou prévias do PDF e relatório por página. A questão 45 exigiu ajuste do reconhecimento de alternativas em duas colunas. PDF, transcrições e imagens ficam apenas em `raw/` e `staging/`, fora do Git e do build. A CI usou armazenamento efêmero; o editor pode reproduzir o estágio localmente.
