@@ -34,7 +34,9 @@ source_bundle=load('data/publication-v1.json')
 images=load('data/approved-assets.json')
 public_questions=project_eligible(source_bundle,taxonomy,catalog,images,repo_root=ROOT)
 validate_exam_catalog(catalog,public_questions)
-assert len(public_questions)==0, 'Piloto segue sem aprovação humana; publicar exige atualizar o pacote editorial.'
+# A seleção pública vem do pacote editorial aprovado, jamais do piloto pendente.
+assert all(q['kind']=='official' for q in public_questions)
+assert len({q['id'] for q in public_questions}) == len(public_questions)
 for path in ['index.html', 'assets/styles.css', 'assets/core.js', 'assets/app.js']:
     assert (ROOT / path).is_file(), f'Arquivo ausente: {path}'
 print(f'OK: {len(questions)} autorais, {len(public_questions)} oficiais aprovadas, {len(catalog)} prova individualizada por link, {len(paths)} subassuntos.')

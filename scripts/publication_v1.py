@@ -17,7 +17,7 @@ DOMAIN_BY_INSTITUTION = {
     "fgv": {"vestibular.fgv.br"},
 }
 DOC_TYPES = {"booklet", "commented_booklet", "answer_key", "correction_grid", "expected_answers", "notice"}
-ASSET_PATH = re.compile(r"^assets/official/([a-z][a-z0-9-]{2,90})\.(png|jpg|webp|svg)$")
+ASSET_PATH = re.compile(r"^assets/official/([a-z][a-z0-9-]{2,90})\.(png|jpg|webp)$")
 
 
 class PublicationError(ValueError):
@@ -60,6 +60,8 @@ def validate_exam_catalog(exams, available_questions=()):
                eid + ": total de questões precisa ser fundamentado ou null")
         actual = published_by_exam.get(eid, 0)
         ensure(e["approvedQuestionCount"] == actual, eid + ": contagem publicada não coincide com os itens elegíveis")
+        if total is not None:
+            ensure(actual <= total, eid + ": publicadas excedem total oficial verificado")
         ensure((e["status"] == "published") == (actual > 0), eid + ": status contradiz a contagem")
         if actual:
             ensure(e["finalAnswerDocumentStatus"] == "verified", eid + ": gabarito não verificado")
@@ -90,7 +92,7 @@ def approved_assets(assets, repo_root):
         ensure(aid not in found and ASSET_PATH.fullmatch(rel), "Asset não permitido ou duplicado")
         ensure(ASSET_PATH.fullmatch(rel).group(1) == aid, "AssetId e caminho não correspondem")
         ensure(asset.get("rightsStatus") in ("authorized", "licensed", "original")
-               and asset.get("reviewedBy", {}).get("type") == "human"
+               and (asset.get("reviewedBy") or {}).get("type") == "human"
                and asset.get("altText") and asset.get("credit") and asset.get("sourceUrl"),
                "Imagem sem autorização/revisão humana e atribuição")
         p = Path(repo_root) / rel
