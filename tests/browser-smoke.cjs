@@ -12,6 +12,11 @@ const chrome=['google-chrome','google-chrome-stable','chromium','chromium-browse
 async function main(){
   if(!chrome)throw new Error('Chrome ou Chromium não encontrado: teste visual obrigatório na CI.');
   assert.ok(fs.existsSync(path.join(dist,'index.html')),'Execute npm run build antes de test:browser.');
+  assert.equal(JSON.parse(fs.readFileSync(path.join(dist,'data/official-questions.json'),'utf8')).length,0,'Não publicar o piloto antes da revisão humana.');
+  assert.equal(JSON.parse(fs.readFileSync(path.join(dist,'data/exams.json'),'utf8')).length,1,'Uma prova comentada deve estar individualizada como referência.');
+  for(const restricted of ['pilot','staging','raw','schemas','tests','data/publication-v1.json','data/approved-assets.json']){
+    assert.ok(!fs.existsSync(path.join(dist,restricted)),'Arquivo editorial proibido no Pages: '+restricted);
+  }
   const server=http.createServer((req,res)=>{
     try{
       const pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname);
@@ -68,6 +73,8 @@ async function main(){
     await ready();
     assert.equal(await evaluate("document.getElementById('answered-total').textContent"),'0');
     assert.equal(await evaluate("document.querySelectorAll('.question-card').length"),4);
+    assert.equal(await evaluate("document.getElementById('official-total').textContent"),'0');
+    assert.equal(await evaluate("window.VA_DATA.questions.filter(q=>q.kind==='official').length"),0);
     fs.mkdirSync(path.join(__dirname,'.screenshots'),{recursive:true});
     for(const width of [360,768,1440]){
       await send('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:false});
@@ -82,6 +89,16 @@ async function main(){
     await evaluate("location.hash='#provas'");
     await until(()=>evaluate("document.querySelectorAll('#inventory-list .inventory-row').length===29"),'inventário na biblioteca');
     assert.equal(await evaluate("document.querySelectorAll('#exam-list .exam-card').length"),4,'quatro diretórios oficiais');
+    assert.equal(await evaluate("document.querySelectorAll('#official-exam-list .real-exam').length"),1,'registro individual da prova comentada');
+    assert.equal(await evaluate("document.getElementById('exam-catalog-total').textContent"),'1 prova identificada');
+    assert.equal(await evaluate("document.querySelector('#official-exam-list').textContent.includes('0 questões aprovadas')"),true);
+    assert.equal(await evaluate("document.querySelector('#official-exam-list').textContent.includes('Gabarito final/retificado')"),true);
+    assert.equal(await evaluate("document.querySelector('#official-exam-list .exam-document-links a').href.includes('comvest.unicamp.br')"),true);
+    await set('exam-institution','fgv');
+    assert.equal(await evaluate("document.querySelectorAll('#official-exam-list .real-exam').length"),0);
+    await set('exam-institution','unicamp');
+    assert.equal(await evaluate("document.querySelectorAll('#official-exam-list .real-exam').length"),1);
+    await set('exam-institution','');
     assert.equal(await evaluate("document.getElementById('catalog-total').textContent"),'29');
     await set('inventory-institution','unicamp');
     assert.equal(await evaluate("document.querySelectorAll('#inventory-list .inventory-row').length"),6);
@@ -108,6 +125,13 @@ async function main(){
     await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Tab',code:'Tab',windowsVirtualKeyCode:9});
     assert.equal(await evaluate('document.activeElement.id'),'institution','Ordem de Tab entre busca e vestibular');
     assert.match(await set('institution','fuvest'),/^0 /,'Nenhuma questão oficial deve aparecer');
+    await set('institution','unicamp');
+    assert.equal(await evaluate("document.getElementById('edition').disabled"),false,'Edição 2026 deve constar do catálogo de provas');
+    assert.equal(await evaluate("document.getElementById('semester').disabled"),true,'Semestre desconhecido deve continuar vazio');
+    assert.equal(await evaluate("document.getElementById('school').disabled"),true,'Escola ainda não verificada não deve ser inventada');
+    assert.match(await set('edition','2026'),/^0 /,'Piloto da Unicamp segue sem conteúdo publicável');
+    await set('edition','');
+    await set('institution','fuvest');
     await set('institution','');
     const missing=await evaluate("(()=>{const used=new Set(window.VA_DATA.questions.map(q=>q.classification.subjectId));return [...document.getElementById('subject').options].map(o=>o.value).find(id=>id&&!used.has(id));})()");
     assert.ok(missing,'Matéria sem exemplo ausente');
