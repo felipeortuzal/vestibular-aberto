@@ -59,6 +59,15 @@ def validate_exam_catalog(exams, available_questions=()):
         ensure(total is None or (isinstance(total, int) and total >= 0),
                eid + ": total de questões precisa ser fundamentado ou null")
         actual = published_by_exam.get(eid, 0)
+        # O catálogo da aplicação não pode rebatizar um caderno aprovado.
+        for q in available_questions:
+            if q["examId"] != eid:
+                continue
+            ensure(q["institutionId"] == inst and q["editionYear"] == e["editionYear"]
+                   and q["appliedAt"] == e["appliedAt"] and q["phase"] == e["phase"]
+                   and q["day"] == e["day"] and q["bookletCode"] == e["bookletCode"]
+                   and q["admissionSemester"] == e["admissionSemester"],
+                   eid + ": projeção não pertence à aplicação/caderno catalogados")
         ensure(e["approvedQuestionCount"] == actual, eid + ": contagem publicada não coincide com os itens elegíveis")
         if total is not None:
             ensure(actual <= total, eid + ": publicadas excedem total oficial verificado")
@@ -80,6 +89,11 @@ def validate_exam_catalog(exams, available_questions=()):
                    eid + ": documento sem hash ou páginas")
         if e["finalAnswerDocumentStatus"] == "verified":
             ensure(any(d["type"] == "answer_key" for d in docs), eid + ": faltou arquivo do gabarito final")
+        for q in available_questions:
+            if q["examId"] == eid:
+                ensure(any(d["url"] == q["provenance"]["url"]
+                           and d["sha256"] == q["provenance"]["sha256"] for d in docs),
+                       eid + ": documento de questão divergente do catálogo")
     ensure(set(published_by_exam).issubset(ids), "Questão aprovada sem registro de prova")
     return {"individualizedExams": len(exams), "publishedExams": sum(e["status"] == "published" for e in exams)}
 
@@ -196,7 +210,7 @@ def project_eligible(bundle, taxonomy, exam_catalog, assets=(), repo_root=None):
         ensure(official_https(document["sourceUrl"], sid), "Documento de questão não pertence à instituição")
         result.append({
             "id": q["id"], "kind": "official", "institutionId": sid, "organizer": process["organizer"],
-            "examId": q["examId"], "editionYear": exam["editionYear"],
+            "examId": q["examId"], "editionYear": exam["editionYear"], "appliedAt": exam["appliedAt"],
             "admissionSemester": exam["admissionSemester"], "phase": exam["phase"],
             "day": exam["day"], "bookletCode": exam["bookletCode"],
             "schools": exam["schools"], "courses": exam["courses"], "campuses": exam["campuses"],
