@@ -1,4 +1,19 @@
-# Estado do projeto — 01/11/2026
+# Estado do projeto — 02/11/2026
+
+## Etapa 05 — classificação e revisão editorial (pré-revisão IA concluída)
+
+**Entregue:** 5 classificações V1 por matéria/assunto/subassunto, com tags secundárias, confiança editorial e justificativa; 5 resoluções matemáticas independentes `ai_draft`; 5 checklists por item com fonte, página, fórmulas, gabarito, direitos e aprovação humana. Os IDs da taxonomia (12 matérias/45 assuntos/122 subassuntos) e das cinco questões foram preservados. Relatório completo em `docs/ETAPA05_REVISAO.md`; dados em `pilot/unicamp-2026-math/staging-metadata-v1.json` e `review-checklist-v1.json`.
+
+A prova comentada da Comvest foi examinada nas páginas físicas 47, 48, 50, 51 e 52, com alternativas candidatas A/B/B/C/B. Os cálculos independentes coincidiram. A checagem integral das transcrições do parser efêmero **não ocorreu**; a Q45 usa alternativas em duas colunas, a Q49 atravessa colunas, a Q51 exige o símbolo `ℕ` e a Q52 atravessa páginas. Nenhum PDF novo foi importado, nenhum enunciado oficial ou figura foi inserido no GitHub.
+
+**Estado correto:** 5 classificações propostas por IA, 5 resoluções de IA, **0 revisões humanas**, **0 gabaritos finais Q/X formalmente reconciliados**, **0 aprovados**, **0 oficiais publicáveis**. Os `reviewedBy` continuam `null` e nenhuma questão teve o estado promovido para `reviewed` ou `published`. Direito de uso permanece `link_only` até análise por item; a Comvest autoriza reprodução parcial com atribuição e sem exclusividade, mas não uma prova integral.
+
+**Código:** `scripts/validate_review.py` e `tests/test_review.py` bloqueiam falsas aprovações, gabaritos não verificados, texto oficial em commit, direitos insuficientes e export antes de aprovação. A CI roda `npm run test:review`, além dos testes anteriores. Os dados do site continuam sendo 12 exemplos autorais e 29 referências no catálogo, sem migração de progresso.
+
+**Próximo passo:** obter aprovação humana real de texto, alternativas, classificação, resolução, gabarito final e direitos por questão; somente então avaliar o fluxo do `prompts/06-publicacao-piloto.md`. Ver `docs/ETAPA05_REVISAO.md` para decisões e pendências concretas.
+
+## Histórico — etapas anteriores
+
 
 ## Etapa 04 — extração piloto Unicamp 2026
 

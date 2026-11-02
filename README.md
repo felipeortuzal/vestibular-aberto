@@ -54,6 +54,7 @@ npm test
 npm run test:contract
 npm run test:inventory
 npm run test:pilot
+npm run test:review
 npm run build
 npm run test:browser  # requer Chrome ou Chromium local
 ```
@@ -82,7 +83,7 @@ Antes de executar, confira se esse nome ainda está livre. Não execute novament
 
 ## Como trabalhar com Astra + Sol
 
-Leia `docs/ROTEIRO.md`. No início de uma sessão de implementação, leia `AGENTS.md` e `docs/STATUS.md` e use o prompt da etapa vigente. As etapas 01 a 04 foram executadas; o próximo prompt é o 05 (classificação e revisão). Traga o resultado, diff, testes e pendências para a revisão antes de avançar. Essa divisão organiza o trabalho; não pressupõe que um modelo sempre será superior ao outro.
+Leia `docs/ROTEIRO.md`. No início de uma sessão de implementação, leia `AGENTS.md` e `docs/STATUS.md` e use o prompt da etapa vigente. As etapas 01 a 05 tiveram implementação técnica; a aprovação humana do lote da etapa 05 ainda está pendente. O próximo prompt é o 06 (publicação condicionada à revisão). Traga o resultado, diff, testes e pendências para a revisão antes de avançar. Essa divisão organiza o trabalho; não pressupõe que um modelo sempre será superior ao outro.
 
 O próximo objetivo útil é uma pequena seleção de questões reais completamente rastreáveis, e não uma promessa de ter todos os vestibulares. A expansão deve preservar o padrão de qualidade.
 
@@ -101,3 +102,7 @@ Em **Provas e gabaritos**, há dois blocos distintos: os quatro diretórios ofic
 ## Etapa 04: extração piloto protegida (Unicamp 2026)
 
 Selecionadas cinco questões de Matemática da primeira fase comentada (43, 45, 49, 51 e 52). Seus **metadados** estão em `pilot/unicamp-2026-math/`. A prova, textos extraídos e imagens ficam exclusivamente em `raw/` e `staging/` (ambos ignorados e não publicados). O script `scripts/ingest_pilot.py` permite `--mode probe` (captura e hash) e `--mode extract` (camada textual e candidatos à revisão). Instale `requirements-dev.txt` e rode `npm run test:pilot`. Nenhum gabarito final foi formalmente conciliado, e **nenhuma questão oficial foi incorporada ao site**. Leia `docs/ETAPA04_PILOTO.md` antes de executar o lote.
+
+## Etapa 05: pré-revisão editorial (aguardando revisão humana)
+
+Foram propostas cinco classificações V1 e cinco resoluções matemáticas originais, todas com `proposedBy.type=ai`, `reviewStatus=needs_review` e `reviewedBy=null`. Os itens 43, 45, 49, 51 e 52 da Unicamp 2026 têm checklist próprio em `pilot/unicamp-2026-math/review-checklist-v1.json`; os textos oficiais continuam fora do repositório. Consulte `docs/ETAPA05_REVISAO.md` para decisões necessárias e execute `npm run test:review` para validar que nenhum item possa aparecer como aprovado ou publicável sem revisão e gabarito final. O site segue exibindo somente as 12 questões autorais.
