@@ -2,6 +2,8 @@
 
 ## Etapa 05 — classificação e revisão editorial (pré-revisão IA concluída)
 
+**Integração e publicação confirmadas:** PR #5 integrado à `main` no commit `f017a06122dcb5a856dd58e3b794127d29096b20`; validação e deploy GitHub Pages concluídos com sucesso em https://github.com/felipeortuzal/vestibular-aberto/actions/runs/41477565597 . Essa publicação atualiza código e metadados técnicos, **não** insere questões oficiais respondíveis no site. A presente atualização documental gera commit posterior, sem alterar a experiência pública.
+
 **Entregue:** 5 classificações V1 por matéria/assunto/subassunto, com tags secundárias, confiança editorial e justificativa; 5 resoluções matemáticas independentes `ai_draft`; 5 checklists por item com fonte, página, fórmulas, gabarito, direitos e aprovação humana. Os IDs da taxonomia (12 matérias/45 assuntos/122 subassuntos) e das cinco questões foram preservados. Relatório completo em `docs/ETAPA05_REVISAO.md`; dados em `pilot/unicamp-2026-math/staging-metadata-v1.json` e `review-checklist-v1.json`.
 
 A prova comentada da Comvest foi examinada nas páginas físicas 47, 48, 50, 51 e 52, com alternativas candidatas A/B/B/C/B. Os cálculos independentes coincidiram. A checagem integral das transcrições do parser efêmero **não ocorreu**; a Q45 usa alternativas em duas colunas, a Q49 atravessa colunas, a Q51 exige o símbolo `ℕ` e a Q52 atravessa páginas. Nenhum PDF novo foi importado, nenhum enunciado oficial ou figura foi inserido no GitHub.
