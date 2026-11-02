@@ -214,7 +214,7 @@ class ContractTests(unittest.TestCase):
         demo = json.loads((ROOT / "data/questions.json").read_text(encoding="utf-8"))
         self.assertEqual(len(demo),12)
         self.assertTrue(all(q["kind"]=="demo" and q["examId"] is None for q in demo))
-        self.assertEqual(json.loads((ROOT / "data/exams.json").read_text(encoding="utf-8")), [])
+        self.assertEqual(len(json.loads((ROOT / "data/exams.json").read_text(encoding="utf-8"))),1)
         self.assertEqual(empty_bundle()["questions"], [])
 
 

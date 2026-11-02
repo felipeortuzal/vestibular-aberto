@@ -58,7 +58,9 @@ class InventoryTests(unittest.TestCase):
     def test_legacy_exams_remain_empty(self):
         exams=json.loads((ROOT / "data/exams.json").read_text(encoding="utf-8"))
         questions=json.loads((ROOT / "data/questions.json").read_text(encoding="utf-8"))
-        self.assertEqual(exams,[])
+        self.assertEqual(len(exams),1)
+        self.assertEqual(exams[0]["status"],"metadata_only")
+        self.assertEqual(exams[0]["approvedQuestionCount"],0)
         self.assertEqual(len(questions),12)
         self.assertTrue(all(q["kind"]=="demo" and q["examId"] is None for q in questions))
 

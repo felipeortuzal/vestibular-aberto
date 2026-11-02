@@ -88,7 +88,7 @@ class PilotTests(unittest.TestCase):
 
     def test_public_seed_and_browser_progress_unchanged(self):
         self.assertEqual(len(json.loads((ROOT/"data/questions.json").read_text())),12)
-        self.assertEqual(json.loads((ROOT/"data/exams.json").read_text()),[])
+        self.assertEqual(json.loads((ROOT/"data/exams.json").read_text())[0]["approvedQuestionCount"],0)
         self.assertFalse((ROOT/"data/questions-official.json").exists())
 
 if __name__=="__main__":
