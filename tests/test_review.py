@@ -98,6 +98,6 @@ class ReviewStage5Tests(unittest.TestCase):
         self.assertTrue(all(q["contentBlocks"]==[] and q["choices"]==[] for q in b["questions"]))
         self.assertTrue(all(x["authorType"]=="ai_draft" and x["sourceDocumentId"] is None for x in b["explanations"]))
         self.assertEqual(len(json.loads((ROOT/"data/questions.json").read_text(encoding="utf-8"))),12)
-        self.assertEqual(json.loads((ROOT/"data/exams.json").read_text(encoding="utf-8")),[])
+        self.assertEqual(json.loads((ROOT/"data/exams.json").read_text(encoding="utf-8"))[0]["status"],"metadata_only")
 
 if __name__=="__main__":unittest.main()

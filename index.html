@@ -7,10 +7,10 @@
   <meta name="theme-color" content="#142131">
   <title>Vestibular Aberto — Questões e provas em um só lugar</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/styles.css?v=0.3.0">
+  <link rel="stylesheet" href="assets/styles.css?v=0.6.0">
   <script defer src="data/catalog.js"></script>
   <script defer src="assets/core.js"></script>
-  <script defer src="assets/app.js?v=0.3.0"></script>
+  <script defer src="assets/app.js?v=0.6.0"></script>
 </head>
 <body>
   <a class="skip" href="#main">Pular para o conteúdo</a>
@@ -40,7 +40,7 @@
   <div class="workspace">
     <header class="topbar">
       <span class="topbar-location"><span class="topbar-dot" aria-hidden="true"></span> AMBIENTE DE ESTUDOS <span class="topbar-slash">/</span> Vestibular Aberto</span>
-      <span class="topbar-right">ACESSO GRATUITO <span class="version">V0.3 · PILOTO</span></span>
+      <span class="topbar-right">ACESSO GRATUITO <span class="version">V0.6 · PILOTO</span></span>
     </header>
     <main id="main" tabindex="-1">
       <section class="hero" aria-label="Apresentação da plataforma">
@@ -63,7 +63,7 @@
         <span class="hero-bottom-tag">CONTEÚDO COM CONTEXTO. SEM ATALHOS.</span>
       </section>
       <section class="stats" aria-label="Resumo do acervo">
-        <div class="stat-item"><span class="stat-glyph" aria-hidden="true">01</span><p><strong id="question-total">0</strong><span>exercícios autorais para testar</span></p></div>
+        <div class="stat-item"><span class="stat-glyph" aria-hidden="true">01</span><p><strong id="question-total">0</strong><span>exercícios autorais de demonstração</span></p></div>
         <div class="stat-item"><span class="stat-glyph" aria-hidden="true">02</span><p><strong id="catalog-total">0</strong><span>registros no inventário oficial</span></p></div>
         <div class="stat-item"><span class="stat-glyph" aria-hidden="true">03</span><p><strong id="answered-total">0</strong><span>questões que você respondeu</span></p></div>
       </section>
@@ -71,7 +71,7 @@
       <div id="storage-warning" class="notice warning" role="alert" hidden>Seu navegador não permitiu salvar o progresso. Você pode continuar estudando, mas os dados serão perdidos ao fechar esta página.</div>
       <section id="questions-view" aria-labelledby="practice-heading">
         <div class="section-heading">
-          <div><p class="eyebrow">PRATIQUE COM FOCO</p><h2 id="practice-heading">Questões para colocar a mão na massa<span class="heading-dot">.</span></h2><p>Escolha uma matéria ou refine os filtros. Por enquanto, os exemplos são 100% autorais.</p></div>
+          <div><p class="eyebrow">PRATIQUE COM FOCO</p><h2 id="practice-heading">Questões para colocar a mão na massa<span class="heading-dot">.</span></h2><p id="practice-description">Escolha uma matéria ou refine os filtros. As demonstrações aparecem identificadas e separadas das oficiais.</p><p class="official-counter" id="official-counter" role="status"><strong id="official-total">0</strong> questões oficiais aprovadas no banco</p></div>
           <span class="section-number">01 / PRÁTICA</span>
         </div>
         <div class="quick-subjects" aria-label="Acesso rápido por matéria">
@@ -86,6 +86,11 @@
             <div class="panel-title"><div><span class="panel-kicker">ENCONTRE O CONTEÚDO</span><h2>Filtros</h2></div><button type="reset" class="text-button">Limpar tudo</button></div>
             <label for="search">Buscar no enunciado</label><input id="search" type="search" placeholder="Ex.: triângulo, função..." autocomplete="off">
             <label for="institution">Vestibular</label><select id="institution"><option value="">Todos</option><option value="fuvest">Fuvest / USP</option><option value="unicamp">Unicamp</option><option value="insper">Insper</option><option value="fgv">FGV</option><option value="autoral">Exercícios autorais</option></select>
+            <label for="edition">Edição</label><select id="edition" disabled><option value="">Todas as edições</option></select>
+            <label for="semester">Semestre de ingresso</label><select id="semester" disabled><option value="">Todos os semestres</option></select>
+            <label for="phase">Fase</label><select id="phase" disabled><option value="">Todas as fases</option></select>
+            <label for="school">Escola / unidade</label><select id="school" disabled><option value="">Todas as escolas</option></select>
+            <label for="course">Curso</label><select id="course" disabled><option value="">Todos os cursos</option></select>
             <label for="subject">Matéria</label><select id="subject"><option value="">Todas as matérias</option></select>
             <label for="topic">Assunto</label><select id="topic" disabled><option value="">Escolha uma matéria</option></select>
             <label for="subtopic">Subassunto</label><select id="subtopic" disabled><option value="">Escolha um assunto</option></select>
@@ -103,8 +108,15 @@
         </div>
       </section>
       <section id="exams-view" hidden aria-labelledby="library-heading">
-        <div class="section-heading"><div><p class="eyebrow">BIBLIOTECA OFICIAL</p><h2 id="library-heading">A prova começa na fonte<span class="heading-dot">.</span></h2><p>Documentos catalogados para consulta. Nenhum caderno foi importado para o nosso servidor.</p></div><span class="section-number">02 / ACERVO</span></div>
+        <div class="section-heading"><div><p class="eyebrow">BIBLIOTECA OFICIAL</p><h2 id="library-heading">A prova começa na fonte<span class="heading-dot">.</span></h2><p>Documentos catalogados para consulta. Nenhuma prova integral é hospedada por esta plataforma.</p></div><span class="section-number">02 / ACERVO</span></div>
         <div class="library-legend"><span><span class="legend-dot teal"></span> Documento com link verificado</span><span><span class="legend-dot amber"></span> Identificado no índice</span><span><span class="legend-dot grey"></span> Direitos para republicação pendentes</span></div>
+        <div class="library-section-title"><div><h3>Provas identificadas</h3><p>Documentos de cada aplicação e estado real de publicação. Somente links para PDFs na fonte.</p></div><span id="exam-catalog-total">0 provas</span></div>
+        <div class="inventory-filters exam-catalog-filters">
+          <label for="exam-institution">Instituição <select id="exam-institution"><option value="">Todas as instituições</option></select></label>
+          <label for="exam-edition">Edição <select id="exam-edition"><option value="">Todas as edições</option></select></label>
+          <label for="exam-phase">Fase <select id="exam-phase"><option value="">Todas as fases</option></select></label>
+        </div>
+        <div id="official-exam-list" class="exam-grid" aria-live="polite"></div>
         <div class="library-section-title"><h3>Diretórios das instituições</h3><span>4 fontes oficiais</span></div>
         <div id="exam-list" class="exam-grid"></div>
         <div class="library-section-title inventory-title"><div><h3>Inventário de documentos</h3><p>Aqui você filtra o que foi encontrado nas fontes oficiais, por edição e tipo.</p></div><span id="inventory-total">—</span></div>
@@ -123,7 +135,7 @@
         <div class="data-tools"><button id="export-progress" class="button outline">Exportar progresso</button><button id="import-trigger" class="button outline">Importar progresso</button><input id="import-progress" type="file" accept="application/json,.json" aria-label="Arquivo de progresso" hidden><button id="reset-progress" class="text-button danger">Apagar dados deste navegador</button></div>
         <p class="small muted">Seu histórico fica neste navegador. Exportar permite guardar uma cópia; ainda não há contas nem sincronização.</p>
       </section>
-      <footer><span class="footer-brand">vestibular <strong>aberto.</strong></span><span>Projeto independente de estudos · Nenhum vínculo com as instituições listadas.</span><span>2026 · V0.3</span></footer>
+      <footer><span class="footer-brand">vestibular <strong>aberto.</strong></span><span>Projeto independente de estudos · Nenhum vínculo com as instituições listadas.</span><span>2026 · V0.6</span></footer>
     </main>
   </div>
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>

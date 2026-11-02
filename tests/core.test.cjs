@@ -54,3 +54,36 @@ test('importação rejeitada não altera dados anteriores',()=>{
   assert.throws(()=>C.cleanProgress({version:999,favorites:[],attempts:[]},questions));
   assert.deepEqual(old,{version:1,favorites:['demo-001'],attempts:[]});
 });
+
+test('filtros do banco oficial combinam edição, semestre, fase, escola e curso',()=>{
+  const q={...questions[0],id:'test-in-memory-only',kind:'official',institutionId:'unicamp',
+    editionYear:2026,admissionSemester:'2026.2',phase:'1',
+    schools:['Escola A'],courses:['Curso A']};
+  const rows=[...questions,q];
+  const filters={includeDemo:false,institution:'unicamp',edition:'2026',semester:'2026.2',
+    phase:'1',school:'Escola A',course:'Curso A'};
+  assert.deepEqual(C.filterQuestions(rows,filters,empty).map(x=>x.id),['test-in-memory-only']);
+  assert.equal(C.filterQuestions(rows,{...filters,course:'Curso B'},empty).length,0);
+  assert.equal(C.filterQuestions(rows,{...filters,semester:'2026.1'},empty).length,0);
+  assert.equal(C.filterQuestions(rows,{...filters,includeDemo:true},empty).length,1);
+});
+
+test('gabarito corrigido recalcula último acerto sem inventar versão anterior',()=>{
+  const q={...questions[0],id:'test-version-only',kind:'official',
+    answer:{status:'corrected',choiceId:'A',revision:2}};
+  const answer=C.cleanProgress({version:1,favorites:[],
+    attempts:[{questionId:q.id,choiceId:'B',correct:true,answerRevision:1,at:'2026-10-30T12:00:00Z'}]},[q]);
+  assert.equal(answer.attempts[0].correct,false);
+  assert.equal(answer.attempts[0].answerRevision,2);
+  assert.deepEqual(C.summary([q],answer),{answered:1,correct:0,accuracy:0,attempts:1});
+});
+
+test('anuladas e sem gabarito final não contam acerto nem erro',()=>{
+  const q={...questions[0],id:'test-annulled-only',kind:'official',
+    answer:{status:'annulled',choiceId:null,revision:3}};
+  const p=C.cleanProgress({version:1,favorites:[],
+    attempts:[{questionId:q.id,choiceId:'A',correct:false,at:'2026-10-30T12:00:00Z'}]},[q]);
+  assert.equal(p.attempts[0].correct,null);
+  assert.deepEqual(C.summary([q],p),{answered:0,correct:0,accuracy:null,attempts:1});
+  assert.equal(C.filterQuestions([q],{includeDemo:false,status:'incorrect'},p).length,0);
+});

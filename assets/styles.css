@@ -174,3 +174,35 @@ footer{margin-top:62px;border-top:1px solid #dfe4e2;padding:21px 0 4px;display:f
 @media (max-width:640px){main{padding:15px}.topbar{padding:0 15px}.topbar-location{font-size:9px}.topbar-slash,.topbar-right{display:none}.sidebar-main{display:block}.brand{margin-bottom:8px}.brand-symbol{width:37px;height:37px;font-size:20px}.brand-wordmark{font-size:14px}.sidebar{padding:12px 15px}.sidebar nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px}.sidebar nav a{padding:8px 9px;justify-content:flex-start;font-size:10px}.nav-count{display:none}.hero{min-height:300px;border-radius:10px}.hero-copy{padding:26px 22px 40px}.hero h1{font-size:36px;letter-spacing:-1.4px}.hero-copy>p:not(.hero-kicker){font-size:12px;max-width:310px}.hero-actions{gap:12px;margin-top:20px}.hero-primary{padding:10px 12px;min-width:0}.hero-secondary{padding:9px 0}.hero-illustration{opacity:.22;right:-120px;top:40px}.hero-bottom-tag{font-size:7px;left:22px;right:auto;bottom:13px}.stats{gap:7px}.stat-item{display:block;padding:11px 10px}.stat-glyph{display:none}.stats strong{font-size:22px}.stats p span{font-size:9px}.notice{padding:11px 12px;font-size:10px;margin-bottom:29px}.section-number{display:none}.section-heading h2{font-size:22px}.section-heading p:last-child{font-size:11px}.study-layout{display:block}.filter-panel{position:static;margin-bottom:17px;padding:16px}.filter-panel label:not(.check-label){margin:10px 0 4px}.results-bar{min-height:60px}.results-bar h2{font-size:17px}.results-bar span{font-size:10px}.sort-label{font-size:0}.sort-label select{min-width:112px;font-size:10px}.question-card{padding:18px 15px}.question-card h3{font-size:13px}.card-actions small{max-width:130px}.exam-grid{grid-template-columns:1fr}.inventory-filters{grid-template-columns:1fr 1fr}.inventory-filters label:first-child{grid-column:1/-1}.inventory-row{grid-template-columns:48px minmax(0,1fr);gap:10px;padding:12px}.inventory-year{font-size:11px;padding:8px 4px}.inventory-link{grid-column:2;justify-self:start;font-size:10px}.inventory-intro span:last-child{display:none}.progress-summary{gap:7px}.progress-box{padding:12px}.progress-box strong{font-size:24px}.progress-box span{font-size:10px}footer{display:block}footer span{display:block;margin-bottom:6px}.progress-table th,.progress-table td{font-size:10px;padding:8px}}
 @media (max-width:360px){.hero h1{font-size:32px}.hero-copy{padding:24px 17px 39px}.sidebar nav a{font-size:9px}.stats p span{font-size:8px}.inventory-filters{grid-template-columns:1fr}.inventory-filters label:first-child{grid-column:auto}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+
+
+/* Etapa 06: conteúdo real sempre distinguido de demonstrações. */
+.official-counter{display:inline-flex;gap:6px;align-items:center;margin:10px 0 0!important;padding:6px 10px;border:1px solid #b7dad0;background:#e9f6f1;border-radius:6px;color:#275e53!important;font-weight:700!important;font-size:11px!important}
+.official-counter strong{font-size:14px}
+.real-exam{border-top:3px solid #3d9987}
+.real-exam h3{margin:13px 0 6px}
+.exam-catalog-filters{margin-bottom:13px}
+#official-exam-list{grid-template-columns:repeat(auto-fit,minmax(min(100%,370px),1fr))}
+.exam-coverage{display:flex;flex-direction:column;align-items:flex-start;gap:5px;border-radius:8px;background:#edf6f3;border:1px solid #d8eae3;padding:12px 14px;color:#315d54;font-size:11px;margin:13px 0}
+.exam-coverage strong{font-size:15px;color:#193c35}
+.exam-coverage span{font-size:11px}
+.exam-document-links{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:9px 0}
+.exam-document-links .button{margin:0}
+.question-content{margin:0 0 14px;font-size:13px;line-height:1.65;color:#263c48}
+.content-text{margin:0 0 10px;white-space:pre-wrap;overflow-wrap:anywhere}
+.choice-content{min-width:0;overflow-wrap:anywhere;flex:1}
+.choice-content .content-text{margin:0}
+.choice-content .math-accessible{margin:0}
+.math-accessible{display:inline-block;white-space:pre-wrap;font:500 13px/1.5 Cambria,"Cambria Math",Georgia,serif;color:#283e49;border-bottom:1px dotted #9eb7ad;max-width:100%;overflow-wrap:anywhere}
+.question-figure{margin:12px 0;padding:12px;border:1px solid #e0e7e4;border-radius:8px;background:#fcfdfa}
+.question-figure img{display:block;max-width:100%;height:auto;margin:auto}
+.question-figure figcaption{margin-top:9px;font-size:10px;color:#536c74}
+.content-table-wrap{overflow-x:auto;max-width:100%;margin:10px 0}
+.content-table{border-collapse:collapse;min-width:180px;width:auto;max-width:100%;font-size:12px}
+.content-table th,.content-table td{border:1px solid #d5dedb;padding:7px 10px;text-align:left}
+.content-table th{background:#e6f3ef;font-weight:750}
+.content-table caption{text-align:left;color:#526770;font-size:10px;margin-bottom:6px}
+.source-line{margin:8px 0 3px;color:#55786e;font-size:10px}
+.source-link{display:inline-block;color:#1c7265;font-size:11px;font-weight:750;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.source-link:hover{color:#0f5146}
+@media(max-width:640px){.exam-coverage{padding:10px}.exam-catalog-filters{grid-template-columns:1fr 1fr}.exam-catalog-filters label:first-child{grid-column:1/-1}.question-content{font-size:12px}}

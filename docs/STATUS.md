@@ -1,5 +1,22 @@
 # Estado do projeto — 02/11/2026
 
+## Etapa 06 — banco com gates de publicação e provas individualizadas
+
+**Implementação:** PR #6 integra um projetor de questões oficiais elegíveis a partir de V1 validado, com bloqueios de revisão humana, documento/gabarito, versão, direitos, origem e checksum. A versão de produção usa um bundle aprovado **vazio** (`data/publication-v1.json`) e não acessa o estágio pendente da Unicamp. Nenhum conteúdo oficial não revisado foi distribuído.
+
+**Dados reais:** 12 exercícios autorais preservados; **0 questões oficiais aprovadas/publicadas**; 1 prova comentada Unicamp 2026 individualizada como **metadados e link**, com caderno Q, 1ª fase, aplicação 26/10/2025, documento verificado de 71 páginas e SHA-256 histórico. O gabarito final e o número total de questões não foram apurados; nada foi estimado. O inventário mantém 29 referências e quatro diretórios. As cinco candidatas da etapa 05 continuam sem revisão humana e sem gabarito final conciliado.
+
+**Interface:** filtros combinados de instituição, edição, semestre, fase, escola, curso e taxonomia; distinção autoral/oficial; referência individual de prova e links; blocos de texto/tabela/imagem autorizada/fórmulas legíveis por texto alternativo; gabarito versionado e tentativas antigas preservadas. **Sem typesetting avançado de LaTeX nesta versão**, e sem correção automática de discursivas.
+
+**Arquitetura:** `scripts/publication_v1.py`, `data/publication-v1.json`, `data/approved-assets.json`, `scripts/build.py`, `data/exams.json`, UI e testes. O build gera `dist/data/official-questions.json` (vazio) e resumo de cobertura, copia apenas arquivos permitidos e não inclui PDFs, staging ou revisões editoriais.
+
+**Controles:** novos testes de publicação com fixture exclusivamente sintética; regressão de progresso V1, filtros, tipagem de blocos e bloqueio de assets. Relatório detalhado `docs/ETAPA06_PUBLICACAO.md`.
+
+**Próximo passo:** etapa 07 — listas/sessões e progresso. A revisão humana, o gabarito final e os direitos individuais da etapa 05 permanecem dependências independentes para liberar questões oficiais.
+
+## Histórico — etapa 05 e anteriores
+
+
 ## Etapa 05 — classificação e revisão editorial (pré-revisão IA concluída)
 
 **Integração e publicação confirmadas:** PR #5 integrado à `main` no commit `f017a06122dcb5a856dd58e3b794127d29096b20`; validação e deploy GitHub Pages concluídos com sucesso em https://github.com/felipeortuzal/vestibular-aberto/actions/runs/41477565597 . Essa publicação atualiza código e metadados técnicos, **não** insere questões oficiais respondíveis no site. A presente atualização documental gera commit posterior, sem alterar a experiência pública.

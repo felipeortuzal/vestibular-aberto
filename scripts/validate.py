@@ -27,10 +27,19 @@ for q in questions:
     assert all(isinstance(c['text'], str) and c['text'].strip() for c in q['choices'])
 assert {s['id'] for s in sources} == {'fuvest', 'unicamp', 'insper', 'fgv'}
 assert all(s['url'].startswith('https://') for s in sources)
-assert load('data/exams.json') == [], 'Na V0 existem diretórios, não provas importadas'
+# Etapa 06: uma referência de prova comentada é publicada apenas como metadado.
+from publication_v1 import project_eligible, validate_exam_catalog
+catalog=load('data/exams.json')
+source_bundle=load('data/publication-v1.json')
+images=load('data/approved-assets.json')
+public_questions=project_eligible(source_bundle,taxonomy,catalog,images,repo_root=ROOT)
+validate_exam_catalog(catalog,public_questions)
+# A seleção pública vem do pacote editorial aprovado, jamais do piloto pendente.
+assert all(q['kind']=='official' for q in public_questions)
+assert len({q['id'] for q in public_questions}) == len(public_questions)
 for path in ['index.html', 'assets/styles.css', 'assets/core.js', 'assets/app.js']:
     assert (ROOT / path).is_file(), f'Arquivo ausente: {path}'
-print(f'OK: {len(questions)} questões autorais, {len(paths)} subassuntos, {len(sources)} diretórios. Nenhuma questão oficial publicada.')
+print(f'OK: {len(questions)} autorais, {len(public_questions)} oficiais aprovadas, {len(catalog)} prova individualizada por link, {len(paths)} subassuntos.')
 
 
 # O seed permanece exclusivo da V0; o contrato de staging é validado em separado.
