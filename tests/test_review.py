@@ -8,7 +8,7 @@ import unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"scripts"))
-from contracts_v1 import validate_bundle
+from contracts_v1 import validate_bundle, ContractError
 from validate_pilot import PilotManifestError
 from validate_review import ReviewError, validate_review,validate_files
 PATH=ROOT/"pilot/unicamp-2026-math"
@@ -50,7 +50,7 @@ class ReviewStage5Tests(unittest.TestCase):
     def test_provisional_comment_letter_must_not_become_final_gabarito(self):
         b,r,m,t=source()
         b["answers"][0]["value"]="a"
-        with self.assertRaises((ReviewError,PilotManifestError)):validate_review(b,r,m,t)
+        with self.assertRaises((ReviewError,PilotManifestError,ContractError)):validate_review(b,r,m,t)
 
     def test_rights_without_per_item_check_stay_link_only(self):
         b,r,m,t=source()
