@@ -8,7 +8,7 @@ import unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"scripts"))
-from contracts_v1 import validate_bundle, ContractError, ContractError
+from contracts_v1 import validate_bundle, ContractError
 from validate_pilot import PilotManifestError
 from validate_review import ReviewError, validate_review,validate_files
 PATH=ROOT/"pilot/unicamp-2026-math"
