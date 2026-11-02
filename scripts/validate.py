@@ -55,3 +55,8 @@ pilot_seed=load("pilot/unicamp-2026-math/staging-metadata-v1.json")
 pilot_validation=validate_pilot(pilot_manifest,pilot_seed)
 validate_bundle(pilot_seed,taxonomy)
 print(f"OK: piloto {pilot_validation['selected']} registros em staging de metadados; zero gabaritos finais verificados e zero publicados.")
+
+# Etapa 05: classificação e resoluções são propostas de IA, não revisão editorial humana.
+from validate_review import validate_files
+stage5=validate_files()
+print(f"OK: etapa 05: {stage5['aiClassified']} classificações IA, {stage5['aiDraftExplanations']} resoluções em rascunho; {stage5['humanApproved']} aprovadas, {stage5['publicReady']} publicadas.")
