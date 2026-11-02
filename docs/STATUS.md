@@ -12,7 +12,7 @@
 
 **Arquitetura:** `scripts/publication_v1.py`, `data/publication-v1.json`, `data/approved-assets.json`, `scripts/build.py`, `data/exams.json`, UI e testes. O build gera `dist/data/official-questions.json` (vazio) e resumo de cobertura, copia apenas arquivos permitidos e não inclui PDFs, staging ou revisões editoriais.
 
-**Controles:** novos testes de publicação com fixture exclusivamente sintética; regressão de progresso V1, filtros, tipagem de blocos e bloqueio de assets. Relatório detalhado `docs/ETAPA06_PUBLICACAO.md`.
+**Controles:** versões originais de respostas são mantidas durante recálculo por gabarito retificado, com identificação explícita da versão de avaliação vigente no histórico; novos testes de publicação com fixture exclusivamente sintética; regressão de progresso V1, filtros, tipagem de blocos e bloqueio de assets. Relatório detalhado `docs/ETAPA06_PUBLICACAO.md`.
 
 **Próximo passo:** etapa 07 — listas/sessões e progresso. A revisão humana, o gabarito final e os direitos individuais da etapa 05 permanecem dependências independentes para liberar questões oficiais.
 

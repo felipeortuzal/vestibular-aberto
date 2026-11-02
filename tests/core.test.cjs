@@ -74,7 +74,8 @@ test('gabarito corrigido recalcula último acerto sem inventar versão anterior'
   const answer=C.cleanProgress({version:1,favorites:[],
     attempts:[{questionId:q.id,choiceId:'B',correct:true,answerRevision:1,at:'2026-10-30T12:00:00Z'}]},[q]);
   assert.equal(answer.attempts[0].correct,false);
-  assert.equal(answer.attempts[0].answerRevision,2);
+  assert.equal(answer.attempts[0].answerRevision,1);
+  assert.equal(answer.attempts[0].evaluatedAnswerRevision,2);
   assert.deepEqual(C.summary([q],answer),{answered:1,correct:0,accuracy:0,attempts:1});
 });
 
@@ -86,4 +87,17 @@ test('anuladas e sem gabarito final não contam acerto nem erro',()=>{
   assert.equal(p.attempts[0].correct,null);
   assert.deepEqual(C.summary([q],p),{answered:0,correct:0,accuracy:null,attempts:1});
   assert.equal(C.filterQuestions([q],{includeDemo:false,status:'incorrect'},p).length,0);
+});
+
+test('reimportação preserva versão original após nova retificação',()=>{
+  const q={...questions[0],id:'retificacao-historica',kind:'official',
+    answer:{status:'corrected',choiceId:'A',revision:3}};
+  const input={version:1,favorites:[],attempts:[{
+    questionId:q.id,choiceId:'B',at:'2026-11-02T12:00:00Z',answerRevision:1
+  }]};
+  const once=C.cleanProgress(input,[q]);
+  const twice=C.cleanProgress(once,[q]);
+  assert.equal(twice.attempts[0].answerRevision,1);
+  assert.equal(twice.attempts[0].evaluatedAnswerRevision,3);
+  assert.equal(twice.attempts[0].correct,false);
 });

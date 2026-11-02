@@ -27,9 +27,11 @@
     const byId=new Map(questions.map(q=>[q.id,q]));
     const attempts=raw.attempts.filter(a=>a&&byId.has(a.questionId)&&typeof a.at==='string'&&Number.isFinite(Date.parse(a.at))&&byId.get(a.questionId).choices.some(c=>c.id===a.choiceId)).slice(-50000).map(a=>{
       const q=byId.get(a.questionId),valid=scoreable(q);
+      const originalRevision=Number.isInteger(a.answerRevision)&&a.answerRevision>=1?a.answerRevision:null;
+      const currentRevision=Number.isInteger(q.answer.revision)&&q.answer.revision>=1?q.answer.revision:null;
       return {questionId:a.questionId,choiceId:a.choiceId,
         correct:valid?a.choiceId===q.answer.choiceId:null,
-        at:a.at,answerRevision:q.answer.revision??null};
+        at:a.at,answerRevision:originalRevision,evaluatedAnswerRevision:currentRevision};
     });
     return {version:1,favorites:[...new Set(raw.favorites.filter(id=>byId.has(id)))],attempts};
   }

@@ -132,7 +132,8 @@
       if(!scorable){toast('Esta questão não possui gabarito final pontuável.');return;}
       const choiceId=selected.get(q.id);if(!choiceId){toast('Selecione uma alternativa.');return;}
       progress.attempts.push({questionId:q.id,choiceId,correct:choiceId===q.answer.choiceId,
-        at:new Date().toISOString(),answerRevision:q.answer.revision??null});
+        at:new Date().toISOString(),answerRevision:q.answer.revision??null,
+        evaluatedAnswerRevision:q.answer.revision??null});
       revealed.add(q.id);save();renderQuestions();
       const feedback=$('feedback-'+q.id);feedback?.focus({preventScroll:true});
       if(!feedback){$('results-title').focus({preventScroll:true});toast('Resposta registrada. A questão saiu do filtro atual.');}
@@ -238,6 +239,10 @@
   }
   function renderProgress(){const s=C.summary(questions,progress),box=$('progress-content');box.replaceChildren();box.append(el('h2','','Seu estudo até aqui'),el('p','muted','Os números usam sua última resposta em cada questão. Questões não respondidas ficam fora da taxa de acerto.'));
     const row=el('div','progress-summary');[[s.answered,'questões respondidas'],[s.accuracy===null?'—':s.accuracy+'%','acerto na última tentativa'],[s.attempts,'tentativas registradas']].forEach(([n,label])=>{const d=el('div','progress-box');d.append(el('strong','',n),el('span','',label));row.append(d);});box.append(row);
+    const regraded=progress.attempts.filter(a=>a.answerRevision!=null&&
+      a.evaluatedAnswerRevision!=null&&a.answerRevision!==a.evaluatedAnswerRevision).length;
+    if(regraded)box.append(el('p','coverage-note',regraded+
+      ' tentativa(s) foram reavaliadas com uma versão posterior do gabarito. O registro da versão original foi mantido.'));
     const table=el('table','progress-table'),head=el('thead'),tr=el('tr');['Matéria','Respondidas','Acerto'].forEach(t=>{const th=el('th','',t);th.scope='col';tr.append(th);});head.append(tr);table.append(head);const body=el('tbody');taxonomy.subjects.forEach(subject=>{const subset=questions.filter(q=>q.classification.subjectId===subject.id),ids=new Set(subset.map(q=>q.id));const st=C.summary(subset,{attempts:progress.attempts.filter(a=>ids.has(a.questionId)),favorites:[]});if(st.answered){const r=el('tr');[subject.label,st.answered,st.accuracy+'%'].forEach(t=>r.append(el('td','',t)));body.append(r);}});table.append(body);if(s.answered)box.append(table);else box.append(el('p','coverage-note','Responda uma questão para começar a acompanhar seu desempenho.'));
   }
   function route(){const requested=location.hash.slice(1);view=['questoes','provas','favoritas','desempenho'].includes(requested)?requested:'questoes';document.querySelectorAll('nav a').forEach(a=>{const active=a.dataset.view===view;a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});$('questions-view').hidden=!['questoes','favoritas'].includes(view);$('exams-view').hidden=view!=='provas';$('progress-view').hidden=view!=='desempenho';const copy={questoes:['Estude o conteúdo.\nEntenda a prova.','Pratique por assunto e consulte as provas anteriores direto na fonte.'],provas:['Cada prova tem\numa história.','Encontre cadernos, gabaritos e índices nas páginas oficiais — sem material inventado.'],favoritas:['Vale a pena\nvoltar aqui.','Suas questões marcadas para revisar, todas no mesmo lugar.'],desempenho:['O seu avanço\nem perspectiva.','Seu histórico local mostra acertos, novas tentativas e o que revisar.']};$('page-title').textContent=copy[view][0];$('page-description').textContent=copy[view][1];page=1;if(view==='provas')renderExams();else if(view==='desempenho')renderProgress();else renderQuestions();}
