@@ -1,0 +1,456 @@
+{
+  "schemaVersion": 1,
+  "lotId": "pilot-unicamp-2026-f1-math-01",
+  "createdAt": "2026-11-02",
+  "reviewMode": "ai_pre_review_not_human_approval",
+  "provenance": {
+    "officialPdf": "https://www.comvest.unicamp.br/wp-content/uploads/2026/06/F1_2026_Prova-Q.pdf",
+    "sha256": "2d1d0d375fb8ee7ea84ebb11350ca30851a5c928db80ed6e2479aeeb1ba23284",
+    "sourceNote": "Comvest prova comentada caderno Q; sem verificar gabarito final independente."
+  },
+  "totals": {
+    "selected": 5,
+    "aiClassified": 5,
+    "aiDraftExplanations": 5,
+    "humanApproved": 0,
+    "officialFinalKeysConfirmed": 0,
+    "publicReady": 0
+  },
+  "items": [
+    {
+      "schemaVersion": 1,
+      "questionId": "unicamp-2026-f1-q043",
+      "originalNumber": "43",
+      "sourceDocumentId": "unicamp-2026-f1-commented",
+      "sourceSha256": "2d1d0d375fb8ee7ea84ebb11350ca30851a5c928db80ed6e2479aeeb1ba23284",
+      "sourceUrl": "https://www.comvest.unicamp.br/wp-content/uploads/2026/06/F1_2026_Prova-Q.pdf",
+      "physicalPages": [
+        47
+      ],
+      "printedPages": [
+        "46"
+      ],
+      "stage": "needs_review",
+      "checks": {
+        "origin": {
+          "status": "verified_by_ai",
+          "evidence": "PDF Comvest 2026; SHA-256 da etapa 04 conferido no GitHub Actions; página consultada no documento oficial."
+        },
+        "pageAndNumber": {
+          "status": "verified_by_ai",
+          "evidence": "Conferência visual da numeração e das páginas físicas do PDF comentado."
+        },
+        "fullText": {
+          "status": "pending_human",
+          "issue": "Verificar se os anos 2025–2027, o período de 12 meses e o denominador do percentual relativo foram preservados pela extração."
+        },
+        "choicesAndFormulas": {
+          "status": "pending_human",
+          "issue": "Revisar porcentagens 50% e 20%, sinais e vírgulas decimais; sem figura independente no enunciado."
+        },
+        "figuresAndThirdParty": {
+          "status": "pending_human",
+          "issue": "Inspecionar créditos, artefatos não textuais e eventual material de terceiros; ausência de figura precisa ser validada por editor."
+        },
+        "officialFinalKey": {
+          "status": "pending_official_confirmation",
+          "commentaryCandidate": "A",
+          "reviewedFinalValue": null,
+          "verifiedBy": null,
+          "sourceDocumentId": null,
+          "sourcePage": null,
+          "issue": "Comentário da Comvest e cálculo independente por IA coincidem; ainda falta confronto formal com a versão oficial final Q/X e eventual retificação."
+        },
+        "classification": {
+          "status": "proposed_by_ai",
+          "classificationId": "unicamp-2026-f1-q043-class-v1",
+          "primary": {
+            "subjectId": "matematica",
+            "topicId": "matematica.aritmetica-e-proporcionalidade",
+            "subtopicId": "matematica.aritmetica-e-proporcionalidade.porcentagem"
+          },
+          "secondaryTags": [
+            {
+              "subjectId": "matematica",
+              "topicId": "matematica.matematica-financeira",
+              "subtopicId": "matematica.matematica-financeira.juros-compostos"
+            }
+          ],
+          "confidence": 0.96,
+          "ambiguity": "Porcentagem (principal) versus matemática financeira/juros compostos (conhecimento análogo).",
+          "reviewedBy": null
+        },
+        "rights": {
+          "status": "link_only",
+          "reviewedBy": null,
+          "issue": "Reprodução parcial permitida com atribuição e sem exclusividade no portal Comvest; revisar componentes de terceiros e adequação de cada item."
+        },
+        "originalSolution": {
+          "status": "ai_draft",
+          "explanationId": "unicamp-2026-f1-q043-explanation-v1",
+          "independentMathAnswer": "A",
+          "humanChecked": false
+        },
+        "difficulty": {
+          "editorial": null,
+          "empirical": null
+        }
+      },
+      "humanApproval": {
+        "status": "not_done",
+        "reviewer": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": null
+      },
+      "publicationEligible": false
+    },
+    {
+      "schemaVersion": 1,
+      "questionId": "unicamp-2026-f1-q045",
+      "originalNumber": "45",
+      "sourceDocumentId": "unicamp-2026-f1-commented",
+      "sourceSha256": "2d1d0d375fb8ee7ea84ebb11350ca30851a5c928db80ed6e2479aeeb1ba23284",
+      "sourceUrl": "https://www.comvest.unicamp.br/wp-content/uploads/2026/06/F1_2026_Prova-Q.pdf",
+      "physicalPages": [
+        48
+      ],
+      "printedPages": [
+        "47"
+      ],
+      "stage": "needs_review",
+      "checks": {
+        "origin": {
+          "status": "verified_by_ai",
+          "evidence": "PDF Comvest 2026; SHA-256 da etapa 04 conferido no GitHub Actions; página consultada no documento oficial."
+        },
+        "pageAndNumber": {
+          "status": "verified_by_ai",
+          "evidence": "Conferência visual da numeração e das páginas físicas do PDF comentado."
+        },
+        "fullText": {
+          "status": "pending_human",
+          "issue": "A extração reconheceu as quatro letras, mas as alternativas estão em DUAS COLUNAS dentro da coluna esquerda do PDF. O parser pode concatenar valores ou trocar correspondências."
+        },
+        "choicesAndFormulas": {
+          "status": "pending_human",
+          "issue": "Inspecionar p(x)+q(x), p(x)·q(x), p(x)−q(x), graus 3 e 8 e alternativas na ordem visual A=5, B=4, C=3, D=2."
+        },
+        "figuresAndThirdParty": {
+          "status": "pending_human",
+          "issue": "Inspecionar créditos, artefatos não textuais e eventual material de terceiros; ausência de figura precisa ser validada por editor."
+        },
+        "officialFinalKey": {
+          "status": "pending_official_confirmation",
+          "commentaryCandidate": "B",
+          "reviewedFinalValue": null,
+          "verifiedBy": null,
+          "sourceDocumentId": null,
+          "sourcePage": null,
+          "issue": "Comentário da Comvest e cálculo independente por IA coincidem; ainda falta confronto formal com a versão oficial final Q/X e eventual retificação."
+        },
+        "classification": {
+          "status": "proposed_by_ai",
+          "classificationId": "unicamp-2026-f1-q045-class-v1",
+          "primary": {
+            "subjectId": "matematica",
+            "topicId": "matematica.algebra",
+            "subtopicId": "matematica.algebra.polinomios"
+          },
+          "secondaryTags": [],
+          "confidence": 0.99,
+          "ambiguity": "Polinômios é mais específico do que álgebra geral; sem tag secundária obrigatória.",
+          "reviewedBy": null
+        },
+        "rights": {
+          "status": "link_only",
+          "reviewedBy": null,
+          "issue": "Reprodução parcial permitida com atribuição e sem exclusividade no portal Comvest; revisar componentes de terceiros e adequação de cada item."
+        },
+        "originalSolution": {
+          "status": "ai_draft",
+          "explanationId": "unicamp-2026-f1-q045-explanation-v1",
+          "independentMathAnswer": "B",
+          "humanChecked": false
+        },
+        "difficulty": {
+          "editorial": null,
+          "empirical": null
+        }
+      },
+      "humanApproval": {
+        "status": "not_done",
+        "reviewer": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": null
+      },
+      "publicationEligible": false
+    },
+    {
+      "schemaVersion": 1,
+      "questionId": "unicamp-2026-f1-q049",
+      "originalNumber": "49",
+      "sourceDocumentId": "unicamp-2026-f1-commented",
+      "sourceSha256": "2d1d0d375fb8ee7ea84ebb11350ca30851a5c928db80ed6e2479aeeb1ba23284",
+      "sourceUrl": "https://www.comvest.unicamp.br/wp-content/uploads/2026/06/F1_2026_Prova-Q.pdf",
+      "physicalPages": [
+        50
+      ],
+      "printedPages": [
+        "49"
+      ],
+      "stage": "needs_review",
+      "checks": {
+        "origin": {
+          "status": "verified_by_ai",
+          "evidence": "PDF Comvest 2026; SHA-256 da etapa 04 conferido no GitHub Actions; página consultada no documento oficial."
+        },
+        "pageAndNumber": {
+          "status": "verified_by_ai",
+          "evidence": "Conferência visual da numeração e das páginas físicas do PDF comentado."
+        },
+        "fullText": {
+          "status": "pending_human",
+          "issue": "O enunciado começa no rodapé da coluna esquerda da página física 50 e termina no topo da direita; confirmar continuidade e não capturar o fim da questão 48."
+        },
+        "choicesAndFormulas": {
+          "status": "pending_human",
+          "issue": "Confirmar frações das alternativas, especialmente 1/6 e 1/25; nenhuma figura independente foi identificada."
+        },
+        "figuresAndThirdParty": {
+          "status": "pending_human",
+          "issue": "Inspecionar créditos, artefatos não textuais e eventual material de terceiros; ausência de figura precisa ser validada por editor."
+        },
+        "officialFinalKey": {
+          "status": "pending_official_confirmation",
+          "commentaryCandidate": "B",
+          "reviewedFinalValue": null,
+          "verifiedBy": null,
+          "sourceDocumentId": null,
+          "sourcePage": null,
+          "issue": "Comentário da Comvest e cálculo independente por IA coincidem; ainda falta confronto formal com a versão oficial final Q/X e eventual retificação."
+        },
+        "classification": {
+          "status": "proposed_by_ai",
+          "classificationId": "unicamp-2026-f1-q049-class-v1",
+          "primary": {
+            "subjectId": "matematica",
+            "topicId": "matematica.probabilidade",
+            "subtopicId": "matematica.probabilidade.eventos-simples"
+          },
+          "secondaryTags": [
+            {
+              "subjectId": "matematica",
+              "topicId": "matematica.analise-combinatoria",
+              "subtopicId": "matematica.analise-combinatoria.combinacoes"
+            },
+            {
+              "subjectId": "matematica",
+              "topicId": "matematica.analise-combinatoria",
+              "subtopicId": "matematica.analise-combinatoria.permutacoes-e-arranjos"
+            }
+          ],
+          "confidence": 0.94,
+          "ambiguity": "Probabilidade simples (principal) versus análise combinatória (contagem de permutações com pontos fixos).",
+          "reviewedBy": null
+        },
+        "rights": {
+          "status": "link_only",
+          "reviewedBy": null,
+          "issue": "Reprodução parcial permitida com atribuição e sem exclusividade no portal Comvest; revisar componentes de terceiros e adequação de cada item."
+        },
+        "originalSolution": {
+          "status": "ai_draft",
+          "explanationId": "unicamp-2026-f1-q049-explanation-v1",
+          "independentMathAnswer": "B",
+          "humanChecked": false
+        },
+        "difficulty": {
+          "editorial": null,
+          "empirical": null
+        }
+      },
+      "humanApproval": {
+        "status": "not_done",
+        "reviewer": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": null
+      },
+      "publicationEligible": false
+    },
+    {
+      "schemaVersion": 1,
+      "questionId": "unicamp-2026-f1-q051",
+      "originalNumber": "51",
+      "sourceDocumentId": "unicamp-2026-f1-commented",
+      "sourceSha256": "2d1d0d375fb8ee7ea84ebb11350ca30851a5c928db80ed6e2479aeeb1ba23284",
+      "sourceUrl": "https://www.comvest.unicamp.br/wp-content/uploads/2026/06/F1_2026_Prova-Q.pdf",
+      "physicalPages": [
+        51
+      ],
+      "printedPages": [
+        "50"
+      ],
+      "stage": "needs_review",
+      "checks": {
+        "origin": {
+          "status": "verified_by_ai",
+          "evidence": "PDF Comvest 2026; SHA-256 da etapa 04 conferido no GitHub Actions; página consultada no documento oficial."
+        },
+        "pageAndNumber": {
+          "status": "verified_by_ai",
+          "evidence": "Conferência visual da numeração e das páginas físicas do PDF comentado."
+        },
+        "fullText": {
+          "status": "pending_human",
+          "issue": "O PDF da banca indica domínio dos naturais; a camada textual mostrou perda do símbolo ℕ. Conferir que não houve troca por conjunto real ou inteiro."
+        },
+        "choicesAndFormulas": {
+          "status": "pending_human",
+          "issue": "Confirmar ℕ, barras de módulo, inequações ≥ e ≤, chaves, intervalo de 2 a 20 e primos."
+        },
+        "figuresAndThirdParty": {
+          "status": "pending_human",
+          "issue": "Inspecionar créditos, artefatos não textuais e eventual material de terceiros; ausência de figura precisa ser validada por editor."
+        },
+        "officialFinalKey": {
+          "status": "pending_official_confirmation",
+          "commentaryCandidate": "C",
+          "reviewedFinalValue": null,
+          "verifiedBy": null,
+          "sourceDocumentId": null,
+          "sourcePage": null,
+          "issue": "Comentário da Comvest e cálculo independente por IA coincidem; ainda falta confronto formal com a versão oficial final Q/X e eventual retificação."
+        },
+        "classification": {
+          "status": "proposed_by_ai",
+          "classificationId": "unicamp-2026-f1-q051-class-v1",
+          "primary": {
+            "subjectId": "matematica",
+            "topicId": "matematica.algebra",
+            "subtopicId": "matematica.algebra.equacoes-e-inequacoes"
+          },
+          "secondaryTags": [
+            {
+              "subjectId": "matematica",
+              "topicId": "matematica.conjuntos-e-logica",
+              "subtopicId": "matematica.conjuntos-e-logica.operacoes-com-conjuntos"
+            }
+          ],
+          "confidence": 0.94,
+          "ambiguity": "Inequações (principal) versus operações com conjuntos (secundário).",
+          "reviewedBy": null
+        },
+        "rights": {
+          "status": "link_only",
+          "reviewedBy": null,
+          "issue": "Reprodução parcial permitida com atribuição e sem exclusividade no portal Comvest; revisar componentes de terceiros e adequação de cada item."
+        },
+        "originalSolution": {
+          "status": "ai_draft",
+          "explanationId": "unicamp-2026-f1-q051-explanation-v1",
+          "independentMathAnswer": "C",
+          "humanChecked": false
+        },
+        "difficulty": {
+          "editorial": null,
+          "empirical": null
+        }
+      },
+      "humanApproval": {
+        "status": "not_done",
+        "reviewer": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": null
+      },
+      "publicationEligible": false
+    },
+    {
+      "schemaVersion": 1,
+      "questionId": "unicamp-2026-f1-q052",
+      "originalNumber": "52",
+      "sourceDocumentId": "unicamp-2026-f1-commented",
+      "sourceSha256": "2d1d0d375fb8ee7ea84ebb11350ca30851a5c928db80ed6e2479aeeb1ba23284",
+      "sourceUrl": "https://www.comvest.unicamp.br/wp-content/uploads/2026/06/F1_2026_Prova-Q.pdf",
+      "physicalPages": [
+        51,
+        52
+      ],
+      "printedPages": [
+        "50",
+        "51"
+      ],
+      "stage": "needs_review",
+      "checks": {
+        "origin": {
+          "status": "verified_by_ai",
+          "evidence": "PDF Comvest 2026; SHA-256 da etapa 04 conferido no GitHub Actions; página consultada no documento oficial."
+        },
+        "pageAndNumber": {
+          "status": "verified_by_ai",
+          "evidence": "Conferência visual da numeração e das páginas físicas do PDF comentado."
+        },
+        "fullText": {
+          "status": "pending_human",
+          "issue": "A questão começa na coluna direita da página física 51 e continua na coluna esquerda da 52. Verificar o recorte entre páginas, sem incorporar a questão 53."
+        },
+        "choicesAndFormulas": {
+          "status": "pending_human",
+          "issue": "Rever todos os coeficientes 30/70 e 80/20 e as duas capacidades; sem figura própria no enunciado."
+        },
+        "figuresAndThirdParty": {
+          "status": "pending_human",
+          "issue": "Inspecionar créditos, artefatos não textuais e eventual material de terceiros; ausência de figura precisa ser validada por editor."
+        },
+        "officialFinalKey": {
+          "status": "pending_official_confirmation",
+          "commentaryCandidate": "B",
+          "reviewedFinalValue": null,
+          "verifiedBy": null,
+          "sourceDocumentId": null,
+          "sourcePage": null,
+          "issue": "Comentário da Comvest e cálculo independente por IA coincidem; ainda falta confronto formal com a versão oficial final Q/X e eventual retificação."
+        },
+        "classification": {
+          "status": "proposed_by_ai",
+          "classificationId": "unicamp-2026-f1-q052-class-v1",
+          "primary": {
+            "subjectId": "matematica",
+            "topicId": "matematica.algebra",
+            "subtopicId": "matematica.algebra.sistemas-lineares"
+          },
+          "secondaryTags": [],
+          "confidence": 0.99,
+          "ambiguity": "Modelagem algébrica por sistemas lineares (principal) versus problemas de equações.",
+          "reviewedBy": null
+        },
+        "rights": {
+          "status": "link_only",
+          "reviewedBy": null,
+          "issue": "Reprodução parcial permitida com atribuição e sem exclusividade no portal Comvest; revisar componentes de terceiros e adequação de cada item."
+        },
+        "originalSolution": {
+          "status": "ai_draft",
+          "explanationId": "unicamp-2026-f1-q052-explanation-v1",
+          "independentMathAnswer": "B",
+          "humanChecked": false
+        },
+        "difficulty": {
+          "editorial": null,
+          "empirical": null
+        }
+      },
+      "humanApproval": {
+        "status": "not_done",
+        "reviewer": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": null
+      },
+      "publicationEligible": false
+    }
+  ]
+}

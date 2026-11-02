@@ -321,8 +321,258 @@
       "verifiedBy": null
     }
   ],
-  "explanations": [],
-  "classifications": [],
+  "explanations": [
+    {
+      "schemaVersion": 1,
+      "id": "unicamp-2026-f1-q043-explanation-v1",
+      "questionId": "unicamp-2026-f1-q043",
+      "contentBlocks": [
+        {
+          "type": "text",
+          "text": "Se o salário mensal inicial é S, a proposta 1 paga 1,50S em cada um dos 36 meses: total 54S. A proposta 2 paga por 12 meses, sucessivamente, 1,20S, 1,44S e 1,728S: total 12(1,20+1,44+1,728)S=52,416S. A diferença relativa à proposta 2 é (54−52,416)/52,416≈0,03022, ou 3,02%. Portanto, o total da proposta 1 é aproximadamente 3% maior: alternativa A."
+        }
+      ],
+      "authorType": "ai_draft",
+      "reviewStatus": "needs_review",
+      "proposedBy": {
+        "type": "ai",
+        "id": "assistant-etapa05"
+      },
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "sourceDocumentId": null,
+      "rightsStatus": "original",
+      "rightsEvidence": null,
+      "version": 1
+    },
+    {
+      "schemaVersion": 1,
+      "id": "unicamp-2026-f1-q045-explanation-v1",
+      "questionId": "unicamp-2026-f1-q045",
+      "contentBlocks": [
+        {
+          "type": "text",
+          "text": "Como o grau do produto é 8, a soma dos graus de p e q é 8. Se fossem diferentes, o grau de p+q seria o maior dos dois, pelo menos 5, contrariando o grau 3 informado. Assim, ambos têm grau 4 e os termos líderes de p e q se anulam na soma. Na diferença, esses coeficientes líderes não se anulam: o termo de grau 4 permanece. A diferença tem grau 4: alternativa B."
+        }
+      ],
+      "authorType": "ai_draft",
+      "reviewStatus": "needs_review",
+      "proposedBy": {
+        "type": "ai",
+        "id": "assistant-etapa05"
+      },
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "sourceDocumentId": null,
+      "rightsStatus": "original",
+      "rightsEvidence": null,
+      "version": 1
+    },
+    {
+      "schemaVersion": 1,
+      "id": "unicamp-2026-f1-q049-explanation-v1",
+      "questionId": "unicamp-2026-f1-q049",
+      "contentBlocks": [
+        {
+          "type": "text",
+          "text": "Há 5!=120 distribuições possíveis dos cinco brinquedos. Para exatamente duas crianças receberem seus próprios brinquedos, escolhemos quais são essas duas de 10 maneiras (combinação de 5 tomadas 2 a 2). As três crianças restantes precisam receber brinquedos distintos dos seus; existem !3=2 desarranjos. Assim, há 10×2=20 casos favoráveis, e P=20/120=1/6: alternativa B."
+        }
+      ],
+      "authorType": "ai_draft",
+      "reviewStatus": "needs_review",
+      "proposedBy": {
+        "type": "ai",
+        "id": "assistant-etapa05"
+      },
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "sourceDocumentId": null,
+      "rightsStatus": "original",
+      "rightsEvidence": null,
+      "version": 1
+    },
+    {
+      "schemaVersion": 1,
+      "id": "unicamp-2026-f1-q051-explanation-v1",
+      "questionId": "unicamp-2026-f1-q051",
+      "contentBlocks": [
+        {
+          "type": "text",
+          "text": "A inequação |x−5|≥2 equivale a x≤3 ou x≥7. Já |x−11|≤9 equivale a 2≤x≤20. A interseção com os naturais é {2,3}∪{7,8,...,20}. Os primos presentes são 2, 3, 7, 11, 13, 17 e 19, totalizando sete números: alternativa C."
+        }
+      ],
+      "authorType": "ai_draft",
+      "reviewStatus": "needs_review",
+      "proposedBy": {
+        "type": "ai",
+        "id": "assistant-etapa05"
+      },
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "sourceDocumentId": null,
+      "rightsStatus": "original",
+      "rightsEvidence": null,
+      "version": 1
+    },
+    {
+      "schemaVersion": 1,
+      "id": "unicamp-2026-f1-q052-explanation-v1",
+      "questionId": "unicamp-2026-f1-q052",
+      "contentBlocks": [
+        {
+          "type": "text",
+          "text": "Se x é o número de soldados e y o de estrategistas, x+y=100. A igualdade entre força e astúcia dá 70x+20y=30x+80y, ou 40x=60y. Portanto, 2x=3y. Substituindo x=3y/2 na primeira equação, obtemos 5y/2=100, logo y=40 e x=60. São 60 soldados e 40 estrategistas: alternativa B."
+        }
+      ],
+      "authorType": "ai_draft",
+      "reviewStatus": "needs_review",
+      "proposedBy": {
+        "type": "ai",
+        "id": "assistant-etapa05"
+      },
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "sourceDocumentId": null,
+      "rightsStatus": "original",
+      "rightsEvidence": null,
+      "version": 1
+    }
+  ],
+  "classifications": [
+    {
+      "schemaVersion": 1,
+      "id": "unicamp-2026-f1-q043-class-v1",
+      "questionId": "unicamp-2026-f1-q043",
+      "taxonomyVersion": 1,
+      "primary": {
+        "subjectId": "matematica",
+        "topicId": "matematica.aritmetica-e-proporcionalidade",
+        "subtopicId": "matematica.aritmetica-e-proporcionalidade.porcentagem"
+      },
+      "secondaryTags": [
+        {
+          "subjectId": "matematica",
+          "topicId": "matematica.matematica-financeira",
+          "subtopicId": "matematica.matematica-financeira.juros-compostos"
+        }
+      ],
+      "confidence": 0.96,
+      "rationale": "Comparação de totais de salários após aumentos percentuais sucessivos. A competência central é porcentagem; a composição multiplicativa lembra juros compostos, mas não é uma operação de juros.",
+      "proposedBy": {
+        "type": "ai",
+        "id": "assistant-etapa05"
+      },
+      "reviewStatus": "needs_review",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "version": 1
+    },
+    {
+      "schemaVersion": 1,
+      "id": "unicamp-2026-f1-q045-class-v1",
+      "questionId": "unicamp-2026-f1-q045",
+      "taxonomyVersion": 1,
+      "primary": {
+        "subjectId": "matematica",
+        "topicId": "matematica.algebra",
+        "subtopicId": "matematica.algebra.polinomios"
+      },
+      "secondaryTags": [],
+      "confidence": 0.99,
+      "rationale": "A inferência exige propriedades dos graus do produto, soma e diferença de polinômios, incluindo cancelamento de coeficientes líderes.",
+      "proposedBy": {
+        "type": "ai",
+        "id": "assistant-etapa05"
+      },
+      "reviewStatus": "needs_review",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "version": 1
+    },
+    {
+      "schemaVersion": 1,
+      "id": "unicamp-2026-f1-q049-class-v1",
+      "questionId": "unicamp-2026-f1-q049",
+      "taxonomyVersion": 1,
+      "primary": {
+        "subjectId": "matematica",
+        "topicId": "matematica.probabilidade",
+        "subtopicId": "matematica.probabilidade.eventos-simples"
+      },
+      "secondaryTags": [
+        {
+          "subjectId": "matematica",
+          "topicId": "matematica.analise-combinatoria",
+          "subtopicId": "matematica.analise-combinatoria.combinacoes"
+        },
+        {
+          "subjectId": "matematica",
+          "topicId": "matematica.analise-combinatoria",
+          "subtopicId": "matematica.analise-combinatoria.permutacoes-e-arranjos"
+        }
+      ],
+      "confidence": 0.94,
+      "rationale": "O resultado pedido é uma probabilidade em espaço equiprovável de permutações; a contagem dos casos favoráveis exige escolher dois pontos fixos e desarranjar os três restantes.",
+      "proposedBy": {
+        "type": "ai",
+        "id": "assistant-etapa05"
+      },
+      "reviewStatus": "needs_review",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "version": 1
+    },
+    {
+      "schemaVersion": 1,
+      "id": "unicamp-2026-f1-q051-class-v1",
+      "questionId": "unicamp-2026-f1-q051",
+      "taxonomyVersion": 1,
+      "primary": {
+        "subjectId": "matematica",
+        "topicId": "matematica.algebra",
+        "subtopicId": "matematica.algebra.equacoes-e-inequacoes"
+      },
+      "secondaryTags": [
+        {
+          "subjectId": "matematica",
+          "topicId": "matematica.conjuntos-e-logica",
+          "subtopicId": "matematica.conjuntos-e-logica.operacoes-com-conjuntos"
+        }
+      ],
+      "confidence": 0.94,
+      "rationale": "O raciocínio começa por duas inequações modulares e sua interseção, seguido da contagem dos números primos naturais no conjunto resultante.",
+      "proposedBy": {
+        "type": "ai",
+        "id": "assistant-etapa05"
+      },
+      "reviewStatus": "needs_review",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "version": 1
+    },
+    {
+      "schemaVersion": 1,
+      "id": "unicamp-2026-f1-q052-class-v1",
+      "questionId": "unicamp-2026-f1-q052",
+      "taxonomyVersion": 1,
+      "primary": {
+        "subjectId": "matematica",
+        "topicId": "matematica.algebra",
+        "subtopicId": "matematica.algebra.sistemas-lineares"
+      },
+      "secondaryTags": [],
+      "confidence": 0.99,
+      "rationale": "O problema solicita encontrar quantidades inteiras a partir de uma equação de total de participantes e outra de equilíbrio entre duas pontuações, formando um sistema linear.",
+      "proposedBy": {
+        "type": "ai",
+        "id": "assistant-etapa05"
+      },
+      "reviewStatus": "needs_review",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "version": 1
+    }
+  ],
   "review_events": [],
   "question_appearances": [],
   "user_attempts": []

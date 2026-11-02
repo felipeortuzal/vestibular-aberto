@@ -26,6 +26,7 @@ jobs:
       - run: npm run test:contract
       - run: npm run test:inventory
       - run: npm run test:pilot
+      - run: npm run test:review
       - name: Captura e extração efêmera de PDF oficial (PR etapa 04)
         if: github.event_name == 'pull_request' && github.head_ref == 'feature/etapa04-piloto-unicamp2026'
         continue-on-error: true
