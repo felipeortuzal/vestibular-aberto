@@ -2,6 +2,8 @@
 
 ## Etapa 06 — banco com gates de publicação e provas individualizadas
 
+**Merge e deploy confirmados:** PR #6 integrado à `main` no commit `85b8a0f234a1fc90dddfd52ff8c5dea26f29669f`; build e deploy GitHub Pages com conclusão `success` em https://github.com/felipeortuzal/vestibular-aberto/actions/runs/41496189061 . Site: https://felipeortuzal.github.io/vestibular-aberto/ . Suíte: 12 testes JS, 25 contrato, 15 inventário, 9 piloto, 14 revisão e 12 publicação (**87** testes), mais navegador headless em 360/768/1440 px. O teste HTTP externo da URL pública não pôde ser consultado pelo mecanismo de busca; a conclusão do deploy é evidência dos jobs do GitHub Actions.
+
 **Implementação:** PR #6 integra um projetor de questões oficiais elegíveis a partir de V1 validado, com bloqueios de revisão humana, documento/gabarito, versão, direitos, origem e checksum. A versão de produção usa um bundle aprovado **vazio** (`data/publication-v1.json`) e não acessa o estágio pendente da Unicamp. Nenhum conteúdo oficial não revisado foi distribuído.
 
 **Dados reais:** 12 exercícios autorais preservados; **0 questões oficiais aprovadas/publicadas**; 1 prova comentada Unicamp 2026 individualizada como **metadados e link**, com caderno Q, 1ª fase, aplicação 26/10/2025, documento verificado de 71 páginas e SHA-256 histórico. O gabarito final e o número total de questões não foram apurados; nada foi estimado. O inventário mantém 29 referências e quatro diretórios. As cinco candidatas da etapa 05 continuam sem revisão humana e sem gabarito final conciliado.
