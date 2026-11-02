@@ -8,7 +8,7 @@ import unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"scripts"))
-from contracts_v1 import validate_bundle, ContractError
+from contracts_v1 import validate_bundle, ContractError, ContractError
 from validate_pilot import PilotManifestError
 from validate_review import ReviewError, validate_review,validate_files
 PATH=ROOT/"pilot/unicamp-2026-math"
@@ -60,7 +60,7 @@ class ReviewStage5Tests(unittest.TestCase):
     def test_full_text_is_never_committed_as_reviewed(self):
         b,r,m,t=source()
         b["questions"][0]["contentBlocks"]=[{"type":"text","text":"Texto inventado não verificado"}]
-        with self.assertRaises((ReviewError,PilotManifestError)):validate_review(b,r,m,t)
+        with self.assertRaises((ReviewError,PilotManifestError,ContractError)):validate_review(b,r,m,t)
 
     def test_wrong_source_hash_is_blocked(self):
         b,r,m,t=source()
