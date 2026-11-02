@@ -3,7 +3,7 @@
 Leia README.md, docs/PRODUTO.md, docs/DADOS.md, docs/FONTES.md e docs/STATUS.md antes de editar. O pedido do usuário prevalece. Não use subagentes sem pedido expresso.
 
 - Comece por HTML, CSS e JavaScript puro. Sem framework, banco remoto, autenticação ou cobrança na V0. Não migre toda a aplicação para realizar um ajuste pontual.
-- O pacote atual é um protótipo: 12 questões autorais, 4 diretórios, ZERO questões oficiais e ZERO provas importadas. Contadores devem refletir dados reais. Não atribua as demonstrações a Fuvest, Unicamp, Insper ou FGV.
+- O pacote atual contém 12 questões autorais, 1 prova comentada individualizada por link, 4 diretórios, ZERO questões oficiais aprovadas e ZERO provas hospedadas. Contadores devem refletir dados reais. Não atribua as demonstrações a Fuvest, Unicamp, Insper ou FGV.
 - Dados canônicos ficam nos JSON de data/. data/catalog.js é gerado por scripts/build.py e permite abrir index.html sem servidor. Não edite catalog.js diretamente.
 - Não invente enunciados oficiais, URLs de PDF, alternativas, anos, números de questões, gabaritos, licenças ou percentuais de cobertura. Preserve null e pendências quando não houver evidência.
 - Não copie resoluções ou bancos privados de concorrentes. Fontes oficiais são o ponto inicial para catalogação; disponibilidade pública não é comprovação de autorização de republicação. Registre situação dos direitos antes de publicar conteúdo integral.
@@ -14,3 +14,6 @@ Leia README.md, docs/PRODUTO.md, docs/DADOS.md, docs/FONTES.md e docs/STATUS.md 
 - Implemente a etapa solicitada e complete sua verificação. Rode `npm run validate`, `npm test`, `npm run build`. Faça teste visual quando houver navegador disponível e descreva qualquer limitação.
 - Ao concluir, atualize docs/STATUS.md com recursos entregues, contagens, testes, pendências e o próximo prompt. Informe arquivos e commit reais; não declare publicação sem URL confirmada.
 - Commits pequenos e claros. Não faça force push nem altere outras aplicações do usuário. Não crie contas, assinaturas ou serviços pagos por iniciativa própria.
+
+- Etapa 06: `data/exams.json` guarda 1 registro de prova por link, **não** provas importadas. `data/publication-v1.json` só recebe conteúdo com revisão humana, gabarito final e direito por item; hoje está vazio. Use `scripts/publication_v1.py` para projetar conteúdo e conferir o catálogo. Nunca adicione `pilot/`, `staging/`, PDF ou transcrições não autorizadas ao `dist/`.
+- Ao atualizar prova individualizada, documente gabarito (ou null), hash, caderno, edição, data e cobertura real; `metadata_only` não significa publicada. Não confunda a autorização parcial de questões da Comvest com direito de espelhar uma prova inteira.

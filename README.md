@@ -2,7 +2,7 @@
 
 Biblioteca pública de referência e ambiente de prática de vestibulares brasileiros. Nome provisório, ainda sem validação de marca/domínio. Preparada em 31/10/2026 para Felipe.
 
-**Situação real:** protótipo funcional em HTML/CSS/JavaScript, 12 questões autorais de demonstração, 4 diretórios oficiais e inventário filtrável de 29 registros com links e pendências. Não é ainda um banco de provas oficiais. Repositório: https://github.com/felipeortuzal/vestibular-aberto. Site publicado: https://felipeortuzal.github.io/vestibular-aberto/ . Consulte docs/STATUS.md para o registro de verificação.
+**Situação real:** protótipo funcional em HTML/CSS/JavaScript, 12 questões autorais de demonstração, 1 prova comentada individualizada por link oficial, 4 diretórios e inventário de 29 referências. **0 questões oficiais aprovadas/publicadas**. Não é ainda um banco de provas oficiais. Repositório: https://github.com/felipeortuzal/vestibular-aberto. Site publicado: https://felipeortuzal.github.io/vestibular-aberto/ . Consulte docs/STATUS.md para o registro de verificação.
 
 ## Abrir agora
 
@@ -17,7 +17,7 @@ Extraia o ZIP mantendo as pastas e abra `index.html`. Não abra só o HTML separ
 - Diretórios oficiais da Fuvest, Unicamp, Insper e FGV.
 - Layout adaptável e navegação por teclado.
 
-Escolher uma instituição oficial retorna um estado vazio honesto, pois as 12 questões são autorais. Algumas matérias da taxonomia ainda não têm exemplos. `data/exams.json` está vazio: os quatro links são diretórios, não quatro provas completas cadastradas.
+Escolher uma instituição oficial retorna um estado vazio honesto, pois as 12 questões são autorais. Algumas matérias da taxonomia ainda não têm exemplos. `data/exams.json` contém 1 prova comentada identificada por link, mas **não** uma prova importada ou conteúdo oficial liberado.
 
 ## Estrutura
 
@@ -28,7 +28,10 @@ Escolher uma instituição oficial retorna um estado vazio honesto, pois as 12 q
 | data/questions.json | Questões autorais canônicas |
 | data/taxonomy.json | 12 matérias, 45 assuntos, 122 subassuntos; proposta inicial |
 | data/sources.json | Fontes oficiais e limites da verificação |
-| data/exams.json | Reservado para provas individualizadas; vazio na V0 |
+| data/exams.json | Catálogo de provas individualizadas com estado e links oficiais; atualmente 1 referência Unicamp 2026 |
+| data/publication-v1.json | Contrato V1 reservado a conteúdos integralmente aprovados; atualmente vazio, nunca copiado como staging |
+| data/approved-assets.json | Manifesto de imagens autorizadas; atualmente vazio |
+| scripts/publication_v1.py | Gates de publicação e projeção segura do V1 para o site |
 | data/inventory.json | Matriz oficial 2024–2026, 12 recortes e 29 referências (não provas importadas) |
 | dist/data/inventory.csv | CSV gerado pelo build, sem duplicar a fonte de verdade |
 | schemas/v1/ | Contrato JSON Schema 2020-12, incluindo taxonomia |
@@ -55,6 +58,7 @@ npm run test:contract
 npm run test:inventory
 npm run test:pilot
 npm run test:review
+npm run test:publication
 npm run build
 npm run test:browser  # requer Chrome ou Chromium local
 ```
@@ -83,7 +87,7 @@ Antes de executar, confira se esse nome ainda está livre. Não execute novament
 
 ## Como trabalhar com Astra + Sol
 
-Leia `docs/ROTEIRO.md`. No início de uma sessão de implementação, leia `AGENTS.md` e `docs/STATUS.md` e use o prompt da etapa vigente. As etapas 01 a 05 tiveram implementação técnica; a aprovação humana do lote da etapa 05 ainda está pendente. O próximo prompt é o 06 (publicação condicionada à revisão). Traga o resultado, diff, testes e pendências para a revisão antes de avançar. Essa divisão organiza o trabalho; não pressupõe que um modelo sempre será superior ao outro.
+Leia `docs/ROTEIRO.md`. No início de uma sessão de implementação, leia `AGENTS.md` e `docs/STATUS.md` e use o prompt da etapa vigente. As etapas 01 a 06 tiveram implementação técnica. Cinco candidatas da etapa 05 aguardam aprovação humana; o próximo prompt é o 07 (sessões e progresso), sem desbloquear publicação por suposição. Traga o resultado, diff, testes e pendências para a revisão antes de avançar. Essa divisão organiza o trabalho; não pressupõe que um modelo sempre será superior ao outro.
 
 O próximo objetivo útil é uma pequena seleção de questões reais completamente rastreáveis, e não uma promessa de ter todos os vestibulares. A expansão deve preservar o padrão de qualidade.
 
@@ -106,3 +110,7 @@ Selecionadas cinco questões de Matemática da primeira fase comentada (43, 45, 
 ## Etapa 05: pré-revisão editorial (aguardando revisão humana)
 
 Foram propostas cinco classificações V1 e cinco resoluções matemáticas originais, todas com `proposedBy.type=ai`, `reviewStatus=needs_review` e `reviewedBy=null`. Os itens 43, 45, 49, 51 e 52 da Unicamp 2026 têm checklist próprio em `pilot/unicamp-2026-math/review-checklist-v1.json`; os textos oficiais continuam fora do repositório. Consulte `docs/ETAPA05_REVISAO.md` para decisões necessárias e execute `npm run test:review` para validar que nenhum item possa aparecer como aprovado ou publicável sem revisão e gabarito final. O site segue exibindo somente as 12 questões autorais.
+
+## Etapa 06 — banco real protegido e provas por edição
+
+A interface V0.6 identifica demonstrações separadamente de eventuais questões oficiais aprovadas, oferece filtros por edição, semestre, fase, escola e curso e mostra uma referência individualizada à prova comentada da Unicamp 2026. Os PDFs são links na fonte; o gabarito final continua pendente. A projeção de `data/publication-v1.json` passa por gates de autoria, revisões humanas, direitos, gabarito, origem e hash, e exclui o material pendente. O build apenas copia arquivos permitidos. O conteúdo público segue com **12 autorais, 0 oficiais e 1 referência de prova**. Leia `docs/ETAPA06_PUBLICACAO.md` antes de tentar publicar novas questões.
