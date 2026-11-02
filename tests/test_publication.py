@@ -80,6 +80,8 @@ class PublicationTests(unittest.TestCase):
     def test_pending_human_review_not_rendered_with_opt_in(self):
         data,cat=eligible_fixture()
         data["classifications"][0]["reviewedBy"]=None
+        data["classifications"][0]["reviewStatus"]="needs_review"
+        data["classifications"][0]["reviewedAt"]=None
         cat[0]["approvedQuestionCount"]=0
         cat[0]["status"]="metadata_only"
         self.assertEqual(project_eligible(data,TAX,cat,[],ROOT),[])
@@ -157,7 +159,6 @@ class PublicationTests(unittest.TestCase):
 
     def test_eligible_fixture_excludes_learner_records_even_if_present(self):
         data,cat=eligible_fixture()
-        data["user_attempts"][0]["answerVersion"]=1
         rows=project_eligible(data,TAX,cat,[],ROOT)
         self.assertNotIn("user_attempts",str(rows))
         self.assertNotIn("synthetic-user",str(rows))
